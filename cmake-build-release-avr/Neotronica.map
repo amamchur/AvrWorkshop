@@ -1,0 +1,847 @@
+Archive member included to satisfy reference by file (symbol)
+
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+                              CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o (__divmodhi4)
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+                              CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o (__udivmodsi4)
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+                              /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o (exit)
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+                              CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o (__tablejump2__)
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+                              CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o (__do_copy_data)
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+                              CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o (__do_clear_bss)
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+                              CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o (__do_global_ctors)
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+                              CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o (__umulhisi3)
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+                              CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o (__adddi3_s8)
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+                              CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o (__cmpdi2_s8)
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+                              /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o) (__udivmodhi4)
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libc.a(memmove.o)
+                              CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o (memmove)
+/usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libc.a(memcpy.o)
+                              /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libc.a(memmove.o) (memcpy)
+
+Discarded input sections
+
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+ .debug_abbrev  0x0000000000000000      0x5a2 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+ .debug_info    0x0000000000000000      0x5f4 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+ .debug_line    0x0000000000000000       0x1d /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+ .debug_str     0x0000000000000000      0x208 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+ .group         0x0000000000000000        0xc CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0xc CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0xc CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .group         0x0000000000000000        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .text          0x0000000000000000        0x0 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .text._Z17buttonHandlerNoopN6MCURDK2IO11ButtonEventE
+                0x0000000000000000        0x2 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .text._Z18displayModeHandlerN6MCURDK2IO11ButtonEventE
+                0x0000000000000000       0x2e CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .text._Z24decreaseIntensityHandlerN6MCURDK2IO11ButtonEventE
+                0x0000000000000000       0x50 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .text._Z24increaseIntensityHandlerN6MCURDK2IO11ButtonEventE
+                0x0000000000000000       0x50 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .text._Z11logDateTimea
+                0x0000000000000000      0xa56 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .text._Z10fillMatrixRN6MCURDK2IC11MAX72xxDataILi4EEEPKh
+                0x0000000000000000      0x1f4 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .text._Z9splitDatajPh
+                0x0000000000000000       0x9a CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .debug_line    0x0000000000000000       0xc7 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .debug_info    0x0000000000000000       0x26 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .debug_str     0x0000000000000000       0x81 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc.div
+                0x0000000000000000       0x44 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .debug_line    0x0000000000000000      0x121 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .debug_info    0x0000000000000000       0x26 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .debug_str     0x0000000000000000       0x81 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodsi4.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .debug_line    0x0000000000000000       0x61 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .debug_info    0x0000000000000000       0x26 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .debug_str     0x0000000000000000       0x81 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .debug_line    0x0000000000000000       0x79 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .debug_info    0x0000000000000000       0x26 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .debug_str     0x0000000000000000       0x81 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .debug_line    0x0000000000000000       0x97 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .debug_info    0x0000000000000000       0x26 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .debug_str     0x0000000000000000       0x81 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .debug_line    0x0000000000000000       0x85 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .debug_info    0x0000000000000000       0x26 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .debug_str     0x0000000000000000       0x81 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .debug_line    0x0000000000000000       0x91 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .debug_info    0x0000000000000000       0x26 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .debug_str     0x0000000000000000       0x81 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .debug_line    0x0000000000000000       0xaf /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .debug_info    0x0000000000000000       0x26 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .debug_str     0x0000000000000000       0x81 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .debug_line    0x0000000000000000       0x79 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .debug_info    0x0000000000000000       0x26 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .debug_str     0x0000000000000000       0x81 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .text.libgcc.div
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .debug_line    0x0000000000000000       0x79 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .debug_info    0x0000000000000000       0x26 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .debug_str     0x0000000000000000       0x81 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.mul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc   0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.prologue
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.builtins
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fmul
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fixed
+                0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .debug_line    0x0000000000000000       0xcd /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .debug_info    0x0000000000000000       0x26 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .debug_abbrev  0x0000000000000000       0x14 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .debug_str     0x0000000000000000       0x81 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libc.a(memmove.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libc.a(memmove.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libc.a(memmove.o)
+ .text          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libc.a(memcpy.o)
+ .data          0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libc.a(memcpy.o)
+ .bss           0x0000000000000000        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libc.a(memcpy.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x0000000000000000 0x0000000000020000 xr
+data             0x0000000000800060 0x000000000000ffa0 rw !x
+eeprom           0x0000000000810000 0x0000000000010000 rw !x
+fuse             0x0000000000820000 0x0000000000000400 rw !x
+lock             0x0000000000830000 0x0000000000000400 rw !x
+signature        0x0000000000840000 0x0000000000000400 rw !x
+user_signatures  0x0000000000850000 0x0000000000000400 rw !x
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+LOAD CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+LOAD /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a
+LOAD /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libm.a
+START GROUP
+LOAD /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a
+LOAD /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libm.a
+LOAD /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libc.a
+LOAD /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libatmega328p.a
+END GROUP
+                0x0000000000020000                __TEXT_REGION_LENGTH__ = DEFINED (__TEXT_REGION_LENGTH__)?__TEXT_REGION_LENGTH__:0x20000
+                0x000000000000ffa0                __DATA_REGION_LENGTH__ = DEFINED (__DATA_REGION_LENGTH__)?__DATA_REGION_LENGTH__:0xffa0
+                0x0000000000010000                __EEPROM_REGION_LENGTH__ = DEFINED (__EEPROM_REGION_LENGTH__)?__EEPROM_REGION_LENGTH__:0x10000
+                0x0000000000000400                __FUSE_REGION_LENGTH__ = DEFINED (__FUSE_REGION_LENGTH__)?__FUSE_REGION_LENGTH__:0x400
+                0x0000000000000400                __LOCK_REGION_LENGTH__ = DEFINED (__LOCK_REGION_LENGTH__)?__LOCK_REGION_LENGTH__:0x400
+                0x0000000000000400                __SIGNATURE_REGION_LENGTH__ = DEFINED (__SIGNATURE_REGION_LENGTH__)?__SIGNATURE_REGION_LENGTH__:0x400
+                0x0000000000000400                __USER_SIGNATURE_REGION_LENGTH__ = DEFINED (__USER_SIGNATURE_REGION_LENGTH__)?__USER_SIGNATURE_REGION_LENGTH__:0x400
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x0000000000000000     0x3754
+ *(.vectors)
+ .vectors       0x0000000000000000       0x68 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+                0x0000000000000000                __vectors
+                0x0000000000000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+                0x0000000000000068                . = ALIGN (0x2)
+                0x0000000000000068                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x0000000000000068        0x0 linker stubs
+ *(.trampolines*)
+                0x0000000000000068                __trampolines_end = .
+ *libprintf_flt.a:*(.progmem.data)
+ *libc.a:*(.progmem.data)
+ *(.progmem.*)
+                0x0000000000000068                . = ALIGN (0x2)
+ *(.lowtext)
+ *(.lowtext*)
+                0x0000000000000068                __ctors_start = .
+ *(.ctors)
+ .ctors         0x0000000000000068        0x2 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x000000000000006a                __ctors_end = .
+                0x000000000000006a                __dtors_start = .
+ *(.dtors)
+                0x000000000000006a                __dtors_end = .
+ SORT_BY_NAME(*)(.ctors)
+ SORT_BY_NAME(*)(.dtors)
+ *(.init0)
+ .init0         0x000000000000006a        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+                0x000000000000006a                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x000000000000006a        0xc /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x0000000000000076       0x16 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_copy_data.o)
+                0x0000000000000076                __do_copy_data
+ .init4         0x000000000000008c       0x10 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_clear_bss.o)
+                0x000000000000008c                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ .init6         0x000000000000009c       0x16 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_ctors.o)
+                0x000000000000009c                __do_global_ctors
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000000000000b2        0x8 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+ *(.init9)
+ *(.text)
+ .text          0x00000000000000ba        0x2 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+                0x00000000000000ba                __vector_20
+                0x00000000000000ba                __vector_1
+                0x00000000000000ba                __vector_12
+                0x00000000000000ba                __bad_interrupt
+                0x00000000000000ba                __vector_6
+                0x00000000000000ba                __vector_3
+                0x00000000000000ba                __vector_23
+                0x00000000000000ba                __vector_25
+                0x00000000000000ba                __vector_11
+                0x00000000000000ba                __vector_17
+                0x00000000000000ba                __vector_5
+                0x00000000000000ba                __vector_4
+                0x00000000000000ba                __vector_9
+                0x00000000000000ba                __vector_2
+                0x00000000000000ba                __vector_21
+                0x00000000000000ba                __vector_15
+                0x00000000000000ba                __vector_8
+                0x00000000000000ba                __vector_14
+                0x00000000000000ba                __vector_10
+                0x00000000000000ba                __vector_22
+                0x00000000000000bc                . = ALIGN (0x2)
+ *(.text.*)
+ .text._ZN6MCURDK2IC6DS3231INS_4Arch8AtmelAVR17HardwareMasterI2CILj184ELh32ENS_4GPIO9PeriphPinINS5_3PinINS3_4PortILj38EEELh4EEENS_6Periph9ConfigA2DILh4ELh1ELh0ELm0EEENS5_5NoPWMEEENS6_INS7_IS9_Lh5EEENSC_ILh5ELh1ELh0ELm0EEESE_EEEELh104EE18i2cAddressAssignedEPv
+                0x00000000000000bc       0x66 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x00000000000000bc                MCURDK::IC::DS3231<MCURDK::Arch::AtmelAVR::HardwareMasterI2C<184u, (unsigned char)32, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)4>, MCURDK::Periph::ConfigA2D<(unsigned char)4, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM>, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)5>, MCURDK::Periph::ConfigA2D<(unsigned char)5, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM> >, (unsigned char)104>::i2cAddressAssigned(void*)
+ .text._ZN6MCURDK2IC6DS3231INS_4Arch8AtmelAVR17HardwareMasterI2CILj184ELh32ENS_4GPIO9PeriphPinINS5_3PinINS3_4PortILj38EEELh4EEENS_6Periph9ConfigA2DILh4ELh1ELh0ELm0EEENS5_5NoPWMEEENS6_INS7_IS9_Lh5EEENSC_ILh5ELh1ELh0ELm0EEESE_EEEELh104EE14i2cDataFetchedEPv
+                0x0000000000000122       0x4a CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000000122                MCURDK::IC::DS3231<MCURDK::Arch::AtmelAVR::HardwareMasterI2C<184u, (unsigned char)32, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)4>, MCURDK::Periph::ConfigA2D<(unsigned char)4, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM>, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)5>, MCURDK::Periph::ConfigA2D<(unsigned char)5, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM> >, (unsigned char)104>::i2cDataFetched(void*)
+ .text._Z21displayMinutesSecondsa
+                0x000000000000016c      0x6f4 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x000000000000016c                displayMinutesSeconds(signed char)
+ .text._Z19displayHoursMinutesa
+                0x0000000000000860      0x6f4 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000000860                displayHoursMinutes(signed char)
+ .text._Z10updateDotsb
+                0x0000000000000f54       0xd6 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000000f54                updateDots(bool)
+ .text._Z12scrollScreena
+                0x000000000000102a      0x302 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x000000000000102a                scrollScreen(signed char)
+ .text._Z11shiftScreena
+                0x000000000000132c      0x250 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x000000000000132c                shiftScreen(signed char)
+ .text.__vector_16
+                0x000000000000157c       0xa4 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x000000000000157c                __vector_16
+ .text.__vector_13
+                0x0000000000001620       0x46 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000001620                __vector_13
+ .text.__vector_18
+                0x0000000000001666       0x52 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000001666                __vector_18
+ .text.__vector_19
+                0x00000000000016b8       0x74 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x00000000000016b8                __vector_19
+ .text.__vector_24
+                0x000000000000172c      0x190 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x000000000000172c                __vector_24
+ .text.__vector_7
+                0x00000000000018bc      0x1d2 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x00000000000018bc                __vector_7
+ .text._ZN6MCURDK5Utils14TerminalLoggerINS_4Arch8AtmelAVR13HardwareUSARTILj192ELj32ELj8EEELNS0_8LogLevelE0ENS_2IO11NewLineCRLFENS7_18StopEscapeSequenceEE4infoEv
+                0x0000000000001a8e      0x11e CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000001a8e                MCURDK::Utils::TerminalLogger<MCURDK::Arch::AtmelAVR::HardwareUSART<192u, 32u, 8u>, (MCURDK::Utils::LogLevel)0, MCURDK::IO::NewLineCRLF, MCURDK::IO::StopEscapeSequence>::info()
+ .text._ZN6MCURDK2IC17TransmitterWS2812INS_4GPIO9PeriphPinINS2_3PinINS_4Arch8AtmelAVR4PortILj38EEELh1EEENS_6Periph9ConfigA2DILh1ELh1ELh0ELm0EEENS2_5NoPWMEEELm16000000ENS0_12TimingWS2812ELa2EE4zeroEv
+                0x0000000000001bac        0xc CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000001bac                MCURDK::IC::TransmitterWS2812<MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)1>, MCURDK::Periph::ConfigA2D<(unsigned char)1, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM>, 16000000ul, MCURDK::IC::TimingWS2812, (signed char)2>::zero()
+ .text._ZN6MCURDK2IC17TransmitterWS2812INS_4GPIO9PeriphPinINS2_3PinINS_4Arch8AtmelAVR4PortILj38EEELh1EEENS_6Periph9ConfigA2DILh1ELh1ELh0ELm0EEENS2_5NoPWMEEELm16000000ENS0_12TimingWS2812ELa2EE3oneEv
+                0x0000000000001bb8        0xe CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000001bb8                MCURDK::IC::TransmitterWS2812<MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)1>, MCURDK::Periph::ConfigA2D<(unsigned char)1, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM>, 16000000ul, MCURDK::IC::TimingWS2812, (signed char)2>::one()
+ .text._Z10initializev
+                0x0000000000001bc6      0x47a CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000001bc6                initialize()
+ .text._Z16displayDayOfWeekv
+                0x0000000000002040      0x12c CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000002040                displayDayOfWeek()
+ .text._Z13fetchDateTimea
+                0x000000000000216c      0x114 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x000000000000216c                fetchDateTime(signed char)
+ .text._Z17powerOnOffHandlerN6MCURDK2IO11ButtonEventE
+                0x0000000000002280       0xfa CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000002280                powerOnOffHandler(MCURDK::IO::ButtonEvent)
+ .text._Z8handleIRm
+                0x000000000000237a      0x404 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x000000000000237a                handleIR(unsigned long)
+ .text._Z13handleButtonsv
+                0x000000000000277e      0x892 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x000000000000277e                handleButtons()
+ .text.startup.main
+                0x0000000000003010      0x2d6 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000003010                main
+ .text.startup._GLOBAL__sub_I_timer0_millis
+                0x00000000000032e6      0x2dc CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ .text.libgcc.div
+                0x00000000000035c2       0x26 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_divmodhi4.o)
+                0x00000000000035c2                __divmodhi4
+                0x00000000000035c2                _div
+ .text.libgcc   0x00000000000035e8        0xc /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_tablejump2.o)
+                0x00000000000035e8                __tablejump2__
+ .text.libgcc.mul
+                0x00000000000035f4       0x1e /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_umulhisi3.o)
+                0x00000000000035f4                __umulhisi3
+ .text.libgcc   0x0000000000003612       0x18 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_adddi3_s8.o)
+                0x0000000000003612                __adddi3_s8
+ .text.libgcc   0x000000000000362a       0x18 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_cmpdi2_s8.o)
+                0x000000000000362a                __cmpdi2_s8
+ .text.libgcc.div
+                0x0000000000003642       0x28 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_udivmodhi4.o)
+                0x0000000000003642                __udivmodhi4
+ .text.avr-libc
+                0x000000000000366a       0x22 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libc.a(memmove.o)
+                0x000000000000366a                memmove
+ .text.avr-libc
+                0x000000000000368c       0x12 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/libc.a(memcpy.o)
+                0x000000000000368c                memcpy
+                0x000000000000369e                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x000000000000369e        0x0 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+                0x000000000000369e                exit
+                0x000000000000369e                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x000000000000369e        0x4 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/avr5/libgcc.a(_exit.o)
+ *(.fini0)
+ *(.hightext)
+ *(.hightext*)
+ *(.progmemx.*)
+                0x00000000000036a2                . = ALIGN (0x2)
+ *(.jumptables)
+ *(.jumptables*)
+ .jumptables.gcc.__vector_24
+                0x00000000000036a2       0xb2 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000003754                _etext = .
+
+.data           0x0000000000800100       0xa4 load address 0x0000000000003754
+                0x0000000000800100                PROVIDE (__data_start = .)
+ *(.data)
+ .data          0x0000000000800100        0xd CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000800100                displayFn
+                0x0000000000800102                currentDateTime
+                0x000000000080010a                intensity
+                0x000000000080010c                powerOn
+ *(.data*)
+ *(.gnu.linkonce.d*)
+ *(.rodata)
+ .rodata        0x000000000080010d       0x5c CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ *(.rodata*)
+ .rodata.str1.1
+                0x0000000000800169       0x3b CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+ *(.gnu.linkonce.r*)
+                0x00000000008001a4                . = ALIGN (0x2)
+                0x00000000008001a4                _edata = .
+                0x00000000008001a4                PROVIDE (__data_end = .)
+
+.bss            0x00000000008001a4      0x1be
+                0x00000000008001a4                PROVIDE (__bss_start = .)
+ *(.bss)
+ .bss           0x00000000008001a4      0x12f CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x00000000008001a4                buffer
+                0x00000000008001c4                matrix
+                0x00000000008001e4                max7219
+                0x00000000008001e5                rtc
+                0x00000000008001fd                timeout
+                0x0000000000800273                displayDots
+                0x0000000000800274                dateTime
+                0x0000000000800276                nextData
+                0x000000000080027a                currentData
+                0x000000000080027e                pixels
+                0x0000000000800296                receiver
+                0x00000000008002a2                button9
+                0x00000000008002a7                button8
+                0x00000000008002ac                button7
+                0x00000000008002b1                button6
+                0x00000000008002b6                button5
+                0x00000000008002bb                button4
+                0x00000000008002c0                button3
+                0x00000000008002c5                button2
+                0x00000000008002ca                button1
+                0x00000000008002cf                timer0_millis
+ *(.bss*)
+ .bss._ZN6MCURDK5Utils19MillisecondsCounterIVmXadL_Z13timer0_millisEEE10IRQHandlerILm16000000ELj64ENS_4Arch8AtmelAVR9Timer8bitINS6_11Timer8ModelILNS6_9ModelTypeE0EEELj68ENS6_24TimerInterruptFlagVectorILj53ELh6EEENS6_24TimerInterruptMaskVectorILj110ELh6EEENS6_26PrescalerAndExtClockSourceELh0EEEE8fractionE
+                0x00000000008002d3        0x2 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x00000000008002d3                MCURDK::Utils::MillisecondsCounter<unsigned long volatile, &timer0_millis>::IRQHandler<16000000ul, 64u, MCURDK::Arch::AtmelAVR::Timer8bit<MCURDK::Arch::AtmelAVR::Timer8Model<(MCURDK::Arch::AtmelAVR::ModelType)0>, 68u, MCURDK::Arch::AtmelAVR::TimerInterruptFlagVector<53u, (unsigned char)6>, MCURDK::Arch::AtmelAVR::TimerInterruptMaskVector<110u, (unsigned char)6>, MCURDK::Arch::AtmelAVR::PrescalerAndExtClockSource, (unsigned char)0> >::fraction
+ .bss._ZN6MCURDK4Arch8AtmelAVR17HardwareMasterI2CILj184ELh32ENS_4GPIO9PeriphPinINS3_3PinINS1_4PortILj38EEELh4EEENS_6Periph9ConfigA2DILh4ELh1ELh0ELm0EEENS3_5NoPWMEEENS4_INS5_IS7_Lh5EEENSA_ILh5ELh1ELh0ELm0EEESC_EEE5tokenE
+                0x00000000008002d5        0x2 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x00000000008002d5                MCURDK::Arch::AtmelAVR::HardwareMasterI2C<184u, (unsigned char)32, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)4>, MCURDK::Periph::ConfigA2D<(unsigned char)4, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM>, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)5>, MCURDK::Periph::ConfigA2D<(unsigned char)5, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM> >::token
+ .bss._ZN6MCURDK4Arch8AtmelAVR17HardwareMasterI2CILj184ELh32ENS_4GPIO9PeriphPinINS3_3PinINS1_4PortILj38EEELh4EEENS_6Periph9ConfigA2DILh4ELh1ELh0ELm0EEENS3_5NoPWMEEENS4_INS5_IS7_Lh5EEENSA_ILh5ELh1ELh0ELm0EEESC_EEE8callbackE
+                0x00000000008002d7        0x2 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x00000000008002d7                MCURDK::Arch::AtmelAVR::HardwareMasterI2C<184u, (unsigned char)32, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)4>, MCURDK::Periph::ConfigA2D<(unsigned char)4, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM>, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)5>, MCURDK::Periph::ConfigA2D<(unsigned char)5, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM> >::callback
+ .bss._ZN6MCURDK4Arch8AtmelAVR17HardwareMasterI2CILj184ELh32ENS_4GPIO9PeriphPinINS3_3PinINS1_4PortILj38EEELh4EEENS_6Periph9ConfigA2DILh4ELh1ELh0ELm0EEENS3_5NoPWMEEENS4_INS5_IS7_Lh5EEENSA_ILh5ELh1ELh0ELm0EEESC_EEE5errorE
+                0x00000000008002d9        0x1 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x00000000008002d9                MCURDK::Arch::AtmelAVR::HardwareMasterI2C<184u, (unsigned char)32, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)4>, MCURDK::Periph::ConfigA2D<(unsigned char)4, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM>, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)5>, MCURDK::Periph::ConfigA2D<(unsigned char)5, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM> >::error
+ .bss._ZN6MCURDK4Arch8AtmelAVR17HardwareMasterI2CILj184ELh32ENS_4GPIO9PeriphPinINS3_3PinINS1_4PortILj38EEELh4EEENS_6Periph9ConfigA2DILh4ELh1ELh0ELm0EEENS3_5NoPWMEEENS4_INS5_IS7_Lh5EEENSA_ILh5ELh1ELh0ELm0EEESC_EEE4busyE
+                0x00000000008002da        0x1 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x00000000008002da                MCURDK::Arch::AtmelAVR::HardwareMasterI2C<184u, (unsigned char)32, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)4>, MCURDK::Periph::ConfigA2D<(unsigned char)4, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM>, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)5>, MCURDK::Periph::ConfigA2D<(unsigned char)5, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM> >::busy
+ .bss._ZN6MCURDK4Arch8AtmelAVR17HardwareMasterI2CILj184ELh32ENS_4GPIO9PeriphPinINS3_3PinINS1_4PortILj38EEELh4EEENS_6Periph9ConfigA2DILh4ELh1ELh0ELm0EEENS3_5NoPWMEEENS4_INS5_IS7_Lh5EEENSA_ILh5ELh1ELh0ELm0EEESC_EEE6bufferE
+                0x00000000008002db       0x20 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x00000000008002db                MCURDK::Arch::AtmelAVR::HardwareMasterI2C<184u, (unsigned char)32, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)4>, MCURDK::Periph::ConfigA2D<(unsigned char)4, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM>, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)5>, MCURDK::Periph::ConfigA2D<(unsigned char)5, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM> >::buffer
+ .bss._ZGVN6MCURDK4Arch8AtmelAVR17HardwareMasterI2CILj184ELh32ENS_4GPIO9PeriphPinINS3_3PinINS1_4PortILj38EEELh4EEENS_6Periph9ConfigA2DILh4ELh1ELh0ELm0EEENS3_5NoPWMEEENS4_INS5_IS7_Lh5EEENSA_ILh5ELh1ELh0ELm0EEESC_EEE4strmE
+                0x00000000008002fb        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x00000000008002fb                guard variable for MCURDK::Arch::AtmelAVR::HardwareMasterI2C<184u, (unsigned char)32, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)4>, MCURDK::Periph::ConfigA2D<(unsigned char)4, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM>, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)5>, MCURDK::Periph::ConfigA2D<(unsigned char)5, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM> >::strm
+ .bss._ZGVN6MCURDK4Arch8AtmelAVR13HardwareUSARTILj192ELj32ELj8EE2txE
+                0x0000000000800303        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000800303                guard variable for MCURDK::Arch::AtmelAVR::HardwareUSART<192u, 32u, 8u>::tx
+ .bss._ZGVN6MCURDK4Arch8AtmelAVR13HardwareUSARTILj192ELj32ELj8EE2rxE
+                0x000000000080030b        0x8 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x000000000080030b                guard variable for MCURDK::Arch::AtmelAVR::HardwareUSART<192u, 32u, 8u>::rx
+ .bss._ZN6MCURDK4Arch8AtmelAVR17HardwareMasterI2CILj184ELh32ENS_4GPIO9PeriphPinINS3_3PinINS1_4PortILj38EEELh4EEENS_6Periph9ConfigA2DILh4ELh1ELh0ELm0EEENS3_5NoPWMEEENS4_INS5_IS7_Lh5EEENSA_ILh5ELh1ELh0ELm0EEESC_EEE4strmE
+                0x0000000000800313        0x7 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x0000000000800313                MCURDK::Arch::AtmelAVR::HardwareMasterI2C<184u, (unsigned char)32, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)4>, MCURDK::Periph::ConfigA2D<(unsigned char)4, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM>, MCURDK::GPIO::PeriphPin<MCURDK::GPIO::Pin<MCURDK::Arch::AtmelAVR::Port<38u>, (unsigned char)5>, MCURDK::Periph::ConfigA2D<(unsigned char)5, (unsigned char)1, (unsigned char)0, 0ul>, MCURDK::GPIO::NoPWM> >::strm
+ .bss._ZN6MCURDK4Arch8AtmelAVR13HardwareUSARTILj192ELj32ELj8EE2txE
+                0x000000000080031a       0x24 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x000000000080031a                MCURDK::Arch::AtmelAVR::HardwareUSART<192u, 32u, 8u>::tx
+ .bss._ZN6MCURDK4Arch8AtmelAVR13HardwareUSARTILj192ELj32ELj8EE2rxE
+                0x000000000080033e       0x24 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                0x000000000080033e                MCURDK::Arch::AtmelAVR::HardwareUSART<192u, 32u, 8u>::rx
+ *(COMMON)
+                0x0000000000800362                PROVIDE (__bss_end = .)
+                0x0000000000003754                __data_load_start = LOADADDR (.data)
+                0x00000000000037f8                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x0000000000800362        0x0
+                [!provide]                        PROVIDE (__noinit_start = .)
+ *(.noinit*)
+                [!provide]                        PROVIDE (__noinit_end = .)
+                0x0000000000800362                _end = .
+                [!provide]                        PROVIDE (__heap_start = .)
+
+.eeprom         0x0000000000810000        0x0
+ *(.eeprom*)
+                0x0000000000810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x11
+ *(.comment)
+ .comment       0x0000000000000000       0x11 CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o
+                                         0x12 (size before relaxing)
+
+.note.gnu.avr.deviceinfo
+                0x0000000000000000       0x40
+ .note.gnu.avr.deviceinfo
+                0x0000000000000000       0x40 /usr/local/Cellar/avr-gcc/8.1.0/lib/avr-gcc/8/gcc/avr/8.1.0/../../../../../../avr/lib/avr5/crtatmega328p.o
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+OUTPUT(Neotronica.elf elf32-avr)
+LOAD linker stubs

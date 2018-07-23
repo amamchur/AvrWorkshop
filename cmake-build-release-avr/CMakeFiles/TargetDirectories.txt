@@ -1,0 +1,3 @@
+/Users/andrii/Documents/GitHub/AvrWorkshop/cmake-build-release-avr/CMakeFiles/rebuild_cache.dir
+/Users/andrii/Documents/GitHub/AvrWorkshop/cmake-build-release-avr/CMakeFiles/edit_cache.dir
+/Users/andrii/Documents/GitHub/AvrWorkshop/cmake-build-release-avr/CMakeFiles/Neotronica.elf.dir

@@ -1,0 +1,1 @@
+/usr/local/bin/avr-g++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names -mmcu=atmega328p -Wl,--gc-sections -mrelax -Wl,-Map,Neotronica.map CMakeFiles/Neotronica.elf.dir/apps/Neotronica/main.cpp.o  -o Neotronica.elf 
