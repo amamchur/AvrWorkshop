@@ -10,6 +10,7 @@ add_mcu_executable(Neotronica atmega328p
         apps/Neotronica/MatrixHelpers.hpp
         apps/Neotronica/main.cpp
         )
+target_compile_definitions(Neotronica.elf PRIVATE F_CPU=16000000UL ARDUINO_AVR_PRO=1)
 
 add_mcu_executable(Keyboard atmega32u4
         libs/LUFA/Drivers/USB/Class/Device/HIDClassDevice.c
@@ -24,4 +25,9 @@ add_mcu_executable(Keyboard atmega32u4
         apps/Keyboard/Descriptors.c
         apps/Keyboard/main.cpp
         )
-target_compile_definitions(Neotronica.elf PRIVATE F_CPU=16000000UL ARDUINO_AVR_PRO=1)
+target_compile_definitions(Keyboard.elf PRIVATE
+        F_CPU=16000000UL
+        F_USB=16000000UL
+        USE_LUFA_CONFIG_HEADER=1
+        )
+target_include_directories(Keyboard.elf PRIVATE libs apps/Keyboard/Config)
