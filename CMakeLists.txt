@@ -7,8 +7,21 @@ project(AvrWorkshop)
 include_directories(/usr/local/include)
 
 add_mcu_executable(Neotronica atmega328p
-        apps/Neotronica/AppConfig.hpp
         apps/Neotronica/MatrixHelpers.hpp
         apps/Neotronica/main.cpp
+        )
+
+add_mcu_executable(Keyboard atmega32u4
+        libs/LUFA/Drivers/USB/Class/Device/HIDClassDevice.c
+        libs/LUFA/Drivers/USB/Core/Events.c
+        libs/LUFA/Drivers/USB/Core/DeviceStandardReq.c
+        libs/LUFA/Drivers/USB/Core/USBTask.c
+        libs/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.c
+        libs/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.c
+        libs/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.c
+        libs/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.c
+        libs/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.c
+        apps/Keyboard/Descriptors.c
+        apps/Keyboard/main.cpp
         )
 target_compile_definitions(Neotronica.elf PRIVATE F_CPU=16000000UL ARDUINO_AVR_PRO=1)
