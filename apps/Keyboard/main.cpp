@@ -1,42 +1,39 @@
 #include <avr/eeprom.h>
+#include <avr/interrupt.h>
 
-#include <MCURDK/Board/ArduinoLeonardo.hpp>
-#include <MCURDK/GPIO/SoftwareSPI.hpp>
-#include <MCURDK/Utils/ToolSet.hpp>
-#include <MCURDK/Utils/MillisecondsCounter.hpp>
-#include <MCURDK/Utils/Prescalers.hpp>
-#include <MCURDK/Utils/Logger.hpp>
-#include <MCURDK/IC/MAX72xx.hpp>
-#include <MCURDK/IO/Button.hpp>
-#include <MCURDK/IO/AnalogKeypad.hpp>
-#include <MCURDK/Shields/UnoLCDShield.hpp>
+#include <zoal/board/arduino_leonardo.hpp>
+#include <zoal/gpio/software_spi.hpp>
+#include <zoal/utils/tool_set.hpp>
+#include <zoal/utils/ms_counter.hpp>
+#include <zoal/utils/prescalers.hpp>
+#include <zoal/utils/logger.hpp>
+#include <zoal/ic/max72xx.hpp>
+#include <zoal/io/Button.hpp>
+#include <zoal/io/analog_keypad.hpp>
+#include <zoal/shields/uno_lcd_shield.hpp>
+#include <LUFA/Drivers/USB/USB.h>
 
 #include "Keyboard.h"
 
 volatile uint32_t timer0_millis = 0;
 
-typedef MCURDK::Utils::MillisecondsCounter<decltype(timer0_millis), &timer0_millis> Counter;
-typedef MCURDK::PCB::Timer0 MsTimer;
-typedef MCURDK::Utils::PrescalerLE<MsTimer, 64>::Result MsPrescaler;
-typedef Counter::IRQHandler<MCURDK::PCB::MCU::Frequency, MsPrescaler::Value, MsTimer> IRQHandler;
+using ms_counter = zoal::utils::ms_counter<uint32_t, &timer0_millis>;
+using ms_timer = zoal::pcb::mcu::timer0;
+using ms_prescaler = zoal::utils::prescaler_le<ms_timer, 64>::result;
+using irq_handler = ms_counter::handler<zoal::pcb::mcu::frequency, ms_prescaler::value, ms_timer>;
+using usart_config = zoal::periph::usart_config<zoal::pcb::mcu::frequency, 115200>;
+using usart = zoal::pcb::mcu::usart0<32, 8>;
+using logger = zoal::utils::plain_logger<usart, zoal::utils::log_level ::info>;
+using tools = zoal::utils::tool_set<zoal::pcb::mcu, ms_counter, logger>;
+using shield = zoal::shields::uno_lcd_shield<tools, zoal::pcb>;
+using keypad = shield::keypad;
+using lcd_stream = zoal::io::output_stream<shield::lcd>;
 
-typedef MCURDK::Periph::USARTConfig<MCURDK::PCB::MCU::Frequency, 115200> USARTCfg;
-typedef MCURDK::PCB::MCU::HardwareUSART0<32, 8> HardwareUSART;
+lcd_stream stream;
+tools::function_scheduler<16> timeout;
 
-typedef MCURDK::Utils::PlainLogger<HardwareUSART, MCURDK::Utils::LogLevel::Info> Logger;
-typedef MCURDK::Utils::ToolSet<MCURDK::PCB::MCU, Counter, Logger> Tools;
-
-//typedef MCURDK::Shields::UnoLCDShieldConfig<MCURDK::PCB::BA05, MCURDK::PCB::BA04> SC;
-typedef MCURDK::Shields::UnoLCDShield<Tools, MCURDK::PCB> Shield;
-typedef Shield::Keypad Keypad;
-typedef MCURDK::IO::OutputStream<Shield::LCD> LCDStream;
-LCDStream stream;
-Tools::FunctionTimeout<16> timeout;
-
-typedef Tools::Delay Delay;
-
-uint16_t ButtonValues[Shield::ButtonCount] __attribute__((section (".eeprom"))) = {637, 411, 258, 101, 0};
-uint8_t PrevKeyboardHIDReportBuffer[sizeof(USB_KeyboardReport_Data_t)];
+uint16_t button_values[shield::button_count] __attribute__((section (".eeprom"))) = {637, 411, 258, 101, 0};
+uint8_t hid_report_buffer[sizeof(USB_KeyboardReport_Data_t)];
 
 volatile bool press = true;
 volatile uint8_t updateADC = 0;
@@ -45,35 +42,24 @@ const char *msg = "";
 uint16_t prevADC = 0xFFFF;
 
 
-USB_ClassInfo_HID_Device_t Keyboard_HID_Interface = {
-        .Config = {
-                .InterfaceNumber              = INTERFACE_ID_Keyboard,
-                .ReportINEndpoint             = {
-                        .Address              = KEYBOARD_EPADDR,
-                        .Size                 = KEYBOARD_EPSIZE,
-                        .Banks                = 1,
-                },
-                .PrevReportINBuffer           = PrevKeyboardHIDReportBuffer,
-                .PrevReportINBufferSize       = sizeof(PrevKeyboardHIDReportBuffer),
-        },
-};
+USB_ClassInfo_HID_Device_t Keyboard_HID_Interface;
 
-void displayMsg() {
-    Shield::LCD::clear();
+void display_message() {
+    shield::lcd::clear();
     stream << msg;
 }
 
-void initializeHardware() {
-    HardwareUSART::begin<USARTCfg>();
-    MsTimer::reset();
-    MsTimer::mode<MCURDK::Periph::TimerMode::FastPWM8bit>();
-    MsTimer::selectClockSource<MsPrescaler>();
-    MsTimer::enableOverflowInterrupt();
-    MCURDK::Utils::Interrupts::on();
+void initialize_hardware() {
+    usart::setup<usart_config>();
+    ms_timer::reset();
+    ms_timer::mode<zoal::periph::timer_mode::fast_pwm_8bit>();
+    ms_timer::select_clock_source<ms_prescaler>();
+    ms_timer::enable_overflow_interrupt();
+    zoal::utils::interrupts::on();
 }
 
-void buttonHandler(size_t button, MCURDK::IO::ButtonEvent event) {
-    if (event != MCURDK::IO::ButtonEventPress) {
+void button_handler(size_t button, zoal::io::button_event event) {
+    if (event != zoal::io::button_event::press) {
         return;
     }
 
@@ -83,7 +69,7 @@ void buttonHandler(size_t button, MCURDK::IO::ButtonEvent event) {
             break;
         case 1:
             msg = "";
-            timeout.schedule(0, displayMsg);
+            timeout.schedule(0, display_message);
             break;
         default:
             break;
@@ -91,8 +77,8 @@ void buttonHandler(size_t button, MCURDK::IO::ButtonEvent event) {
 }
 
 void run() {
-    using namespace MCURDK::IO;
-    using namespace MCURDK::GPIO;
+    using namespace zoal::io;
+    using namespace zoal::gpio;
 
     if (updateADC) {
         updateADC = 0;
@@ -100,7 +86,7 @@ void run() {
 //            prevADC = adcValue;
 //            stream << pos(0, 0) << adcValue << "     ";
 //        }
-        Shield::handleKeypad(buttonHandler, adcValue);
+        shield::handle_keypad(button_handler, adcValue);
     }
 
     timeout.handle();
@@ -109,22 +95,30 @@ void run() {
 }
 
 int main() {
-    using namespace MCURDK::IO;
-    using namespace MCURDK::GPIO;
+    using namespace zoal::io;
+    using namespace zoal::gpio;
+
+    Keyboard_HID_Interface.Config.InterfaceNumber = INTERFACE_ID_Keyboard;
+    Keyboard_HID_Interface.Config.ReportINEndpoint.Address = KEYBOARD_EPADDR;
+    Keyboard_HID_Interface.Config.ReportINEndpoint.Size = KEYBOARD_EPSIZE;
+    Keyboard_HID_Interface.Config.ReportINEndpoint.Banks = 1;
+    Keyboard_HID_Interface.Config.PrevReportINBuffer = hid_report_buffer;
+    Keyboard_HID_Interface.Config.PrevReportINBufferSize = sizeof(hid_report_buffer);
+
     SetupHardware();
-    initializeHardware();
+    initialize_hardware();
 
-    eeprom_read_block(Keypad::values, ButtonValues, sizeof(Keypad::values));
-    Shield::init();
-    Shield::calibrate(false);
-    eeprom_write_block(Keypad::values, ButtonValues, sizeof(Keypad::values));
+    eeprom_read_block(keypad::values, button_values, sizeof(keypad::values));
+    shield::init();
+    shield::calibrate(false);
+    eeprom_write_block(keypad::values, button_values, sizeof(keypad::values));
 
-    Logger::clear();
-    Logger::info() << "----- Started -----";
+    logger::clear();
+    logger::info() << "----- Started -----";
 
-    Shield::AnalogChannel::on();
+    shield::analog_channel::on();
     ADCSRA |= 0x08;
-    MCURDK::PCB::A2DC0::start();
+    shield::analog_channel::adc::start();
 
     for (;;) {
         run();
@@ -132,23 +126,23 @@ int main() {
 }
 
 ISR(ADC_vect) {
-    adcValue = MCURDK::PCB::A2DC0::value();
+    shield::analog_channel::adc::value();
     updateADC = 1;
 
-    Shield::AnalogChannel::on();
-    MCURDK::PCB::A2DC0::start();
+    shield::analog_channel::on();
+    shield::analog_channel::adc::start();
 }
 
 ISR(TIMER0_OVF_vect) {
-    IRQHandler::handleTimerOverflow();
+    irq_handler::increment();
 }
 
 ISR(USART1_RX_vect) {
-    HardwareUSART::handleRxIrq();
+    usart::handle_rx_irq();
 }
 
 ISR(USART1_UDRE_vect) {
-    HardwareUSART::handleTxIrq();
+    usart::handle_tx_irq();
 }
 
 void SetupHardware() {
@@ -158,12 +152,12 @@ void SetupHardware() {
 
 void EVENT_USB_Device_Connect(void) {
     msg = "Connected1";
-    timeout.schedule(0, displayMsg);
+    timeout.schedule(0, display_message);
 }
 
 void EVENT_USB_Device_Disconnect(void) {
     msg = "Disconnect";
-    timeout.schedule(0, displayMsg);
+    timeout.schedule(0, display_message);
 }
 
 void EVENT_USB_Device_ConfigurationChanged(void) {
@@ -174,10 +168,10 @@ void EVENT_USB_Device_ConfigurationChanged(void) {
 
     if (ConfigSuccess) {
         msg = "Config Success";
-        timeout.schedule(0, displayMsg);
+        timeout.schedule(0, display_message);
     } else {
         msg = "Config Failed ";
-        timeout.schedule(0, displayMsg);
+        timeout.schedule(0, display_message);
     }
 }
 
@@ -211,5 +205,5 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t *const HIDI
                                           const void *ReportData,
                                           const uint16_t ReportSize) {
     msg = "ProcessHID";
-    timeout.schedule(0, displayMsg);
+    timeout.schedule(0, display_message);
 }
