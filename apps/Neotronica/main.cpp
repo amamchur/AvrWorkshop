@@ -1,3 +1,5 @@
+#include "matrix_helpers.hpp"
+
 #include <zoal/board/arduino_uno.hpp>
 #include <zoal/ic/ds3231.hpp>
 #include <zoal/ic/max72xx.hpp>
@@ -9,8 +11,6 @@
 #include <zoal/utils/logger.hpp>
 #include <zoal/utils/ms_counter.hpp>
 #include <zoal/utils/tool_set.hpp>
-
-#include "matrix_helpers.hpp"
 
 volatile uint32_t timer0_millis = 0;
 const constexpr uint8_t device_count = 4;
@@ -64,10 +64,16 @@ typedef struct pixel {
 pixel pixels[pixel_count];
 
 const uint64_t digits[] = {
-        0x3844444444444438, 0x3810101010103010, 0x7c20100804044438,
-        0x3844040418044438, 0x04047c4424140c04, 0x384404047840407c,
-        0x3844444478404438, 0x202020100804047c, 0x3844444438444438,
-        0x3844043c44444438,
+    0x3844444444444438,
+    0x3810101010103010,
+    0x7c20100804044438,
+    0x3844040418044438,
+    0x04047c4424140c04,
+    0x384404047840407c,
+    0x3844444478404438,
+    0x202020100804047c,
+    0x3844444438444438,
+    0x3844043c44444438,
 };
 
 uint8_t current_data[device_count] = {0, 0, 0, 0};
@@ -147,15 +153,15 @@ void initialize() {
     neo_pixel::begin();
     neo_pixel::send(pixels, pixel_count);
 
-//    button1.begin();
-//    button2.begin();
-//    button3.begin();
-//    button4.begin();
-//    button5.begin();
-//    button6.begin();
-//    button7.begin();
-//    button8.begin();
-//    button9.begin();
+    //    button1.begin();
+    //    button2.begin();
+    //    button3.begin();
+    //    button4.begin();
+    //    button5.begin();
+    //    button6.begin();
+    //    button7.begin();
+    //    button8.begin();
+    //    button9.begin();
     receiver.begin();
 
     matrix.clear();
@@ -208,7 +214,7 @@ void increaseIntensityHandler(zoal::io::button_event event) {
     }
 
     if (intensity < max7219::intensityF) {
-        intensity = (max7219::Command)((uint16_t) intensity + 1);
+        intensity = (max7219::Command)((uint16_t)intensity + 1);
     }
 
     max7219::send(device_count, intensity);
@@ -220,7 +226,7 @@ void decreaseIntensityHandler(zoal::io::button_event event) {
     }
 
     if (intensity > max7219::intensity0) {
-        intensity = (max7219::Command)((uint16_t) intensity - 1);
+        intensity = (max7219::Command)((uint16_t)intensity - 1);
     }
 
     max7219::send(device_count, intensity);
@@ -348,11 +354,8 @@ void displayHoursMinutes(int8_t) {
 }
 
 void logDateTime(int8_t) {
-    logger::info() << "Time: " << currentDateTime.year << "-"
-                   << currentDateTime.month << "-" << currentDateTime.date << " "
-                   << currentDateTime.hours << ":" << currentDateTime.minutes
-                   << ":" << currentDateTime.seconds
-                   << " day: " << currentDateTime.day;
+    logger::info() << "Time: " << currentDateTime.year << "-" << currentDateTime.month << "-" << currentDateTime.date << " " << currentDateTime.hours << ":"
+                   << currentDateTime.minutes << ":" << currentDateTime.seconds << " day: " << currentDateTime.day;
 
     timeout.schedule(1000, &logDateTime, 0);
 }
@@ -360,19 +363,19 @@ void logDateTime(int8_t) {
 void handleIR(uint32_t code) {
     logger::info() << "IR code: " << zoal::io::hex << code;
     switch (code) {
-        case 0x807F807F:
-            powerOnOffHandler(zoal::io::button_event::press);
-            break;
-        case 0x807F827D:
-            increaseIntensityHandler(zoal::io::button_event::press);
-            break;
-        case 0x807F42BD:
-            decreaseIntensityHandler(zoal::io::button_event::press);
-            break;
-        case 0x807FA857:
-            displayModeHandler(zoal::io::button_event::press);
-        default:
-            break;
+    case 0x807F807F:
+        powerOnOffHandler(zoal::io::button_event::press);
+        break;
+    case 0x807F827D:
+        increaseIntensityHandler(zoal::io::button_event::press);
+        break;
+    case 0x807F42BD:
+        decreaseIntensityHandler(zoal::io::button_event::press);
+        break;
+    case 0x807FA857:
+        displayModeHandler(zoal::io::button_event::press);
+    default:
+        break;
     }
 }
 

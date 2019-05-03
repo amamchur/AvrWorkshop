@@ -13,6 +13,12 @@ add_mcu_executable(Neotronica atmega328p
         )
 target_compile_definitions(Neotronica.elf PRIVATE F_CPU=16000000UL ARDUINO_AVR_PRO=1)
 
+add_mcu_executable(mood_board atmega328p
+        libs/jsonlite/jsonlite.c
+        apps/mood_board/main.cpp
+        )
+target_compile_definitions(mood_board.elf PRIVATE F_CPU=16000000UL)
+
 add_mcu_executable(Keyboard atmega32u4
         libs/LUFA/Drivers/USB/Class/Device/HIDClassDevice.c
         libs/LUFA/Drivers/USB/Core/Events.c
