@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 3.10)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 11)
 
 project(avr-workshop)
 
 include_directories(/usr/local/include)
 
 add_mcu_executable(Neotronica atmega328p
-        apps/Neotronica/MatrixHelpers.hpp
+        apps/Neotronica/matrix_helpers.hpp
         apps/Neotronica/main.cpp
         )
 target_compile_definitions(Neotronica.elf PRIVATE F_CPU=16000000UL ARDUINO_AVR_PRO=1)

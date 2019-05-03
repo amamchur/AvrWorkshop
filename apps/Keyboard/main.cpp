@@ -2,34 +2,36 @@
 #include <avr/interrupt.h>
 
 #include <zoal/board/arduino_leonardo.hpp>
-#include <zoal/gpio/software_spi.hpp>
+#include <zoal/periph/software_spi.hpp>
 #include <zoal/utils/tool_set.hpp>
 #include <zoal/utils/ms_counter.hpp>
-#include <zoal/utils/prescalers.hpp>
 #include <zoal/utils/logger.hpp>
 #include <zoal/ic/max72xx.hpp>
-#include <zoal/io/Button.hpp>
+#include <zoal/io/button.hpp>
 #include <zoal/io/analog_keypad.hpp>
-#include <zoal/shields/uno_lcd_shield.hpp>
+#include <zoal/shield/uno_lcd.hpp>
 #include <LUFA/Drivers/USB/USB.h>
-
+#include <zoal/periph/rx_null_buffer.hpp>
+#include <zoal/periph/tx_ring_buffer.hpp>
 #include "Keyboard.h"
 
 volatile uint32_t timer0_millis = 0;
 
-using ms_counter = zoal::utils::ms_counter<uint32_t, &timer0_millis>;
-using ms_timer = zoal::pcb::mcu::timer0;
-using ms_prescaler = zoal::utils::prescaler_le<ms_timer, 64>::result;
-using irq_handler = ms_counter::handler<zoal::pcb::mcu::frequency, ms_prescaler::value, ms_timer>;
-using usart_config = zoal::periph::usart_config<zoal::pcb::mcu::frequency, 115200>;
-using usart = zoal::pcb::mcu::usart0<32, 8>;
-using logger = zoal::utils::plain_logger<usart, zoal::utils::log_level ::info>;
-using tools = zoal::utils::tool_set<zoal::pcb::mcu, ms_counter, logger>;
-using shield = zoal::shields::uno_lcd_shield<tools, zoal::pcb>;
-using keypad = shield::keypad;
-using lcd_stream = zoal::io::output_stream<shield::lcd>;
+using mcu = zoal::pcb::mcu;
+using timer = zoal::pcb::mcu::timer_00;
+using ms_counter = zoal::utils::ms_counter<decltype(timer0_millis), &timer0_millis>;
+using irq_handler = ms_counter::handler<zoal::pcb::mcu::frequency, 64, timer>;
+using usart = mcu::usart_01;
+using usart_01_tx_buffer = zoal::periph::tx_ring_buffer<usart, 64>;
+using usart_01_rx_buffer = zoal::periph::rx_null_buffer;
 
-lcd_stream stream;
+using irq_handler = ms_counter::handler<zoal::pcb::mcu::frequency, 64, timer>;
+using logger = zoal::utils::plain_logger<usart_01_tx_buffer, zoal::utils::log_level::info>;
+using tools = zoal::utils::tool_set<zoal::pcb::mcu, ms_counter, logger>;
+using shield = zoal::shield::uno_lcd<tools, zoal::pcb, mcu::adc_00>;
+using keypad = shield::keypad;
+
+zoal::io::output_stream stream(zoal::io::transport_proxy<shield::lcd>::instance());
 tools::function_scheduler<16> timeout;
 
 uint16_t button_values[shield::button_count] __attribute__((section (".eeprom"))) = {637, 411, 258, 101, 0};
@@ -50,11 +52,14 @@ void display_message() {
 }
 
 void initialize_hardware() {
-    usart::setup<usart_config>();
-    ms_timer::reset();
-    ms_timer::mode<zoal::periph::timer_mode::fast_pwm_8bit>();
-    ms_timer::select_clock_source<ms_prescaler>();
-    ms_timer::enable_overflow_interrupt();
+    mcu::power<usart, timer>::on();
+
+    mcu::mux::usart<usart, zoal::pcb::ard_d00, zoal::pcb::ard_d01, mcu::pd_05>::on();
+    mcu::cfg::usart<usart, 115200>::apply();
+
+    mcu::cfg::timer<timer, zoal::periph::timer_mode::up, 64, 1, 0xFF>::apply();
+    mcu::irq::timer<timer>::enable_overflow_interrupt();
+
     zoal::utils::interrupts::on();
 }
 
@@ -116,9 +121,9 @@ int main() {
     logger::clear();
     logger::info() << "----- Started -----";
 
-    shield::analog_channel::on();
-    ADCSRA |= 0x08;
-    shield::analog_channel::adc::start();
+//    shield::adc::on();
+//    ADCSRA |= 0x08;
+//    shield::analog_channel::adc::start();
 
     for (;;) {
         run();
@@ -126,11 +131,11 @@ int main() {
 }
 
 ISR(ADC_vect) {
-    shield::analog_channel::adc::value();
-    updateADC = 1;
-
-    shield::analog_channel::on();
-    shield::analog_channel::adc::start();
+//    shield::analog_channel::adc::value();
+//    updateADC = 1;
+//
+//    shield::analog_channel::on();
+//    shield::analog_channel::adc::start();
 }
 
 ISR(TIMER0_OVF_vect) {
@@ -138,11 +143,11 @@ ISR(TIMER0_OVF_vect) {
 }
 
 ISR(USART1_RX_vect) {
-    usart::handle_rx_irq();
+    usart::rx_handler<usart_01_rx_buffer>();
 }
 
 ISR(USART1_UDRE_vect) {
-    usart::handle_tx_irq();
+    usart::tx_handler<usart_01_tx_buffer>();
 }
 
 void SetupHardware() {

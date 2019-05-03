@@ -13,21 +13,21 @@ const PROGMEM uint8_t DotsData[] = {
   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-class Dots {
+class dots {
   protected:
     uint8_t value(uint8_t device, uint8_t row) const {
       return pgm_read_byte_near(DotsData + device * 8 + row);
     }
 };
 
-class PlaceDots : private Dots {
+class place_dots : private dots {
   public:
     uint8_t operator ()(uint8_t device, uint8_t row) const {
       return value(device, row);
     }
 };
 
-class RemoveDots : private Dots {
+class remove_dots : private dots {
   public:
     uint8_t operator ()(uint8_t , uint8_t row) const {
       return ~value(1, row);
