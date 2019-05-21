@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AvrWorkshop.iml" filepath="$PROJECT_DIR$/.idea/AvrWorkshop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/avr-workshop.iml" filepath="$PROJECT_DIR$/.idea/avr-workshop.iml" />
     </modules>
   </component>
 </project>

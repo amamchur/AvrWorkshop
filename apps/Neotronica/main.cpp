@@ -20,11 +20,12 @@ using timer = zoal::pcb::mcu::timer_00;
 using ms_counter = zoal::utils::ms_counter<decltype(timer0_millis), &timer0_millis>;
 using irq_handler = ms_counter::handler<zoal::pcb::mcu::frequency, 64, timer>;
 using usart = mcu::usart_00;
-using usart_01_tx_buffer = zoal::periph::tx_ring_buffer<usart, 64>;
-using usart_01_rx_buffer = zoal::periph::rx_null_buffer;
+using tx_buffer = usart::default_tx_buffer<16>;
+//using rx_buffer = usart::default_rx_buffer<16>;
+using rx_buffer = usart::null_rx_buffer;
 
 using i2c = mcu::i2c_00;
-using logger = zoal::utils::terminal_logger<usart_01_tx_buffer, zoal::utils::log_level::trace>;
+using logger = zoal::utils::terminal_logger<tx_buffer, zoal::utils::log_level::trace>;
 using tools = zoal::utils::tool_set<zoal::pcb::mcu, ms_counter, logger>;
 
 using rtc_type = zoal::ic::ds3231<>;
@@ -421,11 +422,11 @@ ISR(TIMER0_OVF_vect) {
 }
 
 ISR(USART_RX_vect) {
-    usart::rx_handler<usart_01_rx_buffer>();
+    usart::rx_handler_v2<rx_buffer>();
 }
 
 ISR(USART_UDRE_vect) {
-    usart::tx_handler<usart_01_tx_buffer>();
+    usart::tx_handler_v2<tx_buffer>();
 }
 
 ISR(TWI_vect) {
