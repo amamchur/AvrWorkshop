@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="avr-workshop" targetName="Keyboard.elf" />
-      <config projectName="avr-workshop" targetName="Neotronica.elf" />
       <config projectName="avr-workshop" targetName="mood_board.elf" />
+      <config projectName="avr-workshop" targetName="Neotronica.elf" />
+      <config projectName="avr-workshop" targetName="Keyboard.elf" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -14,25 +14,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c215888d-a6da-4162-8586-9d0bbca7519a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/avr-workshop.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/mood_board/fonts.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/mood_board/fonts.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.clang-format" beforeDir="false" afterPath="$PROJECT_DIR$/.clang-format" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AvrWorkshop.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToolchainAVR.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/ToolchainAVR.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/Keyboard/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Keyboard/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/Neotronica/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Neotronica/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/Neotronica/matrix_helpers.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Neotronica/matrix_helpers.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/mood_board/fonts.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/fonts.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/mood_board/fonts.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/fonts.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/mood_board/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/jsonlite/jsonlite.c" beforeDir="false" afterPath="$PROJECT_DIR$/libs/jsonlite/jsonlite.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/jsonlite/jsonlite.h" beforeDir="false" afterPath="$PROJECT_DIR$/libs/jsonlite/jsonlite.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/cmake-build-release/" />
@@ -51,11 +36,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/apps/mood_board/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="54" column="23" lean-forward="true" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+            <state relative-caret-position="1013">
+              <caret line="246" column="24" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#2629#2865#0" />
+                <element signature="e#2867#3127#0" />
+                <element signature="e#3580#4201#0" />
+                <element signature="e#4203#4820#0" />
+                <element signature="e#6082#6405#0" />
+                <element signature="e#6407#6790#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/mood_board/fonts.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="14" column="36" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -63,26 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apps/mood_board/fonts.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-63">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ToolchainAVR.cmake">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+            <state relative-caret-position="464">
+              <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -100,6 +82,7 @@
       <find>3078ccccfccccc00</find>
       <find>null_fifo_buffer</find>
       <find>fill_matrix</find>
+      <find>pb_03</find>
     </findStrings>
     <replaceStrings>
       <replace>rb-&gt;p</replace>
@@ -117,27 +100,26 @@
         <option value="$PROJECT_DIR$/apps/mood_board/fonts.cpp" />
         <option value="/usr/local/include/zoal/utils/logger.hpp" />
         <option value="/usr/local/include/zoal/io/output_stream.hpp" />
-        <option value="$PROJECT_DIR$/apps/mood_board/main.cpp" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/apps/Neotronica/main.cpp" />
         <option value="$PROJECT_DIR$/apps/Keyboard/main.cpp" />
+        <option value="$PROJECT_DIR$/apps/mood_board/main.cpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds">
-    <option name="x" value="2024" />
-    <option name="y" value="24" />
-    <option name="width" value="1776" />
-    <option name="height" value="1015" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="134" />
+    <option name="y" value="35" />
+    <option name="width" value="3706" />
+    <option name="height" value="2125" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -166,19 +148,25 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.advertisement.text.has.clang-format" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zoal" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/apps/mood_board" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/mood_board" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -192,7 +180,12 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="CMake Application.Keyboard.elf">
+  <component name="RunManager" selected="AVRDude.mood_board USBasp">
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Release" EXPLICIT_BUILD_TARGET_NAME="all">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Keyboard.elf" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="Keyboard.elf" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="Keyboard.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -208,17 +201,25 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="mood_board.elf" type="net.mamchur.clion.avrdude.conf.type" factoryName="net.mamchur.clion.avrdude.conf.factory" nameIsGenerated="true" PROGRAM_PARAMS="-v -B 1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="mood_board.elf" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="mood_board.elf">
+    <configuration name="mood_board USBasp" type="net.mamchur.clion.avrdude.conf.type" factoryName="net.mamchur.clion.avrdude.conf.factory" PROGRAM_PARAMS="-v -B 1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="mood_board.elf" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="mood_board.elf">
+      <avrdude port="" programmer="usbasp" device="m328p" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="mood_board USBtiny" type="net.mamchur.clion.avrdude.conf.type" factoryName="net.mamchur.clion.avrdude.conf.factory" PROGRAM_PARAMS="-v -B 1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="mood_board.elf" CONFIG_NAME="Release" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="mood_board.elf">
       <avrdude port="" programmer="usbtiny" device="m328p" />
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="AVRDude.mood_board.elf" />
+      <item itemvalue="AVRDude.mood_board USBtiny" />
+      <item itemvalue="AVRDude.mood_board USBasp" />
+      <item itemvalue="CMake Application.Build All" />
+      <item itemvalue="CMake Application.mood_board.elf" />
       <item itemvalue="CMake Application.Keyboard.elf" />
       <item itemvalue="CMake Application.Neotronica.elf" />
-      <item itemvalue="CMake Application.mood_board.elf" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -256,22 +257,23 @@
       <workItem from="1558431248145" duration="638000" />
       <workItem from="1558448756980" duration="1524000" />
       <workItem from="1558450418336" duration="8044000" />
+      <workItem from="1558467213476" duration="4887000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50836000" />
+    <option name="totallyTimeSpent" value="55723000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2043" y="29" width="1776" height="1015" extended-state="0" />
+    <frame x="134" y="35" width="3706" height="2125" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16763006" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18463239" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30682978" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.7229801" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21140398" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2297619" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -280,7 +282,7 @@
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.29145443" side_tool="true" weight="0.3118644" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3278328" />
       <window_info anchor="bottom" id="CMake" order="10" weight="0.34650114" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" sideWeight="0.70854557" visible="true" weight="0.19638826" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.70854557" weight="0.29478213" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.25959367" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -323,11 +325,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-release/mood_board.lst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5670" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-release/mood_board.lst" />
     <entry file="file://$PROJECT_DIR$/../zoal/include/zoal/utils/logger.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-966">
@@ -367,13 +365,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
           <caret line="128" column="21" selection-start-line="128" selection-start-column="21" selection-end-line="128" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/mood_board/fonts.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -435,20 +426,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ToolchainAVR.cmake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/include/zoal/ic/max72xx.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
@@ -476,19 +453,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ToolchainAVR.cmake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1653">
+          <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1044">
+          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/zoal/mcu/atmega328p.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="88" column="49" lean-forward="true" selection-start-line="88" selection-start-column="49" selection-end-line="88" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/zoal/board/arduino_atmegaxx8.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/include/zoal/arch/avr/atmega/mux.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="47" column="8" lean-forward="true" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
+          <folding>
+            <element signature="e#1377#1439#0" expanded="true" />
+            <element signature="e#3989#4054#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/mood_board/fonts.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-63">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="464">
+          <caret line="16" column="28" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/mood_board/fonts.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="14" column="36" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/apps/mood_board/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="54" column="23" lean-forward="true" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+        <state relative-caret-position="1013">
+          <caret line="246" column="24" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#2629#2865#0" />
+            <element signature="e#2867#3127#0" />
+            <element signature="e#3580#4201#0" />
+            <element signature="e#4203#4820#0" />
+            <element signature="e#6082#6405#0" />
+            <element signature="e#6407#6790#0" />
           </folding>
         </state>
       </provider>

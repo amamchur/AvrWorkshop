@@ -26,7 +26,8 @@
 
 volatile uint32_t milliseconds = 0;
 
-using mcu = zoal::pcb::mcu;
+using pcb = zoal::pcb;
+using mcu = pcb::mcu;
 using counter = zoal::utils::ms_counter<decltype(milliseconds), &milliseconds>;
 using timer = mcu::timer_00;
 using ir_timer = mcu::timer_02;
@@ -44,7 +45,7 @@ using sspi = zoal::periph::tx_software_spi<mcu::pb_03, mcu::pb_02>;
 using logger = zoal::utils::plain_logger<tx_buffer, zoal::utils::log_level::trace>;
 using tools = zoal::utils::tool_set<mcu, counter, logger>;
 using delay = tools::delay;
-using matrix_type = zoal::ic::max72xx_data<4>;
+using matrix_type = zoal::ic::max72xx_data<8>;
 using max7219 = zoal::ic::max72xx<spi, zoal::pcb::ard_d10>;
 using scheduler_type = zoal::utils::function_scheduler<counter, 8, void *>;
 
@@ -157,7 +158,7 @@ static void process_string(jsonlite_token *pToken) {
             continue;
         }
 
-        auto src = reinterpret_cast<const uint8_t *>(font_letter + (*ch - 'A'));
+        auto src = reinterpret_cast<const uint8_t *>(font_glyphs + (*ch - start_glyph_code));
         auto *dest = matrix.data[i];
         for (uint8_t j = 0; j < 8; j++) {
             *dest++ = pgm_read_byte(src + j);
@@ -172,20 +173,12 @@ int text_offset = 0;
 void display_test(void *) {
     text_offset++;
 
-    if (text_offset > 50) {
+    if (text_offset > font_glyph_count - 8) {
         text_offset = 0;
     }
-
-    auto ch = "ABCD";
-    for (int i = 0; i < 4 && *ch; i++, ch++) {
-        bool valid = *ch >= 'A' && *ch <= 'Z';
-        valid = valid || (*ch >= 'a' && *ch <= 'z');
-
-        if (!valid) {
-            continue;
-        }
-
-        auto src = reinterpret_cast<const uint8_t *>(font_letter + (*ch - 'A') + text_offset);
+    ;
+    for (int i = 0; i < 8; i++) {
+        auto src = reinterpret_cast<const uint8_t *>(font_glyphs + i + text_offset);
         auto *dest = matrix.data[i];
         for (uint8_t j = 0; j < 8; j++) {
             *dest++ = pgm_read_byte(src + j);
@@ -194,7 +187,7 @@ void display_test(void *) {
 
     max7219::display(matrix);
 
-    scheduler.schedule(500, display_test);
+    scheduler.schedule(200, display_test);
 }
 
 static void process_number(jsonlite_token *pToken) {
@@ -223,14 +216,20 @@ void init_parser() {
 int main() {
     mcu::power<usart, timer, spi>::on();
 
-    mcu::mux::usart<usart, mcu::pd_00, mcu::pd_01, mcu::pd_04>::on();
+    // Rx - pcb::ard_d00
+    // Rx - pcb::ard_d01
+    mcu::mux::usart<usart, pcb::ard_d00, pcb::ard_d01>::on();
     mcu::cfg::usart<usart, 115200>::apply();
 
     mcu::cfg::timer<timer, zoal::periph::timer_mode::up, 64, 1, 0xFF>::apply();
     mcu::irq::timer<timer>::enable_overflow_interrupt();
 
+    // MISO - pcb::ard_d11
+    // MOSI - pcb::ard_d12
+    // SCLK - pcb::ard_d13
+    // CS   - pcb::ard_d10
+    mcu::mux::spi<spi, pcb::ard_d11, pcb::ard_d12, pcb::ard_d13, pcb::ard_d10>::on();
     mcu::cfg::spi<spi, 2>::apply();
-    mcu::mux::spi<spi, mcu::pb_03, mcu::pb_04, mcu::pb_05, mcu::pb_02>::on();
     mcu::cfg::spi<spi>::apply();
 
     mcu::enable<usart, timer, spi>::on();
@@ -245,7 +244,7 @@ int main() {
 
     //    jsonlite_result result = jsonlite_result_ok;
 
-    scheduler.schedule(0, display_test);
+    scheduler.schedule(100, display_test);
     while (true) {
         scheduler.handle();
 
