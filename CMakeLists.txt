@@ -17,6 +17,7 @@ add_mcu_executable(mood_board atmega328p
         libs/jsonlite/jsonlite.c
         apps/mood_board/fonts.cpp
         apps/mood_board/main.cpp
+        apps/mood_board/parser.cpp
         )
 target_compile_definitions(mood_board.elf PRIVATE F_CPU=16000000UL)
 

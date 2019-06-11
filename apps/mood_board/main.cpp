@@ -1,4 +1,6 @@
-#include "../../libs/jsonlite/jsonlite.h"
+#include "animator.hpp"
+#include "parser.hpp"
+#include "executer.hpp"
 #include "fonts.hpp"
 
 #include <avr/eeprom.h>
@@ -24,6 +26,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 
+static constexpr size_t DeviceCount = 8;
 volatile uint32_t milliseconds = 0;
 
 using pcb = zoal::pcb;
@@ -36,8 +39,8 @@ using spi = mcu::spi_00;
 using irq_handler = counter::handler<mcu::frequency, 64, timer>;
 using usart = mcu::usart_00;
 using tx_buffer = usart::default_tx_buffer<16>;
-//using rx_buffer = usart::default_rx_buffer<16>;
-using rx_buffer = usart::null_rx_buffer;
+using rx_buffer = usart::default_rx_buffer<16>;
+//using rx_buffer = usart::null_rx_buffer;
 
 using spi = mcu::spi_00;
 using sspi = zoal::periph::tx_software_spi<mcu::pb_03, mcu::pb_02>;
@@ -45,172 +48,22 @@ using sspi = zoal::periph::tx_software_spi<mcu::pb_03, mcu::pb_02>;
 using logger = zoal::utils::plain_logger<tx_buffer, zoal::utils::log_level::trace>;
 using tools = zoal::utils::tool_set<mcu, counter, logger>;
 using delay = tools::delay;
-using matrix_type = zoal::ic::max72xx_data<8>;
+using matrix_type = zoal::ic::max72xx_data<DeviceCount>;
+using matrix_type_ext = zoal::ic::max72xx_data<DeviceCount + 1>;
 using max7219 = zoal::ic::max72xx<spi, zoal::pcb::ard_d10>;
 using scheduler_type = zoal::utils::function_scheduler<counter, 8, void *>;
 
-matrix_type matrix;
+using animator_type = animator<DeviceCount, max7219, scheduler_type>;
+using executer_type = executer<DeviceCount, max7219, animator_type, logger>;
+
 scheduler_type scheduler;
-uint8_t current_message = 0;
+parser clp;
 
-const uint64_t messages[][4] PROGMEM = {
-    {0x3f66663e66663f00, 0x0000333333336e00, 0x00003e031e301f00, 0x00003333333e301f}, // Busy
-    {0x7f46161e16060f00, 0x00003b6e66060f00, 0x00001e333f031e00, 0x00001e333f031e00}, // Free
-    {0x1c36636363361c00, 0x00003b66663e060f, 0x00001e333f031e00, 0x00001f3333333300}, // Open
-    {0x3333331e0c0c1e00, 0x00001e333f031e00, 0x00003e031e301f00, 0x183c3c1818001800}, // Yes!
-    {0x63676f7b73636300, 0x00001e3333331e00, 0x183c3c1818001800, 0x0000000000000000}, // No!
-    {0x1f36666666361f00, 0x00001e3333331e00, 0x00001f3333333300, 0x00001e333f031e00}, // Done
-    {0x7f46161e16060f00, 0x00001e303e336e00, 0x0c000e0c0c0c1e00, 0x0e0c0c0c0c0c1e00}, // Fail
-};
-constexpr auto message_count = sizeof(messages) / sizeof(messages[0]);
+animator_type anim(scheduler);
+executer_type exect(anim);
 
-void fill_matrix(const void *ptr) {
-    auto src = reinterpret_cast<const uint8_t *>(ptr);
-    uint8_t *dest = &matrix.data[0][0];
-    for (uint8_t i = 0; i < sizeof(matrix.data); i++) {
-        *dest++ = pgm_read_byte(src + i);
-    }
-}
-
-void change_message(void *) {
-    //    scheduler.schedule(1000, change_message);
-    current_message++;
-    if (current_message >= message_count) {
-        current_message = 0;
-    }
-
-    fill_matrix(messages[current_message]);
-    max7219::display(matrix);
-}
-
-typedef struct context {
-} context;
-
-#define MAX_CHUNK_SIZE 64
-#define MAX_JSON_DEPTH 6
-#define MAX_JSON_TOKEN_SIZE 20
-
-context ctx;
-uint8_t parser_memory[jsonlite_parser_estimate_size(MAX_JSON_DEPTH)];
-uint8_t buffer_memory[jsonlite_buffer_static_size_ext(MAX_JSON_TOKEN_SIZE, MAX_CHUNK_SIZE)];
-jsonlite_buffer buffer;
-jsonlite_parser parser;
-
-static void process_number(jsonlite_token *pToken);
-
-static void process_string(jsonlite_token *pToken);
-
-static void event_occurred(jsonlite_callback_context *ctx, jsonlite_event event) {
-    //    auto *c = reinterpret_cast<context *>(ctx->client_state);
-    switch (event) {
-    case jsonlite_event_finished: {
-        auto r = jsonlite_parser_get_result(ctx->parser);
-        if (r == jsonlite_result_ok) {
-            logger::info() << "Success!!!";
-        }
-        break;
-    }
-    case jsonlite_event_object_start:
-        break;
-    case jsonlite_event_object_end:
-        break;
-    case jsonlite_event_array_start:
-        break;
-    case jsonlite_event_array_end:
-        break;
-    default:
-        break;
-    }
-}
-
-static void token_callback(jsonlite_callback_context *ctx, jsonlite_token *t) {
-    //    auto *c = reinterpret_cast<context *>(ctx->client_state);
-    auto type = static_cast<jsonlite_token_type>(t->type & jsonlite_token_type_mask);
-    switch (type) {
-    case jsonlite_token_null:
-        break;
-    case jsonlite_token_true:
-        break;
-    case jsonlite_token_false:
-        break;
-    case jsonlite_token_key:
-        break;
-    case jsonlite_token_number:
-        process_number(t);
-        break;
-    case jsonlite_token_string:
-        process_string(t);
-        break;
-    default:
-        break;
-    }
-}
-
-static void process_string(jsonlite_token *pToken) {
-    logger::info() << "String!!!";
-
-    auto ch = pToken->start;
-    for (int i = 0; i < 4 && ch != pToken->end; i++, ch++) {
-        bool valid = *ch >= 'A' && *ch <= 'Z';
-        valid = valid || (*ch >= 'a' && *ch <= 'z');
-
-        if (!valid) {
-            continue;
-        }
-
-        auto src = reinterpret_cast<const uint8_t *>(font_glyphs + (*ch - start_glyph_code));
-        auto *dest = matrix.data[i];
-        for (uint8_t j = 0; j < 8; j++) {
-            *dest++ = pgm_read_byte(src + j);
-        }
-    }
-
-    max7219::display(matrix);
-}
-
-int text_offset = 0;
-
-void display_test(void *) {
-    text_offset++;
-
-    if (text_offset > font_glyph_count - 8) {
-        text_offset = 0;
-    }
-    ;
-    for (int i = 0; i < 8; i++) {
-        auto src = reinterpret_cast<const uint8_t *>(font_glyphs + i + text_offset);
-        auto *dest = matrix.data[i];
-        for (uint8_t j = 0; j < 8; j++) {
-            *dest++ = pgm_read_byte(src + j);
-        }
-    }
-
-    max7219::display(matrix);
-
-    scheduler.schedule(200, display_test);
-}
-
-static void process_number(jsonlite_token *pToken) {
-    auto value = jsonlite_token_to_long(pToken);
-    if (value < message_count) {
-        current_message = value;
-    }
-
-    logger::info() << "Number: " << value << " cm:" << current_message;
-
-    fill_matrix(messages[current_message]);
-    max7219::display(matrix);
-}
-
-void init_parser() {
-    jsonlite_parser_callbacks cbs;
-    cbs.event_occurred = event_occurred;
-    cbs.token_found = token_callback;
-    cbs.context.client_state = &ctx;
-
-    buffer = jsonlite_buffer_static_init(buffer_memory, sizeof(buffer_memory));
-    parser = jsonlite_parser_init(parser_memory, sizeof(parser_memory), buffer);
-    jsonlite_parser_set_callback(parser, &cbs);
+void callback(parser *p, parse_event evnt) {
+    exect.handle(p, evnt);
 }
 
 int main() {
@@ -236,32 +89,23 @@ int main() {
 
     mcu::irq::on();
 
+    clp.callback(&callback);
+
     max7219::spi::enable();
     max7219::init(matrix_type::devices);
     max7219::send(matrix_type::devices, max7219::intensity0);
 
-    logger::info() << "Ready!";
+    anim.message("Hello world!!!    ");
+    anim.start();
 
-    //    jsonlite_result result = jsonlite_result_ok;
-
-    scheduler.schedule(100, display_test);
     while (true) {
-        scheduler.handle();
+        uint8_t rx_byte = 0;
+        auto result = rx_buffer::pop_front(rx_byte);
+        if (result) {
+            clp.push(rx_byte);
+        }
 
-        //        switch (result) {
-        //            case jsonlite_result_unknown:
-        //            case jsonlite_result_end_of_stream:
-        //                break;
-        //            default:
-        //                result = jsonlite_result_unknown;
-        //                init_parser();
-        //                break;
-        //        }
-        //
-        //        rx_buffer::value_type value;
-        //        if (rx_buffer::pop_front(value)) {
-        //            result = jsonlite_parser_tokenize(parser, &value, sizeof(value));
-        //        }
+        scheduler.handle();
     }
 
     return 0;
