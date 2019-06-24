@@ -1,8 +1,8 @@
 #ifndef CMD_LINE_PARSER_HPP
 #define CMD_LINE_PARSER_HPP
 
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
 
 enum class parse_event {
     command_error,
@@ -18,46 +18,15 @@ enum class parse_event {
     line_end
 };
 
-class parser {
+class base_parser {
 public:
+    typedef void (*callback_fn)(base_parser *p, parse_event e);
 
-    typedef void (*callback_fn)(parser *p, parse_event e);
+    void push(char ch);
 
-    void push(char ch) {
-        buffer_[length_++] = ch;
+    void parse();
 
-        switch (ch) {
-            case ' ':
-            case '\r':
-            case '\n':
-            case '"':
-                parse();
-                break;
-            default:
-                break;
-        }
-    }
-
-    void parse() {
-        init();
-        do_parse(buffer_, buffer_ + length_);
-        if (ts == nullptr) {
-            length_ = 0;
-            return;
-        }
-
-        auto end = buffer_ + length_;
-        auto dst = buffer_;
-        for (auto ptr = ts; ptr != end;) {
-            *dst++ = *ptr++;
-        }
-
-        te = buffer_ + (te - ts);
-        ts = buffer_;
-        length_ = dst - buffer_;
-    }
-
-    const char* do_parse(char const *p, const char *pe);
+    const char *do_parse(char const *p, const char *pe);
 
     inline void context(void *c) {
         this->context_ = c;
@@ -82,13 +51,13 @@ public:
     inline const char *token_end() const {
         return te;
     }
-//private:
 
+protected:
     void init();
 
     void quoted_param_found_action();
 
-    static void empty_callback(parser *p, parse_event e);
+    static void empty_callback(base_parser *p, parse_event e);
 
     void *context_{nullptr};
     callback_fn handler_{&empty_callback};
@@ -99,10 +68,20 @@ public:
     const char *te{nullptr};
     const char *eof{nullptr};
 
-    size_t size_{512};
+    size_t size_{0};
     size_t length_{0};
-    char buffer_[512]{0};
+    char buffer_[0];
+};
 
+template<size_t BufferSize>
+class parser : public base_parser {
+public:
+    parser() {
+        size_ = BufferSize;
+    }
+
+private:
+    char ext_buffer_[BufferSize]{0};
 };
 
 #endif

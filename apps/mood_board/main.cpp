@@ -27,6 +27,7 @@
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 
 static constexpr size_t DeviceCount = 8;
+static constexpr int MsgLength = 128;
 volatile uint32_t milliseconds = 0;
 
 using pcb = zoal::pcb;
@@ -53,16 +54,16 @@ using matrix_type_ext = zoal::ic::max72xx_data<DeviceCount + 1>;
 using max7219 = zoal::ic::max72xx<spi, zoal::pcb::ard_d10>;
 using scheduler_type = zoal::utils::function_scheduler<counter, 8, void *>;
 
-using animator_type = animator<DeviceCount, max7219, scheduler_type>;
-using executer_type = executer<DeviceCount, max7219, animator_type, logger>;
+using parser_type = parser<MsgLength>;
+using animator_type = animator<MsgLength, DeviceCount, max7219, scheduler_type>;
+using executer_type = executer<MsgLength, DeviceCount, max7219, animator_type, logger>;
 
 scheduler_type scheduler;
-parser clp;
-
+parser_type clp;
 animator_type anim(scheduler);
 executer_type exect(anim);
 
-void callback(parser *p, parse_event evnt) {
+void callback(base_parser *p, parse_event evnt) {
     exect.handle(p, evnt);
 }
 

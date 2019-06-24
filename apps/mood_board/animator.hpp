@@ -7,15 +7,15 @@
 #include <stdint.h>
 #include <zoal/ic/max72xx.hpp>
 
-template<size_t Devices, class Max72xx, class Scheduler>
+template<size_t MsgLength, size_t Devices, class Max72xx, class Scheduler>
 class animator {
 public:
     typedef void (*animation_fn)(void*);
 
-    using self_type = animator<Devices, Max72xx, Scheduler>;
+    using self_type = animator<MsgLength, Devices, Max72xx, Scheduler>;
     using matrix_type_1 = zoal::ic::max72xx_data<1>;
     using matrix_type_m = zoal::ic::max72xx_data<Devices>;
-    using matrix_type_f = zoal::ic::max72xx_data<Devices + 1>;
+    using matrix_type_f = zoal::ic::max72xx_data<Devices + 2>;
 
     explicit animator(Scheduler &scheduler)
         : scheduler_(scheduler) {
@@ -103,7 +103,7 @@ public:
         message_shift_++;
     }
 
-    void start(animation_fn fn = &self_type::slide_right_wrapper) {
+    void start(animation_fn fn = &self_type::slide_left_wrapper) {
         current_ = fn;
         scheduler_.schedule(0, fn, this);
     }
@@ -119,7 +119,7 @@ private:
     }
 
     animation_fn current_{nullptr};
-    char message_[64]{0};
+    char message_[MsgLength]{0};
     int message_shift_{0};
     int animation_delay_{50};
     Scheduler &scheduler_;
