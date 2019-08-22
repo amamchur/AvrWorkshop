@@ -1,12 +1,4 @@
-#include "Descriptors.h"
-
-const USB_Descriptor_HIDReport_Datatype_t PROGMEM KeyboardReport[] =
-        {
-                /* Use the HID class driver's standard Keyboard report.
-                 *   Max simultaneous keys: 6
-                 */
-                HID_DESCRIPTOR_KEYBOARD(6)
-        };
+#include "descriptors.h"
 
 /** Device descriptor structure. This descriptor, located in FLASH memory, describes the overall
  *  device characteristics, including the supported USB version, control endpoint size and the
@@ -24,9 +16,9 @@ const USB_Descriptor_Device_t PROGMEM DeviceDescriptor =
 
                 .Endpoint0Size          = FIXED_CONTROL_ENDPOINT_SIZE,
 
-                .VendorID               = 0x03EB,
-                .ProductID              = 0x2042,
-                .ReleaseNumber          = VERSION_BCD(0, 0, 1),
+                .VendorID               = 0x12EE,
+                .ProductID              = 0x1043,
+                .ReleaseNumber          = VERSION_BCD(1, 0, 0),
 
                 .ManufacturerStrIndex   = STRING_ID_Manufacturer,
                 .ProductStrIndex        = STRING_ID_Product,
@@ -45,60 +37,46 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor =
                 .Config =
                         {
                                 .Header                 = {.Size = sizeof(USB_Descriptor_Configuration_Header_t), .Type = DTYPE_Configuration},
-
                                 .TotalConfigurationSize = sizeof(USB_Descriptor_Configuration_t),
                                 .TotalInterfaces        = 1,
-
                                 .ConfigurationNumber    = 1,
                                 .ConfigurationStrIndex  = NO_DESCRIPTOR,
-
                                 .ConfigAttributes       = (USB_CONFIG_ATTR_RESERVED | USB_CONFIG_ATTR_SELFPOWERED),
-
                                 .MaxPowerConsumption    = USB_CONFIG_POWER_MA(100)
                         },
 
-                .HID_Interface =
+                .Printer_Interface =
                         {
                                 .Header                 = {.Size = sizeof(USB_Descriptor_Interface_t), .Type = DTYPE_Interface},
-
-                                .InterfaceNumber        = INTERFACE_ID_Keyboard,
-                                .AlternateSetting       = 0x00,
-
-                                .TotalEndpoints         = 1,
-
-                                .Class                  = HID_CSCP_HIDClass,
-                                .SubClass               = HID_CSCP_BootSubclass,
-                                .Protocol               = HID_CSCP_KeyboardBootProtocol,
-
+                                .InterfaceNumber        = INTERFACE_ID_Printer,
+                                .AlternateSetting       = 0,
+                                .TotalEndpoints         = 2,
+                                .Class                  = PRNT_CSCP_PrinterClass,
+                                .SubClass               = PRNT_CSCP_PrinterSubclass,
+                                .Protocol               = PRNT_CSCP_BidirectionalProtocol,
                                 .InterfaceStrIndex      = NO_DESCRIPTOR
                         },
-
-                .HID_KeyboardHID =
-                        {
-                                .Header                 = {.Size = sizeof(USB_HID_Descriptor_HID_t), .Type = HID_DTYPE_HID},
-
-                                .HIDSpec                = VERSION_BCD(1, 1, 1),
-                                .CountryCode            = 0x00,
-                                .TotalReportDescriptors = 1,
-                                .HIDReportType          = HID_DTYPE_Report,
-                                .HIDReportLength        = sizeof(KeyboardReport)
-                        },
-
-                .HID_ReportINEndpoint =
+                .Printer_DataInEndpoint =
                         {
                                 .Header                 = {.Size = sizeof(USB_Descriptor_Endpoint_t), .Type = DTYPE_Endpoint},
-
-                                .EndpointAddress        = KEYBOARD_EPADDR,
-                                .Attributes             = (EP_TYPE_INTERRUPT | ENDPOINT_ATTR_NO_SYNC |
-                                                           ENDPOINT_USAGE_DATA),
-                                .EndpointSize           = KEYBOARD_EPSIZE,
+                                .EndpointAddress        = PRINTER_IN_EPADDR,
+                                .Attributes             = (EP_TYPE_BULK | ENDPOINT_ATTR_NO_SYNC | ENDPOINT_USAGE_DATA),
+                                .EndpointSize           = PRINTER_IO_EPSIZE,
                                 .PollingIntervalMS      = 0x05
                         },
+                .Printer_DataOutEndpoint =
+                        {
+                                .Header                 = {.Size = sizeof(USB_Descriptor_Endpoint_t), .Type = DTYPE_Endpoint},
+                                .EndpointAddress        = PRINTER_OUT_EPADDR,
+                                .Attributes             = (EP_TYPE_BULK | ENDPOINT_ATTR_NO_SYNC | ENDPOINT_USAGE_DATA),
+                                .EndpointSize           = PRINTER_IO_EPSIZE,
+                                .PollingIntervalMS      = 0x05
+                        }
         };
 
 const USB_Descriptor_String_t PROGMEM LanguageString = USB_STRING_DESCRIPTOR_ARRAY(LANGUAGE_ID_ENG);
 const USB_Descriptor_String_t PROGMEM ManufacturerString = USB_STRING_DESCRIPTOR(L"Andrii Mamchur");
-const USB_Descriptor_String_t PROGMEM ProductString = USB_STRING_DESCRIPTOR(L"LUFA Keyboard Demo");
+const USB_Descriptor_String_t PROGMEM ProductString = USB_STRING_DESCRIPTOR(L"ADTP1 Simulator");
 const USB_Descriptor_String_t PROGMEM SerialNumberString = USB_STRING_DESCRIPTOR(L"02061987");
 
 /** This function is called by the library when in device mode, and must be overridden (see library "USB Descriptors"
@@ -147,14 +125,6 @@ uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue,
                     break;
             }
             break;
-        case HID_DTYPE_HID:
-            Address = &ConfigurationDescriptor.HID_KeyboardHID;
-            Size = sizeof(USB_HID_Descriptor_HID_t);
-            break;
-        case HID_DTYPE_Report:
-            Address = &KeyboardReport;
-            Size = sizeof(KeyboardReport);
-            break;
         default:
             break;
     }
@@ -162,4 +132,3 @@ uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue,
     *DescriptorAddress = Address;
     return Size;
 }
-

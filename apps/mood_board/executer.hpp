@@ -87,7 +87,7 @@ private:
     void flush_animation(base_parser *p, parse_event event) {
         switch (event) {
             case parse_event::line_end: {
-                typename Logger::info() << "animation: " << number_token;
+                Logger::info() << "animation: " << number_token;
                 animator.animation(number_token);
                 current = &executer::select_command;
                 break;

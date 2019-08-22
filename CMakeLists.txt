@@ -41,3 +41,23 @@ target_compile_definitions(Keyboard.elf PRIVATE
         USE_LUFA_CONFIG_HEADER=1
         )
 target_include_directories(Keyboard.elf PRIVATE libs apps/Keyboard/Config)
+
+add_mcu_executable(printer atmega32u4
+        libs/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.c
+        libs/LUFA/Drivers/USB/Core/Events.c
+        libs/LUFA/Drivers/USB/Core/DeviceStandardReq.c
+        libs/LUFA/Drivers/USB/Core/USBTask.c
+        libs/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.c
+        libs/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.c
+        libs/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.c
+        libs/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.c
+        libs/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.c
+        apps/printer/descriptors.c
+        apps/printer/main.cpp
+        )
+target_compile_definitions(printer.elf PRIVATE
+        F_CPU=16000000UL
+        F_USB=16000000UL
+        USE_LUFA_CONFIG_HEADER=1
+        )
+target_include_directories(printer.elf PRIVATE libs apps/printer/Config)

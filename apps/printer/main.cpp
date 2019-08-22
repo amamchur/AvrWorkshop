@@ -1,16 +1,16 @@
+#include "printer.h"
+
+#include <LUFA/Drivers/USB/USB.h>
 #include <avr/eeprom.h>
 #include <avr/interrupt.h>
-
 #include <zoal/board/arduino_leonardo.hpp>
-#include <zoal/utils/tool_set.hpp>
-#include <zoal/utils/ms_counter.hpp>
-#include <zoal/utils/logger.hpp>
-#include <zoal/io/button.hpp>
 #include <zoal/io/analog_keypad.hpp>
-#include <zoal/shield/uno_lcd.hpp>
-#include <LUFA/Drivers/USB/USB.h>
+#include <zoal/io/button.hpp>
 #include <zoal/periph/rx_null_buffer.hpp>
-#include "Keyboard.h"
+#include <zoal/shield/uno_lcd.hpp>
+#include <zoal/utils/logger.hpp>
+#include <zoal/utils/ms_counter.hpp>
+#include <zoal/utils/tool_set.hpp>
 
 volatile uint32_t timer0_millis = 0;
 
@@ -33,17 +33,14 @@ using keypad = shield::keypad;
 zoal::io::output_stream stream(zoal::io::transport_proxy<shield::lcd>::instance());
 tools::function_scheduler<16> timeout;
 
-uint16_t button_values[shield::button_count] __attribute__((section (".eeprom"))) = {637, 411, 258, 101, 0};
-uint8_t hid_report_buffer[sizeof(USB_KeyboardReport_Data_t)];
+uint16_t button_values[shield::button_count] __attribute__((section(".eeprom"))) = {637, 411, 258, 101, 0};
 
 volatile bool press = true;
 volatile uint8_t updateADC = 0;
 volatile uint16_t adcValue = 0xFFFF;
 const char *msg = "";
-uint16_t prevADC = 0xFFFF;
 
-
-USB_ClassInfo_HID_Device_t Keyboard_HID_Interface;
+USB_ClassInfo_PRNT_Device_t PrinterInterface;
 
 void display_message() {
     shield::lcd::clear();
@@ -74,17 +71,17 @@ void button_handler(size_t button, zoal::io::button_event event) {
     }
 
     switch (button) {
-        case shield::select_btn:
-            press = true;
-            break;
-        case shield::left_btn:
-            break;
-        case shield::down_btn:
-            break;
-        case shield::up_btn:
-            break;
-        case shield::right_btn:
-            break;
+    case shield::select_btn:
+        press = true;
+        break;
+    case shield::left_btn:
+        break;
+    case shield::down_btn:
+        break;
+    case shield::up_btn:
+        break;
+    case shield::right_btn:
+        break;
     }
 
     qwert[6] = '0' + button;
@@ -99,29 +96,43 @@ void run() {
 
     if (updateADC) {
         updateADC = 0;
-//        if (prevADC != adcValue) {
-//            prevADC = adcValue;
-//            shield::lcd::move(0, 0);
-//            stream << adcValue << "     ";
-//        }
         shield::handle_keypad(button_handler, adcValue);
     }
 
     timeout.handle();
-    HID_Device_USBTask(&Keyboard_HID_Interface);
+
+    uint8_t BytesReceived = PRNT_Device_BytesReceived(&PrinterInterface);
+    bool update = BytesReceived > 0;
+    int index = 0;
+    for (; BytesReceived > 0; BytesReceived--, index++) {
+        int16_t ReceivedByte = PRNT_Device_ReceiveByte(&PrinterInterface);
+        qwert[index] = ReceivedByte;
+    }
+
+    if (update) {
+        qwert[index] = 0;
+        msg = qwert;
+        timeout.schedule(0, display_message);
+    }
+
+    PRNT_Device_USBTask(&PrinterInterface);
     USB_USBTask();
 }
+
+char IEEE1284String[] = "";
 
 int main() {
     using namespace zoal::io;
     using namespace zoal::gpio;
 
-    Keyboard_HID_Interface.Config.InterfaceNumber = INTERFACE_ID_Keyboard;
-    Keyboard_HID_Interface.Config.ReportINEndpoint.Address = KEYBOARD_EPADDR;
-    Keyboard_HID_Interface.Config.ReportINEndpoint.Size = KEYBOARD_EPSIZE;
-    Keyboard_HID_Interface.Config.ReportINEndpoint.Banks = 1;
-    Keyboard_HID_Interface.Config.PrevReportINBuffer = hid_report_buffer;
-    Keyboard_HID_Interface.Config.PrevReportINBufferSize = sizeof(hid_report_buffer);
+    PrinterInterface.Config.InterfaceNumber = INTERFACE_ID_Printer;
+    PrinterInterface.Config.DataINEndpoint.Address = PRINTER_IN_EPADDR;
+    PrinterInterface.Config.DataINEndpoint.Size = PRINTER_IO_EPSIZE;
+    PrinterInterface.Config.DataINEndpoint.Banks = 1;
+    PrinterInterface.Config.DataOUTEndpoint.Address = PRINTER_OUT_EPADDR;
+    PrinterInterface.Config.DataOUTEndpoint.Size = PRINTER_IO_EPSIZE;
+    PrinterInterface.Config.DataOUTEndpoint.Banks = 1;
+    PrinterInterface.Config.IEEE1284String = IEEE1284String;
 
     SetupHardware();
 
@@ -165,22 +176,17 @@ void SetupHardware() {
     USB_Init();
 }
 
-void EVENT_USB_Device_Connect(void) {
+extern "C" void EVENT_USB_Device_Connect(void) {
     msg = "Connected";
     timeout.schedule(0, display_message);
 }
 
-void EVENT_USB_Device_Disconnect(void) {
-    msg = "Disconnect";
-    timeout.schedule(0, display_message);
-}
+extern "C" void EVENT_USB_Device_Disconnect(void) {}
 
-void EVENT_USB_Device_ConfigurationChanged(void) {
+extern "C" void EVENT_USB_Device_ConfigurationChanged(void) {
     bool ConfigSuccess = true;
 
-    ConfigSuccess &= HID_Device_ConfigureEndpoints(&Keyboard_HID_Interface);
-    USB_Device_EnableSOFEvents();
-
+    ConfigSuccess &= PRNT_Device_ConfigureEndpoints(&PrinterInterface);
     if (ConfigSuccess) {
         msg = "Config Success";
         timeout.schedule(0, display_message);
@@ -190,35 +196,6 @@ void EVENT_USB_Device_ConfigurationChanged(void) {
     }
 }
 
-void EVENT_USB_Device_ControlRequest(void) {
-    HID_Device_ProcessControlRequest(&Keyboard_HID_Interface);
-}
-
-/** Event handler for the USB device Start Of Frame event. */
-void EVENT_USB_Device_StartOfFrame(void) {
-    HID_Device_MillisecondElapsed(&Keyboard_HID_Interface);
-}
-
-bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t *const HIDInterfaceInfo,
-                                         uint8_t *const ReportID,
-                                         const uint8_t ReportType,
-                                         void *ReportData,
-                                         uint16_t *const ReportSize) {
-    auto *KeyboardReport = (USB_KeyboardReport_Data_t *) ReportData;
-    memset(KeyboardReport->KeyCode, 0, sizeof(KeyboardReport->KeyCode));
-    if (press) {
-        KeyboardReport->KeyCode[0] = HID_KEYBOARD_SC_A;
-        press = false;
-    }
-    *ReportSize = sizeof(USB_KeyboardReport_Data_t);
-    return false;
-}
-
-void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t *const HIDInterfaceInfo,
-                                          const uint8_t ReportID,
-                                          const uint8_t ReportType,
-                                          const void *ReportData,
-                                          const uint16_t ReportSize) {
-    msg = "ProcessHID";
-    timeout.schedule(0, display_message);
+extern "C" void EVENT_USB_Device_ControlRequest(void) {
+    PRNT_Device_ProcessControlRequest(&PrinterInterface);
 }

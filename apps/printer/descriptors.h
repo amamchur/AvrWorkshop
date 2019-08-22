@@ -11,21 +11,23 @@
  *  application code, as the configuration descriptor contains several sub-descriptors which
  *  vary between devices, and which describe the device's usage to the host.
  */
-typedef struct {
+typedef struct
+{
     USB_Descriptor_Configuration_Header_t Config;
 
-    // Keyboard HID Interface
-    USB_Descriptor_Interface_t HID_Interface;
-    USB_HID_Descriptor_HID_t HID_KeyboardHID;
-    USB_Descriptor_Endpoint_t HID_ReportINEndpoint;
+    // Printer Interface
+    USB_Descriptor_Interface_t            Printer_Interface;
+    USB_Descriptor_Endpoint_t             Printer_DataOutEndpoint;
+    USB_Descriptor_Endpoint_t             Printer_DataInEndpoint;
 } USB_Descriptor_Configuration_t;
 
-/** Enum for the device interface descriptor IDs within the device. Each interface descriptor
+/** Enum for the device interface descriptor IDs within the device. Each string descriptor
  *  should have a unique ID index associated with it, which can be used to refer to the
  *  interface from other descriptors.
  */
-enum InterfaceDescriptors_t {
-    INTERFACE_ID_Keyboard = 0, /**< Keyboard interface descriptor ID */
+enum InterfaceDescriptors_t
+{
+    INTERFACE_ID_Printer = 0, /**< Printer interface descriptor ID */
 };
 
 /** Enum for the device string descriptor IDs within the device. Each string descriptor should
@@ -39,12 +41,13 @@ enum StringDescriptors_t {
     STRING_ID_SerialNumber = 3, /**< Product string ID */
 };
 
-/* Macros: */
-/** Endpoint address of the Keyboard HID reporting IN endpoint. */
-#define KEYBOARD_EPADDR              (ENDPOINT_DIR_IN | 1)
+#define PRINTER_IN_EPADDR         (ENDPOINT_DIR_IN  | 2)
 
-/** Size in bytes of the Keyboard HID reporting IN endpoint. */
-#define KEYBOARD_EPSIZE              8
+/** Endpoint address of the Printer host-to-device data OUT endpoint. */
+#define PRINTER_OUT_EPADDR        (ENDPOINT_DIR_OUT | 1)
+
+/** Size in bytes of the Printer data endpoints. */
+#define PRINTER_IO_EPSIZE         64
 
 /* Function Prototypes: */
 uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue,
@@ -53,4 +56,3 @@ uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue,
 ATTR_WARN_UNUSED_RESULT ATTR_NON_NULL_PTR_ARG(3);
 
 #endif
-
