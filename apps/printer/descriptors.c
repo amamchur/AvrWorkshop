@@ -9,7 +9,7 @@ const USB_Descriptor_Device_t PROGMEM DeviceDescriptor =
         {
                 .Header                 = {.Size = sizeof(USB_Descriptor_Device_t), .Type = DTYPE_Device},
 
-                .USBSpecification       = VERSION_BCD(1, 1, 0),
+                .USBSpecification       = VERSION_BCD(2, 0, 0),
                 .Class                  = USB_CSCP_NoDeviceClass,
                 .SubClass               = USB_CSCP_NoDeviceSubclass,
                 .Protocol               = USB_CSCP_NoDeviceProtocol,

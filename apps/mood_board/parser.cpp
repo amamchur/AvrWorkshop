@@ -51,19 +51,8 @@ void base_parser::push(char ch) {
     }
 
     buffer_[length_++] = ch;
-
-    switch (ch) {
-        case ' ':
-        case '\r':
-        case '\n':
-        case '"':
-            parse();
-            break;
-        default:
-            break;
-    }
+    parse();
 }
-
 
 void base_parser::parse() {
     init();

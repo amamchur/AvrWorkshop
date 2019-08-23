@@ -52,6 +52,8 @@ add_mcu_executable(printer atmega32u4
         libs/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.c
         libs/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.c
         libs/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.c
+        apps/printer/parser.cpp
+        apps/printer/parser_machine.cpp
         apps/printer/descriptors.c
         apps/printer/main.cpp
         )
@@ -61,3 +63,5 @@ target_compile_definitions(printer.elf PRIVATE
         USE_LUFA_CONFIG_HEADER=1
         )
 target_include_directories(printer.elf PRIVATE libs apps/printer/Config)
+
+add_host_executable(parser apps/printer/parser.cpp apps/printer/parser_machine.cpp ./apps/parser_test.cpp)

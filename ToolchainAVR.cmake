@@ -70,3 +70,7 @@ function(add_mcu_executable NAME MCU)
         add_executable(${NAME}.elf apps/_empty.cpp)
     endif ()
 endfunction(add_mcu_executable)
+
+function(add_host_executable NAME)
+    add_executable(${NAME} apps/_empty.cpp)
+endfunction(add_host_executable)

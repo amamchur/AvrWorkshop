@@ -1,16 +1,15 @@
 #include "printer.h"
 
-#include <LUFA/Drivers/USB/USB.h>
 #include <avr/eeprom.h>
 #include <avr/interrupt.h>
 #include <zoal/board/arduino_leonardo.hpp>
 #include <zoal/io/analog_keypad.hpp>
-#include <zoal/io/button.hpp>
 #include <zoal/periph/rx_null_buffer.hpp>
 #include <zoal/shield/uno_lcd.hpp>
 #include <zoal/utils/logger.hpp>
 #include <zoal/utils/ms_counter.hpp>
 #include <zoal/utils/tool_set.hpp>
+#include "parser.hpp"
 
 volatile uint32_t timer0_millis = 0;
 
@@ -32,11 +31,10 @@ using keypad = shield::keypad;
 
 zoal::io::output_stream stream(zoal::io::transport_proxy<shield::lcd>::instance());
 tools::function_scheduler<16> timeout;
+parser<128> mpcl_parser;
 
 uint16_t button_values[shield::button_count] __attribute__((section(".eeprom"))) = {637, 411, 258, 101, 0};
 
-volatile bool press = true;
-volatile uint8_t updateADC = 0;
 volatile uint16_t adcValue = 0xFFFF;
 const char *msg = "";
 
@@ -71,20 +69,21 @@ void button_handler(size_t button, zoal::io::button_event event) {
     }
 
     switch (button) {
-    case shield::select_btn:
-        press = true;
-        break;
-    case shield::left_btn:
-        break;
-    case shield::down_btn:
-        break;
-    case shield::up_btn:
-        break;
-    case shield::right_btn:
-        break;
+        case shield::select_btn:
+            break;
+        case shield::left_btn:
+            break;
+        case shield::down_btn:
+            break;
+        case shield::up_btn:
+            break;
+        case shield::right_btn:
+            break;
+        default:
+            break;
     }
 
-    qwert[6] = '0' + button;
+    qwert[6] = static_cast<char>('0' + button);
 
     msg = qwert;
     timeout.schedule(0, display_message);
@@ -94,25 +93,19 @@ void run() {
     using namespace zoal::io;
     using namespace zoal::gpio;
 
-    if (updateADC) {
-        updateADC = 0;
+    if (adcValue != 0xFFFF) {
+        zoal::utils::interrupts interrupts(false);
         shield::handle_keypad(button_handler, adcValue);
+        adcValue = 0xFFFF;
     }
 
     timeout.handle();
 
     uint8_t BytesReceived = PRNT_Device_BytesReceived(&PrinterInterface);
-    bool update = BytesReceived > 0;
     int index = 0;
     for (; BytesReceived > 0; BytesReceived--, index++) {
-        int16_t ReceivedByte = PRNT_Device_ReceiveByte(&PrinterInterface);
-        qwert[index] = ReceivedByte;
-    }
-
-    if (update) {
-        qwert[index] = 0;
-        msg = qwert;
-        timeout.schedule(0, display_message);
+        int16_t byte = PRNT_Device_ReceiveByte(&PrinterInterface);
+        mpcl_parser.push(static_cast<char>(byte));
     }
 
     PRNT_Device_USBTask(&PrinterInterface);
@@ -121,9 +114,49 @@ void run() {
 
 char IEEE1284String[] = "";
 
+static void command_callback(base_parser *p, parse_event e) {
+    const char *response = nullptr;
+    switch (e) {
+        case parse_event::command_enq:
+            response = "\x05""A@\x06";
+            msg = "ENQ Request ";
+            timeout.schedule(0, display_message);
+            break;
+        case parse_event::command_mm:
+            response = "M46\x06";
+            break;
+        case parse_event::command_mv:
+            response = "V03\x06";
+            break;
+        case parse_event::command_mr:
+            response = "R04\x06";
+            break;
+        case parse_event::command_mc:
+            response = "C00\x06";
+            break;
+        case parse_event::command_mi:
+            response = "I00\x06";
+            break;
+        case parse_event::command_mp:
+            response = "P00\x06";
+            break;
+        case parse_event::command_mts:
+            response = "MTS18088753\x06";
+            break;
+        default:
+            return;
+    }
+
+    if (response != nullptr) {
+        PRNT_Device_SendString(&PrinterInterface, response);
+    }
+}
+
 int main() {
     using namespace zoal::io;
     using namespace zoal::gpio;
+
+    mpcl_parser.callback(command_callback);
 
     PrinterInterface.Config.InterfaceNumber = INTERFACE_ID_Printer;
     PrinterInterface.Config.DataINEndpoint.Address = PRINTER_IN_EPADDR;
@@ -156,7 +189,6 @@ int main() {
 ISR(ADC_vect) {
     adcValue = shield::adc::value();
     shield::adc::start();
-    updateADC = 1;
 }
 
 ISR(TIMER0_OVF_vect) {
@@ -184,16 +216,9 @@ extern "C" void EVENT_USB_Device_Connect(void) {
 extern "C" void EVENT_USB_Device_Disconnect(void) {}
 
 extern "C" void EVENT_USB_Device_ConfigurationChanged(void) {
-    bool ConfigSuccess = true;
-
-    ConfigSuccess &= PRNT_Device_ConfigureEndpoints(&PrinterInterface);
-    if (ConfigSuccess) {
-        msg = "Config Success";
-        timeout.schedule(0, display_message);
-    } else {
-        msg = "Config Failed ";
-        timeout.schedule(0, display_message);
-    }
+    bool ConfigSuccess = PRNT_Device_ConfigureEndpoints(&PrinterInterface);
+    msg = ConfigSuccess ? "Config Success" : "Config Failed ";
+    timeout.schedule(0, display_message);
 }
 
 extern "C" void EVENT_USB_Device_ControlRequest(void) {
