@@ -42,6 +42,25 @@ target_compile_definitions(Keyboard.elf PRIVATE
         )
 target_include_directories(Keyboard.elf PRIVATE libs apps/Keyboard/Config)
 
+function(RAGEL_GENERATE_CPP RGL_SRC CPP_SRC)
+    get_filename_component(ABS_FIL ${RGL_SRC} ABSOLUTE)
+    get_filename_component(ABS_PATH ${RGL_SRC} PATH)
+    get_filename_component(FILE_NAME ${RGL_SRC} NAME)
+    set(ABS_CPP_SRC ${ABS_FIL}.cpp)
+
+    add_custom_command(
+            OUTPUT "${ABS_CPP_SRC}"
+            COMMAND ragel
+            ARGS -G1 -L -o "${ABS_CPP_SRC}" "${ABS_FIL}"
+            DEPENDS "${ABS_FIL}"
+            COMMENT "Running ragel file ${FILE_NAME}"
+            VERBATIM)
+    set_source_files_properties(${CPP_SRC} PROPERTIES GENERATED TRUE)
+    set(${CPP_SRC} ${ABS_CPP_SRC} PARENT_SCOPE)
+endfunction()
+
+ragel_generate_cpp(apps/printer/parser_machine.rl PRINTER_STATE_MACHINE_SRC)
+
 add_mcu_executable(printer atmega32u4
         libs/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.c
         libs/LUFA/Drivers/USB/Core/Events.c
@@ -52,8 +71,8 @@ add_mcu_executable(printer atmega32u4
         libs/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.c
         libs/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.c
         libs/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.c
+        ${PRINTER_STATE_MACHINE_SRC}
         apps/printer/parser.cpp
-        apps/printer/parser_machine.cpp
         apps/printer/descriptors.c
         apps/printer/main.cpp
         )

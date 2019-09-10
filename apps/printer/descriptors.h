@@ -41,10 +41,10 @@ enum StringDescriptors_t {
     STRING_ID_SerialNumber = 3, /**< Product string ID */
 };
 
-#define PRINTER_IN_EPADDR         (ENDPOINT_DIR_IN  | 2)
+#define PRINTER_IN_EPADDR         (uint8_t)(ENDPOINT_DIR_IN  | 2)
 
 /** Endpoint address of the Printer host-to-device data OUT endpoint. */
-#define PRINTER_OUT_EPADDR        (ENDPOINT_DIR_OUT | 1)
+#define PRINTER_OUT_EPADDR        (uint8_t)(ENDPOINT_DIR_OUT | 1)
 
 /** Size in bytes of the Printer data endpoints. */
 #define PRINTER_IO_EPSIZE         64

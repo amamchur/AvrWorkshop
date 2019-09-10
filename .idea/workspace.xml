@@ -2,11 +2,11 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="avr-workshop" targetName="Keyboard.elf" />
-      <config projectName="avr-workshop" targetName="parser" />
-      <config projectName="avr-workshop" targetName="Neotronica.elf" />
       <config projectName="avr-workshop" targetName="mood_board.elf" />
+      <config projectName="avr-workshop" targetName="Neotronica.elf" />
+      <config projectName="avr-workshop" targetName="Keyboard.elf" />
       <config projectName="avr-workshop" targetName="printer.elf" />
+      <config projectName="avr-workshop" targetName="parser" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -17,18 +17,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c215888d-a6da-4162-8586-9d0bbca7519a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ToolchainHost.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/_empty.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/parser_test.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/parser.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/parser.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/parser_machine.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/parser_machine.rl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToolchainAVR.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/ToolchainAVR.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/mood_board/parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/parser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/descriptors.c" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/descriptors.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/descriptors.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/descriptors.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,7 +52,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="CMakeSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -81,13 +74,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="AVRDude.printer USBasp">
-    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Release AVR" EXPLICIT_BUILD_TARGET_NAME="all">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Keyboard.elf" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="Keyboard.elf" CONFIG_NAME="Release AVR" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="Keyboard.elf">
+  <component name="RunManager" selected="CMake Application.Build All">
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug Host" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -97,40 +85,30 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="mood_board.elf" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="mood_board.elf" CONFIG_NAME="Release AVR" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="mood_board.elf">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="parser" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="parser" CONFIG_NAME="Release AVR" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="parser">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="printer.elf" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="printer.elf" CONFIG_NAME="Release AVR" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="printer.elf">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Keyboard USBasp" type="net.mamchur.clion.avrdude.conf.type" factoryName="net.mamchur.clion.avrdude.conf.factory" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="Keyboard.elf" CONFIG_NAME="Release AVR" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="Keyboard.elf">
+    <configuration name="Keyboard USBasp" type="net.mamchur.clion.avrdude.conf.type" factoryName="net.mamchur.clion.avrdude.conf.factory" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="Keyboard.elf" CONFIG_NAME="Debug Host" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="Keyboard.elf">
       <avrdude port="" programmer="usbasp" device="m32u4" />
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="mood_board USBasp" type="net.mamchur.clion.avrdude.conf.type" factoryName="net.mamchur.clion.avrdude.conf.factory" PROGRAM_PARAMS="-v -B 1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="mood_board.elf" CONFIG_NAME="Release AVR" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="mood_board.elf">
+    <configuration name="mood_board USBasp" type="net.mamchur.clion.avrdude.conf.type" factoryName="net.mamchur.clion.avrdude.conf.factory" PROGRAM_PARAMS="-v -B 1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="mood_board.elf" CONFIG_NAME="Debug Host" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="mood_board.elf">
       <avrdude port="" programmer="usbasp" device="m328p" />
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="mood_board USBtiny" type="net.mamchur.clion.avrdude.conf.type" factoryName="net.mamchur.clion.avrdude.conf.factory" PROGRAM_PARAMS="-V -v -B 1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="mood_board.elf" CONFIG_NAME="Release AVR" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="mood_board.elf">
+    <configuration name="mood_board USBtiny" type="net.mamchur.clion.avrdude.conf.type" factoryName="net.mamchur.clion.avrdude.conf.factory" PROGRAM_PARAMS="-V -v -B 1" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="mood_board.elf" CONFIG_NAME="Debug Host" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="mood_board.elf">
       <avrdude port="" programmer="usbtiny" device="m328p" />
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="printer USBasp" type="net.mamchur.clion.avrdude.conf.type" factoryName="net.mamchur.clion.avrdude.conf.factory" PROGRAM_PARAMS="-V" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="printer.elf" CONFIG_NAME="Release AVR" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="printer.elf">
+    <configuration name="printer USBasp" type="net.mamchur.clion.avrdude.conf.type" factoryName="net.mamchur.clion.avrdude.conf.factory" PROGRAM_PARAMS="-V" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="printer.elf" CONFIG_NAME="Debug Host" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="printer.elf">
       <avrdude port="" programmer="usbasp" device="m32u4" />
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -142,11 +120,8 @@
       <item itemvalue="AVRDude.mood_board USBasp" />
       <item itemvalue="AVRDude.mood_board USBtiny" />
       <item itemvalue="CMake Application.Build All" />
-      <item itemvalue="CMake Application.Keyboard.elf" />
       <item itemvalue="CMake Application.Neotronica.elf" />
       <item itemvalue="CMake Application.parser" />
-      <item itemvalue="CMake Application.printer.elf" />
-      <item itemvalue="CMake Application.mood_board.elf" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -200,7 +175,14 @@
       <workItem from="1566475160750" duration="22940000" />
       <workItem from="1566558023320" duration="4210000" />
       <workItem from="1566568903021" duration="576000" />
-      <workItem from="1566570994950" duration="634000" />
+      <workItem from="1566570994950" duration="656000" />
+      <workItem from="1566894989260" duration="365000" />
+      <workItem from="1566895398907" duration="38000" />
+      <workItem from="1566895546458" duration="694000" />
+      <workItem from="1566896270334" duration="1228000" />
+      <workItem from="1567782251481" duration="800000" />
+      <workItem from="1568013820679" duration="1298000" />
+      <workItem from="1568119584974" duration="8197000" />
     </task>
     <task id="LOCAL-00001" summary="Updated mood board">
       <created>1560266886597</created>
@@ -223,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566491483528</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated printer example">
+      <created>1566575955892</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1566575955892</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,6 +236,7 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Updated mood board" />
     <MESSAGE value="Added printer example" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added printer example" />
+    <MESSAGE value="Updated printer example" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated printer example" />
   </component>
 </project>

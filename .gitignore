@@ -8,6 +8,7 @@ cmake-build-release-avr
 *.lo
 *.o
 *.obj
+*.rl.cpp
 
 # Precompiled Headers
 *.gch

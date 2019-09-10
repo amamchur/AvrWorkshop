@@ -30,7 +30,7 @@ using shield = zoal::shield::uno_lcd<tools, zoal::pcb, mcu::adc_00>;
 using keypad = shield::keypad;
 
 zoal::io::output_stream stream(zoal::io::transport_proxy<shield::lcd>::instance());
-tools::function_scheduler<16> timeout;
+tools::function_scheduler<8> timeout;
 parser<128> mpcl_parser;
 
 uint16_t button_values[shield::button_count] __attribute__((section(".eeprom"))) = {637, 411, 258, 101, 0};
@@ -97,13 +97,13 @@ void run() {
         zoal::utils::interrupts interrupts(false);
         shield::handle_keypad(button_handler, adcValue);
         adcValue = 0xFFFF;
+        shield::adc::start();
     }
 
     timeout.handle();
 
-    uint8_t BytesReceived = PRNT_Device_BytesReceived(&PrinterInterface);
-    int index = 0;
-    for (; BytesReceived > 0; BytesReceived--, index++) {
+    uint8_t received = PRNT_Device_BytesReceived(&PrinterInterface);
+    for (; received > 0; received--) {
         int16_t byte = PRNT_Device_ReceiveByte(&PrinterInterface);
         mpcl_parser.push(static_cast<char>(byte));
     }
@@ -188,7 +188,6 @@ int main() {
 
 ISR(ADC_vect) {
     adcValue = shield::adc::value();
-    shield::adc::start();
 }
 
 ISR(TIMER0_OVF_vect) {
@@ -213,14 +212,14 @@ extern "C" void EVENT_USB_Device_Connect(void) {
     timeout.schedule(0, display_message);
 }
 
-extern "C" void EVENT_USB_Device_Disconnect(void) {}
+extern "C" void EVENT_USB_Device_Disconnect() {}
 
-extern "C" void EVENT_USB_Device_ConfigurationChanged(void) {
+extern "C" void EVENT_USB_Device_ConfigurationChanged() {
     bool ConfigSuccess = PRNT_Device_ConfigureEndpoints(&PrinterInterface);
     msg = ConfigSuccess ? "Config Success" : "Config Failed ";
     timeout.schedule(0, display_message);
 }
 
-extern "C" void EVENT_USB_Device_ControlRequest(void) {
+extern "C" void EVENT_USB_Device_ControlRequest() {
     PRNT_Device_ProcessControlRequest(&PrinterInterface);
 }
