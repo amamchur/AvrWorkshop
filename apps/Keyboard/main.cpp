@@ -33,7 +33,7 @@ using keypad = shield::keypad;
 zoal::io::output_stream stream(zoal::io::transport_proxy<shield::lcd>::instance());
 tools::function_scheduler<16> timeout;
 
-uint16_t button_values[shield::button_count] __attribute__((section (".eeprom"))) = {637, 411, 258, 101, 0};
+uint16_t eeprom_buttons[shield::button_count] __attribute__((section (".eeprom"))) = {637, 411, 258, 101, 0};
 uint8_t hid_report_buffer[sizeof(USB_KeyboardReport_Data_t)];
 
 volatile bool press = true;
@@ -127,11 +127,11 @@ int main() {
 
     initialize_hardware();
 
-    eeprom_read_block(keypad::values, button_values, sizeof(keypad::values));
+    eeprom_read_block(keypad::values, eeprom_buttons, sizeof(keypad::values));
     shield::gpio_cfg();
     shield::init();
     shield::calibrate(false);
-    eeprom_write_block(keypad::values, button_values, sizeof(keypad::values));
+    eeprom_write_block(keypad::values, eeprom_buttons, sizeof(keypad::values));
 
     mcu::mux::adc<adc, shield::analog_pin>::on();
     shield::adc::enable_interrupt();

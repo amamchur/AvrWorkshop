@@ -17,12 +17,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c215888d-a6da-4162-8586-9d0bbca7519a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/parser/easyplug_parser.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/parser/easyplug_parser_machine.rl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/parser/mpcl_parser.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/parser/mpcl_parser_machine.rl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/printer/adpt1.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/printer/adpt1.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/printer/base.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/printer/base.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/printer/xlp504.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/printer/xlp504.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToolchainAVR.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/ToolchainAVR.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/descriptors.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/descriptors.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Keyboard/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Keyboard/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/mood_board/executer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/executer.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/mood_board/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/mood_board/parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/parser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/mood_board/parser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/parser.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/mood_board/parser_machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/parser_machine.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/parser_test.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/Config/LUFAConfig.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/Config/LUFAConfig.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/descriptors.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/descriptors.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/parser/base_parser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/parser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/parser/base_parser.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/parser_machine.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/parser_machine.rl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/printer.h" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +65,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.advertisement.text.has.clang-format" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/apps/printer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/apps/printer/parser" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -55,7 +77,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/printer/printer" />
+      <recent name="$PROJECT_DIR$/apps/printer/parser" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/printer/parser" />
       <recent name="$PROJECT_DIR$/apps/printer" />
       <recent name="$PROJECT_DIR$/apps" />
       <recent name="$PROJECT_DIR$" />
@@ -74,7 +101,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="CMake Application.Build All">
+  <component name="RunManager" selected="AVRDude.printer USBasp">
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug Host" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />

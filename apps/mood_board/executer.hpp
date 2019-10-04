@@ -9,16 +9,16 @@ public:
     explicit executer(Animator &animator)
         : animator(animator) {}
 
-    void handle(base_parser *p, parse_event event) {
+    void handle(base_parser *p, mpcl_parse_event event) {
         (*this.*current)(p, event);
     }
 
 private:
-    typedef void (executer::*handle_fn)(base_parser *p, parse_event event);
+    typedef void (executer::*handle_fn)(base_parser *p, mpcl_parse_event event);
 
-    void flush_delay(base_parser *p, parse_event event) {
+    void flush_delay(base_parser *p, mpcl_parse_event event) {
         switch (event) {
-        case parse_event::line_end:
+        case mpcl_parse_event::line_end:
             animator.animation_delay(number_token);
             current = &executer::select_command;
             break;
@@ -44,9 +44,9 @@ private:
         return value * sign;
     }
 
-    void take_delay(base_parser *p, parse_event event) {
+    void take_delay(base_parser *p, mpcl_parse_event event) {
         switch (event) {
-        case parse_event::number_token: {
+        case mpcl_parse_event::number_token: {
             number_token = token_to_int(p);
             current = &executer::flush_delay;
             break;
@@ -57,9 +57,9 @@ private:
         }
     }
 
-    void flush_intensity(base_parser *p, parse_event event) {
+    void flush_intensity(base_parser *p, mpcl_parse_event event) {
         switch (event) {
-        case parse_event::line_end: {
+        case mpcl_parse_event::line_end: {
             auto value = (uint8_t)number_token & 0xFu;
             Max72xx::send(Devices, Max72xx::intensity0 | value);
             current = &executer::select_command;
@@ -71,9 +71,9 @@ private:
         }
     }
 
-    void take_intensity(base_parser *p, parse_event event) {
+    void take_intensity(base_parser *p, mpcl_parse_event event) {
         switch (event) {
-        case parse_event::number_token: {
+        case mpcl_parse_event::number_token: {
             number_token = token_to_int(p);
             current = &executer::flush_intensity;
             break;
@@ -84,9 +84,9 @@ private:
         }
     }
 
-    void flush_animation(base_parser *p, parse_event event) {
+    void flush_animation(base_parser *p, mpcl_parse_event event) {
         switch (event) {
-            case parse_event::line_end: {
+            case mpcl_parse_event::line_end: {
                 Logger::info() << "animation: " << number_token;
                 animator.animation(number_token);
                 current = &executer::select_command;
@@ -98,9 +98,9 @@ private:
         }
     }
 
-    void take_animation(base_parser *p, parse_event event) {
+    void take_animation(base_parser *p, mpcl_parse_event event) {
         switch (event) {
-            case parse_event::number_token: {
+            case mpcl_parse_event::number_token: {
                 number_token = token_to_int(p);
                 current = &executer::flush_animation;
                 break;
@@ -111,27 +111,27 @@ private:
         }
     }
 
-    void select_command(base_parser *p, parse_event event) {
+    void select_command(base_parser *p, mpcl_parse_event event) {
         switch (event) {
-        case parse_event::command_msg:
+        case mpcl_parse_event::command_msg:
             current = &executer::take_message;
             break;
-        case parse_event::command_on:
+        case mpcl_parse_event::command_on:
             current = &executer::display_on;
             break;
-        case parse_event::command_off:
+        case mpcl_parse_event::command_off:
             current = &executer::display_off;
             break;
-        case parse_event::command_delay:
+        case mpcl_parse_event::command_delay:
             current = &executer::take_delay;
             break;
-        case parse_event::command_intensity:
+        case mpcl_parse_event::command_intensity:
             current = &executer::take_intensity;
             break;
-        case parse_event::command_animation:
+        case mpcl_parse_event::command_animation:
             current = &executer::take_animation;
             break;
-        case parse_event::line_end:
+        case mpcl_parse_event::line_end:
             break;
         default:
             current = &executer::skip_until_end_line;
@@ -139,9 +139,9 @@ private:
         }
     }
 
-    void take_message(base_parser *p, parse_event event) {
+    void take_message(base_parser *p, mpcl_parse_event event) {
         switch (event) {
-        case parse_event::string_token: {
+        case mpcl_parse_event::string_token: {
             auto s = p->token_start();
             auto e = p->token_end();
             auto result = copy_token(s, e);
@@ -170,9 +170,9 @@ private:
         return true;
     }
 
-    void skip_until_end_line(base_parser *p, parse_event event) {
+    void skip_until_end_line(base_parser *p, mpcl_parse_event event) {
         switch (event) {
-        case parse_event::line_end:
+        case mpcl_parse_event::line_end:
             current = &executer::select_command;
             break;
         default:
@@ -180,9 +180,9 @@ private:
         }
     }
 
-    void flush_message(base_parser *p, parse_event event) {
+    void flush_message(base_parser *p, mpcl_parse_event event) {
         switch (event) {
-        case parse_event::line_end:
+        case mpcl_parse_event::line_end:
             animator.message(string_token);
             current = &executer::select_command;
             break;
@@ -192,9 +192,9 @@ private:
         }
     }
 
-    void display_on(base_parser *p, parse_event event) {
+    void display_on(base_parser *p, mpcl_parse_event event) {
         switch (event) {
-        case parse_event::line_end:
+        case mpcl_parse_event::line_end:
             Max72xx::send(Devices, Max72xx::on);
             current = &executer::select_command;
             break;
@@ -204,9 +204,9 @@ private:
         }
     }
 
-    void display_off(base_parser *p, parse_event event) {
+    void display_off(base_parser *p, mpcl_parse_event event) {
         switch (event) {
-        case parse_event::line_end:
+        case mpcl_parse_event::line_end:
             Max72xx::send(Devices, Max72xx::off);
             current = &executer::select_command;
             break;

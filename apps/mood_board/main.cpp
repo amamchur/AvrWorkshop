@@ -54,7 +54,7 @@ using matrix_type_ext = zoal::ic::max72xx_data<DeviceCount + 1>;
 using max7219 = zoal::ic::max72xx<spi, zoal::pcb::ard_d10>;
 using scheduler_type = zoal::utils::function_scheduler<counter, 8, void *>;
 
-using parser_type = parser<MsgLength>;
+using parser_type = mpcl_parser<MsgLength>;
 using animator_type = animator<MsgLength, DeviceCount, max7219, scheduler_type>;
 using executer_type = executer<MsgLength, DeviceCount, max7219, animator_type, logger>;
 
@@ -63,7 +63,7 @@ parser_type clp;
 animator_type anim(scheduler);
 executer_type exect(anim);
 
-void callback(base_parser *p, parse_event evnt) {
+void callback(base_parser *p, mpcl_parse_event evnt) {
     exect.handle(p, evnt);
 }
 

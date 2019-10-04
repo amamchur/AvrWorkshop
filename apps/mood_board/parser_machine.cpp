@@ -1,9 +1,9 @@
 
-/* #line 1 "./apps/mood_board/parser_machine.rl" */
+/* #line 1 "./apps/mood_board/mpcl_parser_machine.rl" */
 #include "parser.hpp"
 
 
-/* #line 40 "./apps/mood_board/parser_machine.rl" */
+/* #line 40 "./apps/mood_board/mpcl_parser_machine.rl" */
 
 
 namespace {
@@ -16,7 +16,7 @@ static const int fsm_name_error = -1;
 static const int fsm_name_en_main = 21;
 
 
-/* #line 44 "./apps/mood_board/parser_machine.rl" */
+/* #line 44 "./apps/mood_board/mpcl_parser_machine.rl" */
 }
 
 void base_parser::init() {
@@ -29,7 +29,7 @@ void base_parser::init() {
 	act = 0;
 	}
 
-/* #line 48 "./apps/mood_board/parser_machine.rl" */
+/* #line 48 "./apps/mood_board/mpcl_parser_machine.rl" */
 }
 
 const char* base_parser::do_parse(const char *p, const char *pe) {
@@ -45,7 +45,7 @@ tr0:
 	{	switch( act ) {
 	case 7:
 	{{p = ((te))-1;}
-            handler_(this, parse_event::number_token);
+            handler_(this, mpcl_parse_event::number_token);
         }
 	break;
 	case 8:
@@ -60,67 +60,67 @@ tr0:
 	}
 	goto st21;
 tr4:
-/* #line 38 "./apps/mood_board/parser_machine.rl" */
+/* #line 38 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{{p = ((te))-1;}}
 	goto st21;
 tr11:
-/* #line 24 "./apps/mood_board/parser_machine.rl" */
+/* #line 24 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{te = p+1;{
-            handler_(this, parse_event::command_animation);
+            handler_(this, mpcl_parse_event::command_animation);
         }}
 	goto st21;
 tr14:
-/* #line 18 "./apps/mood_board/parser_machine.rl" */
+/* #line 18 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{te = p+1;{
-            handler_(this, parse_event::command_delay);
+            handler_(this, mpcl_parse_event::command_delay);
         }}
 	goto st21;
 tr21:
-/* #line 21 "./apps/mood_board/parser_machine.rl" */
+/* #line 21 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{te = p+1;{
-            handler_(this, parse_event::command_intensity);
+            handler_(this, mpcl_parse_event::command_intensity);
         }}
 	goto st21;
 tr22:
-/* #line 9 "./apps/mood_board/parser_machine.rl" */
+/* #line 9 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{te = p+1;{
-    	    handler_(this, parse_event::command_msg);
+    	    handler_(this, mpcl_parse_event::command_msg);
         }}
 	goto st21;
 tr23:
-/* #line 15 "./apps/mood_board/parser_machine.rl" */
+/* #line 15 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{te = p+1;{
-            handler_(this, parse_event::command_off);
+            handler_(this, mpcl_parse_event::command_off);
         }}
 	goto st21;
 tr24:
-/* #line 38 "./apps/mood_board/parser_machine.rl" */
+/* #line 38 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{te = p+1;}
 	goto st21;
 tr25:
-/* #line 34 "./apps/mood_board/parser_machine.rl" */
+/* #line 34 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{te = p+1;{
-            handler_(this, parse_event::line_end);
+            handler_(this, mpcl_parse_event::line_end);
         }}
 	goto st21;
 tr26:
-/* #line 33 "./apps/mood_board/parser_machine.rl" */
+/* #line 33 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{te = p+1;}
 	goto st21;
 tr35:
-/* #line 38 "./apps/mood_board/parser_machine.rl" */
+/* #line 38 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{te = p;p--;}
 	goto st21;
 tr36:
-/* #line 30 "./apps/mood_board/parser_machine.rl" */
+/* #line 30 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{te = p;p--;{
             quoted_param_found_action();
         }}
 	goto st21;
 tr42:
-/* #line 12 "./apps/mood_board/parser_machine.rl" */
+/* #line 12 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{te = p+1;{
-            handler_(this, parse_event::command_on);
+            handler_(this, mpcl_parse_event::command_on);
         }}
 	goto st21;
 st21:
@@ -150,7 +150,7 @@ case 21:
 tr27:
 /* #line 1 "NONE" */
 	{te = p+1;}
-/* #line 38 "./apps/mood_board/parser_machine.rl" */
+/* #line 38 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{act = 11;}
 	goto st22;
 st22:
@@ -180,7 +180,7 @@ case 0:
 tr2:
 /* #line 1 "NONE" */
 	{te = p+1;}
-/* #line 30 "./apps/mood_board/parser_machine.rl" */
+/* #line 30 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{act = 8;}
 	goto st23;
 st23:
@@ -212,13 +212,13 @@ case 1:
 tr28:
 /* #line 1 "NONE" */
 	{te = p+1;}
-/* #line 38 "./apps/mood_board/parser_machine.rl" */
+/* #line 38 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{act = 11;}
 	goto st24;
 tr29:
 /* #line 1 "NONE" */
 	{te = p+1;}
-/* #line 27 "./apps/mood_board/parser_machine.rl" */
+/* #line 27 "./apps/mood_board/mpcl_parser_machine.rl" */
 	{act = 7;}
 	goto st24;
 st24:
@@ -494,6 +494,6 @@ case 20:
 
 	}
 
-/* #line 52 "./apps/mood_board/parser_machine.rl" */
+/* #line 52 "./apps/mood_board/mpcl_parser_machine.rl" */
     return p;
 }

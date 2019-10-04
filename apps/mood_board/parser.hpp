@@ -4,7 +4,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-enum class parse_event {
+enum class mpcl_parse_event {
     command_error,
     command_unknown,
     command_msg,
@@ -20,7 +20,7 @@ enum class parse_event {
 
 class base_parser {
 public:
-    typedef void (*callback_fn)(base_parser *p, parse_event e);
+    typedef void (*callback_fn)(base_parser *p, mpcl_parse_event e);
 
     void push(char ch);
 
@@ -57,7 +57,7 @@ protected:
 
     void quoted_param_found_action();
 
-    static void empty_callback(base_parser *p, parse_event e);
+    static void empty_callback(base_parser *p, mpcl_parse_event e);
 
     void *context_{nullptr};
     callback_fn handler_{&empty_callback};
@@ -74,9 +74,9 @@ protected:
 };
 
 template<size_t BufferSize>
-class parser : public base_parser {
+class mpcl_parser : public base_parser {
 public:
-    parser() {
+    mpcl_parser() {
         size_ = BufferSize;
     }
 

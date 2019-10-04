@@ -1,29 +1,16 @@
-#ifndef CMD_LINE_PARSER_HPP
-#define CMD_LINE_PARSER_HPP
+#ifndef AVR_WORKSHOP_BASE_PARSER_HPP
+#define AVR_WORKSHOP_BASE_PARSER_HPP
 
-#include <stddef.h>
 #include <stdint.h>
-
-enum class parse_event {
-    command_enq,
-    command_mm,
-    command_mv,
-    command_mr,
-    command_mc,
-    command_mi,
-    command_mp,
-    command_mts
-};
+#include <stddef.h>
 
 class base_parser {
 public:
-    typedef void (*callback_fn)(base_parser *p, parse_event e);
+    typedef void (*callback_fn)(base_parser *p, int e);
 
     void push(char ch);
 
     void parse();
-
-    const char *do_parse(char const *p, const char *pe);
 
     inline void context(void *c) {
         this->context_ = c;
@@ -49,10 +36,11 @@ public:
         return te;
     }
 
+    virtual void init() = 0;
+    virtual const char *do_parse(char const *p, const char *pe) = 0;
 protected:
-    void init();
 
-    static void empty_callback(base_parser *p, parse_event e);
+    static void empty_callback(base_parser *p, int e);
 
     void *context_{nullptr};
     callback_fn handler_{&empty_callback};
@@ -66,17 +54,6 @@ protected:
     size_t size_{0};
     size_t length_{0};
     char buffer_[0];
-};
-
-template<size_t BufferSize>
-class parser : public base_parser {
-public:
-    parser() {
-        size_ = BufferSize;
-    }
-
-private:
-    char ext_buffer_[BufferSize]{0};
 };
 
 #endif

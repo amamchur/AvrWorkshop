@@ -1,6 +1,6 @@
 #include "parser.hpp"
 
-void base_parser::empty_callback(base_parser *p, parse_event e) {
+void base_parser::empty_callback(base_parser *p, mpcl_parse_event e) {
 }
 
 void base_parser::quoted_param_found_action() {
@@ -41,7 +41,7 @@ void base_parser::quoted_param_found_action() {
     te = dst;
 
     if (handler_) {
-        handler_(this, parse_event::string_token);
+        handler_(this, mpcl_parse_event::string_token);
     }
 }
 

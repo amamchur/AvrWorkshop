@@ -59,7 +59,8 @@ function(RAGEL_GENERATE_CPP RGL_SRC CPP_SRC)
     set(${CPP_SRC} ${ABS_CPP_SRC} PARENT_SCOPE)
 endfunction()
 
-ragel_generate_cpp(apps/printer/parser_machine.rl PRINTER_STATE_MACHINE_SRC)
+ragel_generate_cpp(apps/printer/parser/mpcl_parser_machine.rl MPCL_STATE_MACHINE_SRC)
+ragel_generate_cpp(apps/printer/parser/easyplug_parser_machine.rl EASYPLUG_STATE_MACHINE_SRC)
 
 add_mcu_executable(printer atmega32u4
         libs/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.c
@@ -71,9 +72,12 @@ add_mcu_executable(printer atmega32u4
         libs/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.c
         libs/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.c
         libs/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.c
-        ${PRINTER_STATE_MACHINE_SRC}
-        apps/printer/parser.cpp
-        apps/printer/descriptors.c
+        ${MPCL_STATE_MACHINE_SRC}
+        ${EASYPLUG_STATE_MACHINE_SRC}
+        apps/printer/parser/base_parser.cpp
+        apps/printer/printer/base.cpp
+        apps/printer/printer/adpt1.cpp
+        apps/printer/printer/xlp504.cpp
         apps/printer/main.cpp
         )
 target_compile_definitions(printer.elf PRIVATE
@@ -83,4 +87,4 @@ target_compile_definitions(printer.elf PRIVATE
         )
 target_include_directories(printer.elf PRIVATE libs apps/printer/Config)
 
-add_host_executable(parser apps/printer/parser.cpp apps/printer/parser_machine.cpp ./apps/parser_test.cpp)
+add_host_executable(parser apps/printer/mpcl_parser.cpp apps/printer/parser_machine.cpp ./apps/parser_test.cpp)

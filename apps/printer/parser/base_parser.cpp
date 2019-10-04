@@ -1,6 +1,6 @@
-#include "parser.hpp"
+#include "base_parser.hpp"
 
-void base_parser::empty_callback(base_parser *p, parse_event e) {
+void base_parser::empty_callback(base_parser *p, int e) {
 }
 
 void base_parser::push(char ch) {
@@ -30,3 +30,4 @@ void base_parser::parse() {
     ts = buffer_;
     length_ = dst - buffer_;
 }
+
