@@ -5,12 +5,16 @@
 #include <string.h>
 
 extern const char PROGMEM menu_greeting[];
-extern const char PROGMEM calibrate_select[];
-extern const char PROGMEM calibrate_left[];
-extern const char PROGMEM calibrate_down[];
-extern const char PROGMEM calibrate_up[];
-extern const char PROGMEM calibrate_right[];
-extern const char PROGMEM calibrate_complete[];
+extern const char PROGMEM text_current_printer[];
+extern const char PROGMEM text_change_printer[];
+extern const char PROGMEM text_change_serial[];
+extern const char PROGMEM text_calibrate[];
+extern const char PROGMEM text_press_select[];
+extern const char PROGMEM text_press_left[];
+extern const char PROGMEM text_press_down[];
+extern const char PROGMEM text_press_up[];
+extern const char PROGMEM text_press_right[];
+extern const char PROGMEM text_complete[];
 
 template<class LCD>
 class lcd_screen {
@@ -20,6 +24,16 @@ public:
 
     static void clear() {
         memset(mem, ' ', sizeof(mem));
+    }
+
+    static void copy_pgm(int r, const void *pm) {
+        auto p = reinterpret_cast<const char *>(pm);
+        auto ch = pgm_read_byte(p++);
+        auto dst = &mem[r][0];
+        for (; ch != 0; p++) {
+            *dst++ = ch;
+            ch = pgm_read_byte(p);
+        }
     }
 
     static void copy_pgm(const void *pm) {

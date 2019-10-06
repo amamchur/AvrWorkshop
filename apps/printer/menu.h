@@ -8,14 +8,19 @@
 #include <stddef.h>
 #include <zoal/io/button.hpp>
 
-enum class lcd_display_mode {
+enum class menu_option {
     printer_info,
     rx_tx_info,
+    change_printer,
+    change_serial,
 
     count
 };
 
 void start_hartware_configuration();
+
 void start_main_menu();
+
+void start_printer_select();
 
 #endif

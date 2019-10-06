@@ -3,7 +3,6 @@
 
 volatile uint32_t timer0_millis = 0;
 volatile uint16_t adc_value = 0xFFFF;
-volatile bool running = true;
 
 printer_device current_printer_id;
 uint32_t serial_number = 0;
@@ -12,7 +11,7 @@ size_t serial_number_size = sizeof(serial_number_str);
 uint8_t printer_buffer[printer_buffer_size];
 printer::base *current_printer = nullptr;
 
-tools::function_scheduler<16> timeout;
+tools::function_scheduler<8> scheduler;
 
 uint8_t eeprom_buttons[sizeof(keypad::values)] __attribute__((section(".eeprom")));
 uint8_t eeprom_printer_id[sizeof(current_printer_id)] __attribute__((section(".eeprom")));
@@ -23,9 +22,8 @@ void read_eeprom_data() {
     eeprom_read_block(&serial_number, eeprom_sn, sizeof(serial_number));
     eeprom_read_block(&current_printer_id, eeprom_printer_id, sizeof(current_printer_id));
 
-    format_serial_number();
-
     current_printer_id = shift_enum(current_printer_id, 0, printer_device::count);
+    format_serial_number();
 }
 
 void write_eeprom_data() {
@@ -56,15 +54,93 @@ void init_printer() {
         case printer_device::adtp1:
             current_printer = new printer::adpt1();
             break;
-        default:
+        default:.
             current_printer = new printer::xlp504();
             break;
     }
 
     current_printer->init();
     USB_Init();
+
+    scheduler.schedule(0, handle_usb);
 }
 
 void deinit_printer() {
     USB_Disable();
+}
+
+constexpr auto usb_buffer_size = zoal::ct::max_type_size<
+        USB_Descriptor_Header_t,
+        USB_Descriptor_Device_t,
+        printer::adpt1::usb_configuration,
+        printer::xlp504::usb_configuration
+>::value + 32;
+uint8_t usb_buffer[usb_buffer_size];
+
+void handle_usb() {
+    scheduler.schedule(0, handle_usb);
+
+    uint8_t received = PRNT_Device_BytesReceived(current_printer->interface());
+//    if (received > 0) {
+//        timeout.schedule(0, update_display__);
+//    }
+
+    for (; received > 0; received--) {
+        int16_t byte = PRNT_Device_ReceiveByte(current_printer->interface());
+        current_printer->process_byte(static_cast<uint8_t>(byte));
+    }
+
+    PRNT_Device_USBTask(current_printer->interface());
+    USB_USBTask();
+}
+
+extern "C" uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue, const uint16_t wIndex, const void **const DescriptorAddress) {
+    static_assert(sizeof(usb_buffer) >= sizeof(USB_Descriptor_Device_t), "");
+    static_assert(sizeof(usb_buffer) >= sizeof(printer::adpt1::usb_configuration), "");
+
+    const uint8_t DescriptorType = (wValue >> 8u);
+    const uint8_t DescriptorNumber = (wValue & 0xFFu);
+
+    const void *address = nullptr;
+    uint16_t size = NO_DESCRIPTOR;
+
+    switch (DescriptorType) {
+        case DTYPE_Device:
+            size = current_printer->get_descriptor(usb_buffer, sizeof(usb_buffer));
+            address = usb_buffer;
+            break;
+        case DTYPE_Configuration:
+            size = current_printer->get_configuration(usb_buffer, sizeof(usb_buffer));
+            address = usb_buffer;
+            break;
+        case DTYPE_String:
+            switch (DescriptorNumber) {
+                case printer::base::string_id_language:
+                    size = current_printer->get_language_string(usb_buffer, sizeof(usb_buffer));
+                    address = usb_buffer;
+                    break;
+                case printer::base::string_id_manufacturer:
+                    size = current_printer->get_manufacturer_string(usb_buffer, sizeof(usb_buffer));
+                    address = usb_buffer;
+                    break;
+                case printer::base::string_id_product:
+                    size = current_printer->get_product_string(usb_buffer, sizeof(usb_buffer));
+                    address = usb_buffer;
+                    break;
+                case printer::base::string_id_serial_number:
+                    size = printer::base::fill_descriptor_string(
+                            usb_buffer, sizeof(usb_buffer), serial_number_str,
+                            serial_number_size - sizeof(serial_number_str[0]));
+                    address = usb_buffer;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        default:
+            break;
+    }
+
+    *DescriptorAddress = address;
+    return size;
 }

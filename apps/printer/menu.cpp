@@ -7,7 +7,7 @@
 namespace {
     size_t calibration_button;
     uint16_t max_adc_value;
-    lcd_display_mode display_mode = lcd_display_mode::printer_info;
+    menu_option current_option = menu_option::printer_info;
 }
 
 void start_keypad_calibration();
@@ -24,14 +24,25 @@ void config_current_printer(size_t button, zoal::io::button_event event);
 
 void menu_input(size_t button, zoal::io::button_event event);
 
-void (*keypad_handler)(size_t button, zoal::io::button_event event) = config_serial_number;
+void empty_callback(size_t button, zoal::io::button_event event);
+
+void (*keypad_handler)(size_t button, zoal::io::button_event event) = empty_callback;
+
+void read_keypad_adc();
 
 void update_display();
+
+void display_printer();
+
+void destroy_printer();
 
 void read_adc_async() {
     shield::adc::wait();
     adc_value = 0xFFFF;
     shield::adc::start();
+}
+
+void empty_callback(size_t button, zoal::io::button_event event) {
 }
 
 void config_serial_number(size_t button, zoal::io::button_event event) {
@@ -41,7 +52,13 @@ void config_serial_number(size_t button, zoal::io::button_event event) {
 
     switch (button) {
         case shield::select_btn:
-            timeout.schedule(0, start_printer_select);
+            if (current_option == menu_option::change_serial) {
+                write_eeprom_data();
+                scheduler.clear();
+                scheduler.schedule(0, destroy_printer);
+            } else {
+                scheduler.schedule(0, start_printer_select);
+            }
             return;
         case shield::down_btn:
             inc_serial_number(-1);
@@ -65,7 +82,7 @@ void display_serial_number() {
 
 void display_printer() {
     screen::clear();
-    screen::print(0, 0, "Printer");
+    screen::copy_pgm(0, text_current_printer);
     switch (current_printer_id) {
         case printer_device::adtp1:
             screen::print(1, 0, "> ADTP1");
@@ -80,14 +97,14 @@ void display_printer() {
     screen::flush();
 }
 
-static void create_printer() {
+void create_printer() {
     init_printer();
-    timeout.schedule(0, start_main_menu);
+    scheduler.schedule(0, start_main_menu);
 }
 
-static void destroy_printer() {
+void destroy_printer() {
     deinit_printer();
-    timeout.schedule(500, create_printer);
+    scheduler.schedule(500, create_printer);
 }
 
 void config_current_printer(size_t button, zoal::io::button_event event) {
@@ -98,7 +115,8 @@ void config_current_printer(size_t button, zoal::io::button_event event) {
     switch (button) {
         case shield::select_btn:
             write_eeprom_data();
-            timeout.schedule(0, destroy_printer);
+            scheduler.clear();
+            scheduler.schedule(0, destroy_printer);
             return;
         case shield::down_btn:
             current_printer_id = shift_enum(current_printer_id, 1, printer_device::count);
@@ -119,11 +137,24 @@ void menu_input(size_t button, zoal::io::button_event event) {
     }
 
     switch (button) {
+        case shield::select_btn: {
+            switch (current_option) {
+                case menu_option::change_printer:
+                    scheduler.schedule(0, start_printer_select);
+                    break;
+                case menu_option::change_serial:
+                    scheduler.schedule(0, start_serial_number_cfg);
+                    break;
+                default:
+                    break;
+            }
+            return;
+        }
         case shield::down_btn:
-            display_mode = shift_enum(display_mode, 1, lcd_display_mode::count);
+            current_option = shift_enum(current_option, 1, menu_option::count);
             break;
         case shield::up_btn:
-            display_mode = shift_enum(display_mode, -1, lcd_display_mode::count);
+            current_option = shift_enum(current_option, -1, menu_option::count);
             break;
         default:
             return;
@@ -133,7 +164,7 @@ void menu_input(size_t button, zoal::io::button_event event) {
 }
 
 void read_keypad_adc() {
-    timeout.schedule(0, read_keypad_adc);
+    scheduler.schedule(0, read_keypad_adc);
 
     auto value = adc_value;
     if (value == 0xFFFF) {
@@ -146,7 +177,7 @@ void read_keypad_adc() {
 
 void read_calibration_value() {
     if (adc_value == 0xFFFF) {
-        timeout.schedule(0, read_calibration_value);
+        scheduler.schedule(0, read_calibration_value);
         return;
     }
 
@@ -160,7 +191,7 @@ void read_calibration_value() {
     }
 
     read_adc_async();
-    timeout.schedule(0, read_calibration_value);
+    scheduler.schedule(0, read_calibration_value);
 }
 
 void start_serial_number_cfg() {
@@ -169,7 +200,7 @@ void start_serial_number_cfg() {
     read_adc_async();
 
     keypad_handler = config_serial_number;
-    timeout.schedule(0, read_keypad_adc);
+    scheduler.schedule(0, read_keypad_adc);
 }
 
 void start_printer_select() {
@@ -178,43 +209,44 @@ void start_printer_select() {
 
     keypad_handler = config_current_printer;
 
-    timeout.clear();
-    timeout.schedule(0, read_keypad_adc);
+    scheduler.clear();
+    scheduler.schedule(0, read_keypad_adc);
 }
 
 void start_keypad_calibration() {
     const void *msg;
     bool complete = false;
+    screen::copy_pgm(0, text_calibrate);
     switch (calibration_button) {
         case shield::select_btn:
-            msg = calibrate_select;
+            msg = text_press_select;
             break;
         case shield::left_btn:
-            msg = calibrate_left;
+            msg = text_press_left;
             break;
         case shield::down_btn:
-            msg = calibrate_down;
+            msg = text_press_down;
             break;
         case shield::up_btn:
-            msg = calibrate_up;
+            msg = text_press_up;
             break;
         case shield::right_btn:
-            msg = calibrate_right;
+            msg = text_press_right;
             break;
         default:
-            msg = calibrate_complete;
+            msg = text_complete;
             complete = true;
             break;
     }
-    screen::copy_pgm(msg);
+    screen::copy_pgm(1, msg);
     screen::flush();
 
     if (complete) {
-        timeout.schedule(1000, start_serial_number_cfg);
+        scheduler.schedule(1000, start_serial_number_cfg);
     } else {
         read_adc_async();
         max_adc_value = 1u << 12u;
-        timeout.schedule(100, read_calibration_value);
+        scheduler.schedule(100, read_calibration_value);
     }
 }
 
@@ -226,26 +258,36 @@ void start_hartware_configuration() {
 
     calibration_button = shield::select_btn;
 
-    timeout.clear();
-    timeout.schedule(3000, start_keypad_calibration);
+    scheduler.clear();
+    scheduler.schedule(3000, start_keypad_calibration);
 }
 
 void update_display() {
     screen::clear();
 
-    switch (display_mode) {
-        case lcd_display_mode::printer_info:
+    switch (current_option) {
+        case menu_option::printer_info:
             screen::print(0, 0, current_printer->name());
             screen::print(1, 0, "SN: ");
             screen::print(1, 4, serial_number_str);
             break;
-        case lcd_display_mode::rx_tx_info: {
+        case menu_option::rx_tx_info: {
             screen::print(0, 0, "RX:");
             screen::print_right(0, current_printer->rx_bytes());
             screen::print(1, 0, "TX:");
             screen::print_right(1, current_printer->tx_bytes());
             break;
         }
+        case menu_option::change_printer:
+            screen::copy_pgm(0, text_change_printer);
+            screen::copy_pgm(1, text_press_select);
+            screen::flush();
+            break;
+        case menu_option::change_serial:
+            screen::copy_pgm(0, text_change_serial);
+            screen::copy_pgm(1, text_press_select);
+            screen::flush();
+            break;
         default:
             break;
     }
@@ -255,10 +297,11 @@ void update_display() {
 
 void start_main_menu() {
     mcu::mux::adc<adc, shield::analog_pin>::on();
+
+    current_option = menu_option::printer_info;
     update_display();
 
     keypad_handler = menu_input;
 
-    timeout.clear();
-    timeout.schedule(0, read_keypad_adc);
+    scheduler.schedule(0, read_keypad_adc);
 }

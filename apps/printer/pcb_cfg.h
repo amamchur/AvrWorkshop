@@ -12,7 +12,6 @@
 
 extern volatile uint32_t timer0_millis;
 extern volatile uint16_t adc_value;
-extern volatile bool running;
 
 using mcu = zoal::pcb::mcu;
 using adc = mcu::adc_00;
@@ -48,7 +47,7 @@ extern printer_device current_printer_id;
 extern uint32_t serial_number;
 extern wchar_t serial_number_str[];
 extern size_t serial_number_size;
-extern tools::function_scheduler<16> timeout;
+extern tools::function_scheduler<8> scheduler;
 
 constexpr auto printer_buffer_size = zoal::ct::max_type_size<printer::adpt1, printer::xlp504>::value;
 extern uint8_t printer_buffer[printer_buffer_size];
@@ -61,5 +60,6 @@ void inc_serial_number(int d);
 
 void init_printer();
 void deinit_printer();
+void handle_usb();
 
 #endif

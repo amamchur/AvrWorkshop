@@ -86,7 +86,7 @@ bool power_on = true;
 const uint32_t ScrollTimeout = 60;
 const int8_t ScrollSpace = 1;
 
-scheduler timeout;
+scheduler scheduler;
 rtc_type rtc;
 matrix_type matrix;
 matrix_type buffer;
@@ -117,7 +117,7 @@ void displayDayOfWeek() {
 void fetchDateTime(int8_t) {
     rtc.fetch(iic_stream);
     displayDayOfWeek();
-    timeout.schedule(1, displayFn, 0);
+    scheduler.schedule(1, displayFn, 0);
 }
 
 template<class T>
@@ -190,9 +190,9 @@ void powerOnOffHandler(zoal::io::button_event event) {
 
     if (power_on) {
         max7219::send(device_count, max7219::on);
-        timeout.schedule(0, &fetchDateTime, 0);
+        scheduler.schedule(0, &fetchDateTime, 0);
     } else {
-        timeout.clear();
+        scheduler.clear();
         max7219::send(device_count, max7219::off);
     }
 }
@@ -268,7 +268,7 @@ void updateDots(bool visible) {
 
 void scrollScreen(int8_t step) {
     if (step > 0) {
-        timeout.schedule(ScrollTimeout, &scrollScreen, step - 1);
+        scheduler.schedule(ScrollTimeout, &scrollScreen, step - 1);
     }
 
     for (uint8_t i = 0; i < device_count; i++) {
@@ -290,9 +290,9 @@ void splitData(uint16_t v, uint8_t *data) {
 
 void shiftScreen(int8_t step) {
     if (step == 0) {
-        timeout.schedule(ScrollTimeout, &scrollScreen, 7);
+        scheduler.schedule(ScrollTimeout, &scrollScreen, 7);
     } else {
-        timeout.schedule(ScrollTimeout, &shiftScreen, step - 1);
+        scheduler.schedule(ScrollTimeout, &shiftScreen, step - 1);
     }
 
     for (uint8_t i = 0; i < device_count; i++) {
@@ -306,7 +306,7 @@ void shiftScreen(int8_t step) {
 
 void displayMinutesSeconds(int8_t) {
     if (!rtc.ready()) {
-        timeout.schedule(1, &displayMinutesSeconds, 0);
+        scheduler.schedule(1, &displayMinutesSeconds, 0);
         return;
     }
 
@@ -322,8 +322,8 @@ void displayMinutesSeconds(int8_t) {
     fillMatrix(buffer, next_data);
 
     max7219::display(matrix);
-    timeout.schedule(0, &shiftScreen, ScrollSpace);
-    timeout.schedule(1000, &fetchDateTime, 0);
+    scheduler.schedule(0, &shiftScreen, ScrollSpace);
+    scheduler.schedule(1000, &fetchDateTime, 0);
 
     date_time = value;
     currentDateTime = dt;
@@ -331,7 +331,7 @@ void displayMinutesSeconds(int8_t) {
 
 void displayHoursMinutes(int8_t) {
     if (!rtc.ready()) {
-        timeout.schedule(1, &displayHoursMinutes, 0);
+        scheduler.schedule(1, &displayHoursMinutes, 0);
         return;
     }
 
@@ -347,8 +347,8 @@ void displayHoursMinutes(int8_t) {
     fillMatrix(buffer, next_data);
 
     max7219::display(matrix);
-    timeout.schedule(0, &shiftScreen, ScrollSpace);
-    timeout.schedule(1000, &fetchDateTime, 0);
+    scheduler.schedule(0, &shiftScreen, ScrollSpace);
+    scheduler.schedule(1000, &fetchDateTime, 0);
 
     date_time = value;
     currentDateTime = dt;
@@ -358,7 +358,7 @@ void logDateTime(int8_t) {
     logger::info() << "Time: " << currentDateTime.year << "-" << currentDateTime.month << "-" << currentDateTime.date << " " << currentDateTime.hours << ":"
                    << currentDateTime.minutes << ":" << currentDateTime.seconds << " day: " << currentDateTime.day;
 
-    timeout.schedule(1000, &logDateTime, 0);
+    scheduler.schedule(1000, &logDateTime, 0);
 }
 
 void handleIR(uint32_t code) {
@@ -402,11 +402,11 @@ int main() {
     //    rtc.update();
     //    while (!rtc.ready);
 
-    timeout.schedule(0, &fetchDateTime, 0);
+    scheduler.schedule(0, &fetchDateTime, 0);
     //    timeout.schedule(100, &logDateTime, 0);
     while (true) {
         handleButtons();
-        timeout.handle();
+        scheduler.handle();
         if (receiver.processed()) {
             auto code = receiver.result();
             handleIR(code);

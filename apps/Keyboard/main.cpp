@@ -31,7 +31,7 @@ using shield = zoal::shield::uno_lcd<tools, zoal::pcb, mcu::adc_00>;
 using keypad = shield::keypad;
 
 zoal::io::output_stream stream(zoal::io::transport_proxy<shield::lcd>::instance());
-tools::function_scheduler<16> timeout;
+tools::function_scheduler<16> scheduler;
 
 uint16_t eeprom_buttons[shield::button_count] __attribute__((section (".eeprom"))) = {637, 411, 258, 101, 0};
 uint8_t hid_report_buffer[sizeof(USB_KeyboardReport_Data_t)];
@@ -90,7 +90,7 @@ void button_handler(size_t button, zoal::io::button_event event) {
     qwert[6] = '0' + button;
 
     msg = qwert;
-    timeout.schedule(0, display_message);
+    scheduler.schedule(0, display_message);
 }
 
 void run() {
@@ -107,7 +107,7 @@ void run() {
         shield::handle_keypad(button_handler, adc_value);
     }
 
-    timeout.handle();
+    scheduler.handle();
     HID_Device_USBTask(&Keyboard_HID_Interface);
     USB_USBTask();
 }
@@ -167,12 +167,12 @@ void SetupHardware() {
 
 void EVENT_USB_Device_Connect(void) {
     msg = "Connected";
-    timeout.schedule(0, display_message);
+    scheduler.schedule(0, display_message);
 }
 
 void EVENT_USB_Device_Disconnect(void) {
     msg = "Disconnect";
-    timeout.schedule(0, display_message);
+    scheduler.schedule(0, display_message);
 }
 
 void EVENT_USB_Device_ConfigurationChanged(void) {
@@ -183,10 +183,10 @@ void EVENT_USB_Device_ConfigurationChanged(void) {
 
     if (ConfigSuccess) {
         msg = "Config Success";
-        timeout.schedule(0, display_message);
+        scheduler.schedule(0, display_message);
     } else {
         msg = "Config Failed ";
-        timeout.schedule(0, display_message);
+        scheduler.schedule(0, display_message);
     }
 }
 
@@ -220,5 +220,5 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t *const HIDI
                                           const void *ReportData,
                                           const uint16_t ReportSize) {
     msg = "ProcessHID";
-    timeout.schedule(0, display_message);
+    scheduler.schedule(0, display_message);
 }
