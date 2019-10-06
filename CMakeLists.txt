@@ -78,6 +78,9 @@ add_mcu_executable(printer atmega32u4
         apps/printer/printer/base.cpp
         apps/printer/printer/adpt1.cpp
         apps/printer/printer/xlp504.cpp
+        apps/printer/lcd_screen.cpp
+        apps/printer/pcb_cfg.cpp
+        apps/printer/menu.cpp
         apps/printer/main.cpp
         )
 target_compile_definitions(printer.elf PRIVATE
@@ -87,4 +90,3 @@ target_compile_definitions(printer.elf PRIVATE
         )
 target_include_directories(printer.elf PRIVATE libs apps/printer/Config)
 
-add_host_executable(parser apps/printer/mpcl_parser.cpp apps/printer/parser_machine.cpp ./apps/parser_test.cpp)

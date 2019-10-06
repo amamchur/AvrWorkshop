@@ -35,8 +35,11 @@ function(add_avr_executable NAME MCU)
             -mmcu=${MCU}
             -Wall
             -Wno-unknown-pragmas
-            -fno-exceptions
             -ffunction-sections
+            -fdata-sections
+            -fno-exceptions
+            PRIVATE
+            $<$<COMPILE_LANGUAGE:CXX>:-fno-threadsafe-statics -fno-rtti>
     )
 
     add_custom_command(

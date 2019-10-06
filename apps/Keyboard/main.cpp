@@ -38,7 +38,7 @@ uint8_t hid_report_buffer[sizeof(USB_KeyboardReport_Data_t)];
 
 volatile bool press = true;
 volatile uint8_t updateADC = 0;
-volatile uint16_t adcValue = 0xFFFF;
+volatile uint16_t adc_value = 0xFFFF;
 const char *msg = "";
 uint16_t prevADC = 0xFFFF;
 
@@ -104,7 +104,7 @@ void run() {
 //            shield::lcd::move(0, 0);
 //            stream << adcValue << "     ";
 //        }
-        shield::handle_keypad(button_handler, adcValue);
+        shield::handle_keypad(button_handler, adc_value);
     }
 
     timeout.handle();
@@ -143,7 +143,7 @@ int main() {
 }
 
 ISR(ADC_vect) {
-    adcValue = shield::adc::value();
+    adc_value = shield::adc::value();
     shield::adc::start();
     updateADC = 1;
 }

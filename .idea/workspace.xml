@@ -6,10 +6,9 @@
       <config projectName="avr-workshop" targetName="Neotronica.elf" />
       <config projectName="avr-workshop" targetName="Keyboard.elf" />
       <config projectName="avr-workshop" targetName="printer.elf" />
-      <config projectName="avr-workshop" targetName="parser" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Release AVR" CONFIG_NAME="Release" GENERATION_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=ToolchainAVR.cmake" />
       <configuration PROFILE_NAME="Debug Host" CONFIG_NAME="Debug" GENERATION_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=ToolchainHost.cmake" />
@@ -17,34 +16,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c215888d-a6da-4162-8586-9d0bbca7519a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/printer/parser/easyplug_parser.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/parser/easyplug_parser_machine.rl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/parser/mpcl_parser.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/parser/mpcl_parser_machine.rl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/printer/adpt1.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/printer/adpt1.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/printer/base.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/printer/base.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/printer/xlp504.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/printer/printer/xlp504.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/lcd_screen.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/lcd_screen.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/menu.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/menu.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/pcb_cfg.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/pcb_cfg.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToolchainAVR.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/ToolchainAVR.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/Keyboard/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Keyboard/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/mood_board/executer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/executer.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/mood_board/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/mood_board/parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/parser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/mood_board/parser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/parser.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/mood_board/parser_machine.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/parser_machine.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/parser_test.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/Config/LUFAConfig.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/Config/LUFAConfig.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/descriptors.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/descriptors.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/parser/base_parser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/parser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/parser/base_parser.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/parser_machine.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/parser_machine.rl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/printer.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/printer/base.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/printer/base.hpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,9 +37,15 @@
   </component>
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
+    <option name="clangWarnings" value="-Wno-unused-variable,-Werror=implicit-function-declaration,-Wshadow,-Wno-shadow-field-in-constructor-modified,-Wno-shadow-ivar,-Wno-unknown-attributes" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release AVR" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
@@ -74,7 +63,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="CMakeSettings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -107,12 +96,7 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Neotronica.elf" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="Neotronica.elf" CONFIG_NAME="Release AVR" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="Neotronica.elf">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="parser" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="parser" CONFIG_NAME="Release AVR" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="parser">
+    <configuration name="Neotronica.elf" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="avr-workshop" TARGET_NAME="Neotronica.elf" CONFIG_NAME="Debug Host" RUN_TARGET_PROJECT_NAME="avr-workshop" RUN_TARGET_NAME="Neotronica.elf">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -148,7 +132,6 @@
       <item itemvalue="AVRDude.mood_board USBtiny" />
       <item itemvalue="CMake Application.Build All" />
       <item itemvalue="CMake Application.Neotronica.elf" />
-      <item itemvalue="CMake Application.parser" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -210,6 +193,12 @@
       <workItem from="1567782251481" duration="800000" />
       <workItem from="1568013820679" duration="1298000" />
       <workItem from="1568119584974" duration="8197000" />
+      <workItem from="1570214786554" duration="409000" />
+      <workItem from="1570215204394" duration="5244000" />
+      <workItem from="1570273373359" duration="3286000" />
+      <workItem from="1570304085420" duration="1836000" />
+      <workItem from="1570305989815" duration="7305000" />
+      <workItem from="1570355240299" duration="8643000" />
     </task>
     <task id="LOCAL-00001" summary="Updated mood board">
       <created>1560266886597</created>

@@ -6,10 +6,12 @@
 namespace printer {
     class base {
     public:
-        static constexpr uint8_t string_id_language = 0; /**< Supported Languages string descriptor ID (must be zero) */
-        static constexpr uint8_t string_id_manufacturer = 1; /**< Manufacturer string ID */
-        static constexpr uint8_t string_id_product = 2; /**< Product string ID */
-        static constexpr uint8_t string_id_serial_number = 3; /**< Product string ID */
+        static constexpr uint8_t string_id_language = 0;
+        static constexpr uint8_t string_id_manufacturer = 1;
+        static constexpr uint8_t string_id_product = 2;
+        static constexpr uint8_t string_id_serial_number = 3;
+
+        virtual ~base() = default;
 
         virtual void init();
 
