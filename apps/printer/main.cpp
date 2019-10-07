@@ -62,14 +62,3 @@ ISR(USART1_UDRE_vect) {
     usart::tx_handler_v2<tx_buffer>();
 }
 
-extern "C" void EVENT_USB_Device_Connect(void) {}
-
-extern "C" void EVENT_USB_Device_Disconnect() {}
-
-extern "C" void EVENT_USB_Device_ConfigurationChanged() {
-    PRNT_Device_ConfigureEndpoints(current_printer->interface());
-}
-
-extern "C" void EVENT_USB_Device_ControlRequest() {
-    PRNT_Device_ProcessControlRequest(current_printer->interface());
-}

@@ -54,7 +54,7 @@ void init_printer() {
         case printer_device::adtp1:
             current_printer = new printer::adpt1();
             break;
-        default:.
+        default:
             current_printer = new printer::xlp504();
             break;
     }
@@ -94,12 +94,17 @@ void handle_usb() {
     USB_USBTask();
 }
 
-extern "C" uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue, const uint16_t wIndex, const void **const DescriptorAddress) {
-    static_assert(sizeof(usb_buffer) >= sizeof(USB_Descriptor_Device_t), "");
-    static_assert(sizeof(usb_buffer) >= sizeof(printer::adpt1::usb_configuration), "");
+extern "C" void EVENT_USB_Device_ConfigurationChanged() {
+    PRNT_Device_ConfigureEndpoints(current_printer->interface());
+}
 
-    const uint8_t DescriptorType = (wValue >> 8u);
-    const uint8_t DescriptorNumber = (wValue & 0xFFu);
+extern "C" void EVENT_USB_Device_ControlRequest() {
+    PRNT_Device_ProcessControlRequest(current_printer->interface());
+}
+
+extern "C" uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue, const uint16_t wIndex, const void **const DescriptorAddress) {
+    uint8_t DescriptorType = (wValue >> 8u);
+    uint8_t DescriptorNumber = (wValue & 0xFFu);
 
     const void *address = nullptr;
     uint16_t size = NO_DESCRIPTOR;

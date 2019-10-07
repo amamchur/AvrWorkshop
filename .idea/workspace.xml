@@ -17,15 +17,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c215888d-a6da-4162-8586-9d0bbca7519a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/Keyboard/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Keyboard/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/Neotronica/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Neotronica/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/lcd_screen.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/lcd_screen.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/lcd_screen.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/lcd_screen.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/menu.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/menu.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/pcb_cfg.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/pcb_cfg.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/pcb_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/pcb_cfg.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -196,7 +189,7 @@
       <workItem from="1570273373359" duration="3286000" />
       <workItem from="1570304085420" duration="1836000" />
       <workItem from="1570305989815" duration="7305000" />
-      <workItem from="1570355240299" duration="15772000" />
+      <workItem from="1570355240299" duration="17702000" />
     </task>
     <task id="LOCAL-00001" summary="Updated mood board">
       <created>1560266886597</created>
@@ -233,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570364180770</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added SN &amp; printer setup">
+      <created>1570371753336</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1570371753336</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +259,7 @@
     <MESSAGE value="Added printer example" />
     <MESSAGE value="Updated printer example" />
     <MESSAGE value="Update menu for printer device" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update menu for printer device" />
+    <MESSAGE value="Added SN &amp; printer setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added SN &amp; printer setup" />
   </component>
 </project>
