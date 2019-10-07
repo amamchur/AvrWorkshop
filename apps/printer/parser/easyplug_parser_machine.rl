@@ -7,6 +7,18 @@
 	    '^#!A1' => {
     	    handler_(this, (int)easyplug_parse_event::command_a1);
         };
+        '#!X0' => {
+            handler_(this, (int)easyplug_parse_event::command_x0);
+        };
+        '#!PG-1#G' => {
+            handler_(this, (int)easyplug_parse_event::command_pg1);
+        };
+        '#!PG30068#G' => {
+             handler_(this, (int)easyplug_parse_event::command_pg30068);
+         };
+        '#!PG30021#G' => {
+              handler_(this, (int)easyplug_parse_event::command_pg30021);
+        };
         any;
 	*|;
 }%%

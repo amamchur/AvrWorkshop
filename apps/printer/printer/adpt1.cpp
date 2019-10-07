@@ -1,11 +1,19 @@
 #include "adpt1.hpp"
 
-#define PRINTER_IN_EPADDR         (uint8_t)(ENDPOINT_DIR_IN  | 2)
-#define PRINTER_OUT_EPADDR        (uint8_t)(ENDPOINT_DIR_OUT | 1)
-#define PRINTER_IO_EPSIZE         64
-
 namespace {
+    constexpr uint8_t PRINTER_IN_EPADDR = (uint8_t) (ENDPOINT_DIR_IN | 2);
+    constexpr uint8_t PRINTER_OUT_EPADDR = (uint8_t) (ENDPOINT_DIR_OUT | 1);
+    constexpr uint16_t PRINTER_IO_EPSIZE = 64;
+
     char IEEE1284String[] = "";
+    const char PROGMEM enq_response[] = "\x05""A@\x06";
+    const char PROGMEM mm_response[] =  "M46\x06";
+    const char PROGMEM mv_response[] =  "V03\x06";
+    const char PROGMEM mr_response[] =  "R04\x06";
+    const char PROGMEM mc_response[] =  "C00\x06";
+    const char PROGMEM mi_response[] =  "I00\x06";
+    const char PROGMEM mp_response[] =  "P00\x06";
+    const char PROGMEM mts_response[] =  "MTS18088753\x06";
 }
 namespace printer {
     void adpt1::init() {
@@ -106,36 +114,35 @@ namespace printer {
         const char *response = nullptr;
         switch (event) {
             case mpcl_parse_event::command_enq:
-                response = "\x05""A@\x06";
+                response = enq_response;
                 break;
             case mpcl_parse_event::command_mm:
-                response = "M46\x06";
+                response = mm_response;
                 break;
             case mpcl_parse_event::command_mv:
-                response = "V03\x06";
+                response = mv_response;
                 break;
             case mpcl_parse_event::command_mr:
-                response = "R04\x06";
+                response = mr_response;
                 break;
             case mpcl_parse_event::command_mc:
-                response = "C00\x06";
+                response = mc_response;
                 break;
             case mpcl_parse_event::command_mi:
-                response = "I00\x06";
+                response = mi_response;
                 break;
             case mpcl_parse_event::command_mp:
-                response = "P00\x06";
+                response = mp_response;
                 break;
             case mpcl_parse_event::command_mts:
-                response = "MTS18088753\x06";
+                response = mts_response;
                 break;
             default:
                 return;
         }
 
         if (response != nullptr) {
-            tx_bytes_ += strlen(response);
-            PRNT_Device_SendString(&printer_interface, response);
+            tx_bytes_ += send_progmem_string(response);
         }
     }
 

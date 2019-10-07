@@ -56,7 +56,6 @@ extern printer::base *current_printer;
 void read_eeprom_data();
 void write_eeprom_data();
 void format_serial_number();
-void inc_serial_number(int d);
 
 void init_printer();
 void deinit_printer();

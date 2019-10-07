@@ -1,4 +1,5 @@
 #include "base.hpp"
+#include "../pcb_cfg.h"
 
 #include <LUFA/Drivers/USB/USB.h>
 
@@ -39,5 +40,65 @@ namespace printer {
     }
 
     void base::operator delete(void *) noexcept {
+    }
+
+    size_t base::send_progmem_string(const char *str) {
+        uint8_t buffer[32];
+        size_t total = 0;
+        auto p = reinterpret_cast<const char *>(str);
+        bool run = true;
+        do  {
+            uint16_t length = 0;
+            for (uint8_t i = 0; i < sizeof(buffer) && run; i++) {
+                auto ch = pgm_read_byte(p++);
+                if (ch == 0) {
+                    run = false;
+                } else {
+                    buffer[length++] = ch;
+                }
+            }
+
+            if (length > 0) {
+                total += length;
+                PRNT_Device_SendData(&printer_interface, buffer, length);
+            } else {
+                return total;
+            }
+        } while (run);
+
+        return total;
+    }
+
+    size_t base::send_progmem_uart(const char *str) {
+        uint8_t buffer[64];
+        size_t total = 0;
+        auto p = reinterpret_cast<const char *>(str);
+        bool run = true;
+        do  {
+            uint16_t length = 0;
+            for (uint8_t i = 0; i < sizeof(buffer) && run; i++) {
+                auto ch = pgm_read_byte(p++);
+                if (ch == 0) {
+                    run = false;
+                } else {
+                    buffer[length++] = ch;
+                }
+            }
+
+            if (length > 0) {
+                logger::info() << "Begin send_progmem_uart";
+                logger::info() << "Total bytes: " << length << "\r\n";
+
+                for (uint16_t i = 0; i < length; i++) {
+                    tx_buffer::push_back_blocking(buffer[i]);
+                }
+
+                total += length;
+            } else {
+                return total;
+            }
+        } while (run);
+
+        return total;
     }
 }

@@ -9,6 +9,10 @@
 
 enum class easyplug_parse_event {
     command_a1,
+    command_x0,
+    command_pg1,
+    command_pg30021,
+    command_pg30068
 };
 
 class easyplug_parse_machine : public base_parser {

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="avr-workshop" targetName="mood_board.elf" />
-      <config projectName="avr-workshop" targetName="Neotronica.elf" />
       <config projectName="avr-workshop" targetName="Keyboard.elf" />
+      <config projectName="avr-workshop" targetName="Neotronica.elf" />
+      <config projectName="avr-workshop" targetName="mood_board.elf" />
       <config projectName="avr-workshop" targetName="printer.elf" />
     </generated>
   </component>
@@ -17,8 +17,18 @@
   <component name="ChangeListManager">
     <list default="true" id="c215888d-a6da-4162-8586-9d0bbca7519a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Neotronica/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Neotronica/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/menu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/menu.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/parser/easyplug_parser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/parser/easyplug_parser.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/parser/easyplug_parser_machine.rl" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/parser/easyplug_parser_machine.rl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/pcb_cfg.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/pcb_cfg.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/pcb_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/pcb_cfg.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/printer/adpt1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/printer/adpt1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/printer/base.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/printer/base.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/printer/base.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/printer/base.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/printer/xlp504.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/printer/xlp504.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -190,6 +200,8 @@
       <workItem from="1570304085420" duration="1836000" />
       <workItem from="1570305989815" duration="7305000" />
       <workItem from="1570355240299" duration="17702000" />
+      <workItem from="1570430558705" duration="15000" />
+      <workItem from="1570430589089" duration="10719000" />
     </task>
     <task id="LOCAL-00001" summary="Updated mood board">
       <created>1560266886597</created>

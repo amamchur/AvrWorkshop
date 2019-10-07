@@ -43,6 +43,10 @@ namespace printer {
             return tx_bytes_;
         };
 
+        size_t send_progmem_string(const char * str);
+
+        static size_t send_progmem_uart(const char * str);
+
         static void *shared_memory;
 
         void *operator new(size_t size) noexcept;

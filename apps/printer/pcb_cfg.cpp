@@ -1,4 +1,5 @@
 #include "pcb_cfg.h"
+#include "menu.h"
 #include <avr/eeprom.h>
 
 volatile uint32_t timer0_millis = 0;
@@ -41,12 +42,6 @@ void format_serial_number() {
     }
 }
 
-void inc_serial_number(int d) {
-    serial_number += d;
-
-    format_serial_number();
-}
-
 void init_printer() {
     printer::base::shared_memory = printer_buffer;
     delete current_printer;
@@ -81,9 +76,9 @@ void handle_usb() {
     scheduler.schedule(0, handle_usb);
 
     uint8_t received = PRNT_Device_BytesReceived(current_printer->interface());
-//    if (received > 0) {
-//        timeout.schedule(0, update_display__);
-//    }
+    if (received > 0) {
+        scheduler.schedule(0, update_rx_tx_display);
+    }
 
     for (; received > 0; received--) {
         int16_t byte = PRNT_Device_ReceiveByte(current_printer->interface());

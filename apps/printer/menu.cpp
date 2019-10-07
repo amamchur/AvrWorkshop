@@ -61,15 +61,19 @@ void config_serial_number(size_t button, zoal::io::button_event event) {
             }
             return;
         case shield::down_btn:
-            inc_serial_number(-1);
+            serial_number -= 1;
             break;
         case shield::up_btn:
-            inc_serial_number(1);
+            serial_number += 1;
+            break;
+        case shield::right_btn:
+            serial_number = 0;
             break;
         default:
-            break;
+            return;
     }
 
+    format_serial_number();
     display_serial_number();
 }
 
@@ -293,6 +297,12 @@ void update_display() {
     }
 
     screen::flush();
+}
+
+void update_rx_tx_display() {
+    if (current_option == menu_option::rx_tx_info) {
+        update_display();
+    }
 }
 
 void start_main_menu() {

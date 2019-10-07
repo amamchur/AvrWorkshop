@@ -32,7 +32,7 @@ using rtc_type = zoal::ic::ds3231<>;
 using matrix_type = zoal::ic::max72xx_data<device_count>;
 using max7219 = zoal::ic::max72xx<zoal::pcb::mcu::spi_00, zoal::pcb::ard_d10>;
 
-using scheduler = tools::function_scheduler<16, int8_t>;
+using function_scheduler = tools::function_scheduler<16, int8_t>;
 
 template<class Pin>
 using button = typename zoal::io::button<tools, Pin, zoal::io::active_low_no_press>;
@@ -86,7 +86,7 @@ bool power_on = true;
 const uint32_t ScrollTimeout = 60;
 const int8_t ScrollSpace = 1;
 
-scheduler scheduler;
+function_scheduler scheduler;
 rtc_type rtc;
 matrix_type matrix;
 matrix_type buffer;

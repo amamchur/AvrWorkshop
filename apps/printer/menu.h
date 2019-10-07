@@ -23,4 +23,6 @@ void start_main_menu();
 
 void start_printer_select();
 
+void update_rx_tx_display();
+
 #endif

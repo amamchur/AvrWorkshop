@@ -22,6 +22,13 @@ void initialize_hardware() {
     zoal::utils::interrupts::on();
 }
 
+int main_debug() {
+    initialize_hardware();
+
+    while (true);
+    return 0;
+}
+
 int main() {
     using namespace zoal::io;
     using namespace zoal::gpio;
