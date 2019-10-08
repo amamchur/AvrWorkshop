@@ -1,4 +1,5 @@
 #include "adpt1.hpp"
+#include "../localization.hpp"
 
 namespace {
     constexpr uint8_t PRINTER_IN_EPADDR = (uint8_t) (ENDPOINT_DIR_IN | 2);
@@ -151,7 +152,7 @@ namespace printer {
         parser.push(static_cast<char>(b));
     }
 
-    const char *adpt1::name() {
-        return "ADPM1";
+    const char *adpt1::name_pgmem() {
+        return text_adtp1_name;
     }
 }

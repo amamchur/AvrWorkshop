@@ -1,4 +1,5 @@
 #include "xlp504.hpp"
+#include "../localization.hpp"
 
 namespace {
     constexpr uint8_t PRINTER_IN_EPADDR = (uint8_t) (ENDPOINT_DIR_IN | 2);
@@ -269,7 +270,7 @@ namespace printer {
         auto *descriptor = reinterpret_cast<USB_Descriptor_Device_t *>(dst);
         descriptor->Header.Size = sizeof(USB_Descriptor_Device_t);
         descriptor->Header.Type = DTYPE_Device;
-        descriptor->USBSpecification = VERSION_BCD(2, 0, 0);
+        descriptor->USBSpecification = VERSION_BCD(1, 1, 0);
         descriptor->Class = USB_CSCP_NoDeviceClass;
         descriptor->SubClass = USB_CSCP_NoDeviceSubclass;
         descriptor->Protocol = USB_CSCP_NoDeviceProtocol;
@@ -366,7 +367,7 @@ namespace printer {
         parser.push(static_cast<char>(b));
     }
 
-    const char *xlp504::name() {
-        return "XLP504";
+    const char *xlp504::name_pgmem() {
+        return text_xlp504_name;
     }
 }

@@ -1,5 +1,5 @@
 #include "base.hpp"
-#include "../pcb_cfg.h"
+#include "../pcb_cfg.hpp"
 
 #include <LUFA/Drivers/USB/USB.h>
 

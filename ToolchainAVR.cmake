@@ -33,6 +33,7 @@ function(add_avr_executable NAME MCU)
             ${NAME}.elf
             PRIVATE
             -mmcu=${MCU}
+            -Os
             -Wall
             -Wno-unknown-pragmas
             -ffunction-sections

@@ -21,7 +21,7 @@ namespace printer {
 
         virtual uint16_t get_product_string(void *dst, uint16_t size) = 0;
 
-        virtual const char *name() = 0;
+        virtual const char *name_pgmem() = 0;
 
         virtual void process_byte(uint8_t b) = 0;
 
@@ -42,6 +42,11 @@ namespace printer {
         inline uint32_t tx_bytes() const {
             return tx_bytes_;
         };
+
+        inline void reset_rx_tx() {
+            rx_bytes_ = 0;
+            tx_bytes_ = 0;
+        }
 
         size_t send_progmem_string(const char * str);
 

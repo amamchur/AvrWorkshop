@@ -1,12 +1,5 @@
-//
-// Created by andrii on 06.10.19.
-//
-
-#ifndef AVR_WORKSHOP_MENU_H
-#define AVR_WORKSHOP_MENU_H
-
-#include <stddef.h>
-#include <zoal/io/button.hpp>
+#ifndef AVR_WORKSHOP_MENU_HPP
+#define AVR_WORKSHOP_MENU_HPP
 
 enum class menu_option {
     printer_info,

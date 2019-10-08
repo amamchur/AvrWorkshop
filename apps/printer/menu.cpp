@@ -1,8 +1,9 @@
 #include <zoal/shield/uno_lcd.hpp>
-#include "menu.h"
+#include "menu.hpp"
 
-#include "pcb_cfg.h"
-#include "lcd_screen.h"
+#include "pcb_cfg.hpp"
+#include "lcd_screen.hpp"
+#include "localization.hpp"
 
 namespace {
     size_t calibration_button;
@@ -13,8 +14,6 @@ namespace {
 void start_keypad_calibration();
 
 void start_serial_number_cfg();
-
-void start_printer_select();
 
 void display_serial_number();
 
@@ -79,20 +78,20 @@ void config_serial_number(size_t button, zoal::io::button_event event) {
 
 void display_serial_number() {
     screen::clear();
-    screen::print(0, 0, "Enter SN");
+    screen::copy_pgm(0, text_choose_serial);
     screen::print(1, 0, serial_number_str);
     screen::flush();
 }
 
 void display_printer() {
     screen::clear();
-    screen::copy_pgm(0, text_current_printer);
+    screen::copy_pgm(0, text_choose_model);
     switch (current_printer_id) {
         case printer_device::adtp1:
-            screen::print(1, 0, "> ADTP1");
+            screen::copy_pgm(1, text_adtp1_name);
             break;
         case printer_device::xlp504:
-            screen::print(1, 0, "> XLP504");
+            screen::copy_pgm(1, text_xlp504_name);
             break;
         default:
             break;
@@ -159,6 +158,11 @@ void menu_input(size_t button, zoal::io::button_event event) {
             break;
         case shield::up_btn:
             current_option = shift_enum(current_option, -1, menu_option::count);
+            break;
+        case shield::right_btn:
+            if (current_option == menu_option::rx_tx_info) {
+                current_printer->reset_rx_tx();
+            }
             break;
         default:
             return;
@@ -271,9 +275,9 @@ void update_display() {
 
     switch (current_option) {
         case menu_option::printer_info:
-            screen::print(0, 0, current_printer->name());
-            screen::print(1, 0, "SN: ");
-            screen::print(1, 4, serial_number_str);
+            screen::copy_pgm(0, current_printer->name_pgmem());
+            screen::copy_pgm(1, text_sn_format);
+            screen::print_right(1, serial_number);
             break;
         case menu_option::rx_tx_info: {
             screen::print(0, 0, "RX:");
@@ -285,12 +289,10 @@ void update_display() {
         case menu_option::change_printer:
             screen::copy_pgm(0, text_change_printer);
             screen::copy_pgm(1, text_press_select);
-            screen::flush();
             break;
         case menu_option::change_serial:
             screen::copy_pgm(0, text_change_serial);
             screen::copy_pgm(1, text_press_select);
-            screen::flush();
             break;
         default:
             break;

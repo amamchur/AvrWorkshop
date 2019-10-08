@@ -1,12 +1,12 @@
-#ifndef AVR_WORKSHOP_PCB_CFG_H
-#define AVR_WORKSHOP_PCB_CFG_H
+#ifndef AVR_WORKSHOP_PCB_CFG_HPP
+#define AVR_WORKSHOP_PCB_CFG_HPP
 
 #include <zoal/board/arduino_leonardo.hpp>
 #include <zoal/shield/uno_lcd.hpp>
 #include <zoal/utils/ms_counter.hpp>
 #include <zoal/utils/tool_set.hpp>
 
-#include "lcd_screen.h"
+#include "lcd_screen.hpp"
 #include "printer/adpt1.hpp"
 #include "printer/xlp504.hpp"
 

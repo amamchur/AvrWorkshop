@@ -1,5 +1,5 @@
-#include "pcb_cfg.h"
-#include "menu.h"
+#include "pcb_cfg.hpp"
+#include "menu.hpp"
 #include <avr/eeprom.h>
 
 volatile uint32_t timer0_millis = 0;

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="avr-workshop" targetName="Keyboard.elf" />
-      <config projectName="avr-workshop" targetName="Neotronica.elf" />
       <config projectName="avr-workshop" targetName="mood_board.elf" />
+      <config projectName="avr-workshop" targetName="Neotronica.elf" />
+      <config projectName="avr-workshop" targetName="Keyboard.elf" />
       <config projectName="avr-workshop" targetName="printer.elf" />
     </generated>
   </component>
@@ -16,19 +16,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c215888d-a6da-4162-8586-9d0bbca7519a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/printer/localization.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/printer/localization.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/Neotronica/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Neotronica/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToolchainAVR.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/ToolchainAVR.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/lcd_screen.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/lcd_screen.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/lcd_screen.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/menu.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/menu.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/parser/easyplug_parser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/parser/easyplug_parser.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/parser/easyplug_parser_machine.rl" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/parser/easyplug_parser_machine.rl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/menu.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/pcb_cfg.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/pcb_cfg.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/printer/pcb_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/pcb_cfg.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/pcb_cfg.h" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/pcb_cfg.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/printer/adpt1.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/printer/adpt1.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/printer/adpt1.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/printer/adpt1.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/printer/base.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/printer/base.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/printer/base.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/printer/base.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/printer/printer/xlp504.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/printer/xlp504.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/printer/xlp504.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/printer/xlp504.hpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +60,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.advertisement.text.has.clang-format" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/apps/printer/parser" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/apps/printer" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,16 +72,16 @@
     <property name="settings.editor.selected.configurable" value="CMakeSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/apps/printer/printer" />
-      <recent name="$PROJECT_DIR$/apps/printer/parser" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/apps/printer/parser" />
       <recent name="$PROJECT_DIR$/apps/printer" />
+      <recent name="$PROJECT_DIR$/apps/printer/parser" />
       <recent name="$PROJECT_DIR$/apps" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/apps/mood_board" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps/printer/printer" />
+      <recent name="$PROJECT_DIR$/apps/printer/parser" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -201,7 +206,8 @@
       <workItem from="1570305989815" duration="7305000" />
       <workItem from="1570355240299" duration="17702000" />
       <workItem from="1570430558705" duration="15000" />
-      <workItem from="1570430589089" duration="10719000" />
+      <workItem from="1570430589089" duration="16070000" />
+      <workItem from="1570462020245" duration="7851000" />
     </task>
     <task id="LOCAL-00001" summary="Updated mood board">
       <created>1560266886597</created>
@@ -245,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570371753336</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added XLP504 command simulation">
+      <created>1570453511435</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1570453511435</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +285,7 @@
     <MESSAGE value="Updated printer example" />
     <MESSAGE value="Update menu for printer device" />
     <MESSAGE value="Added SN &amp; printer setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added SN &amp; printer setup" />
+    <MESSAGE value="Added XLP504 command simulation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added XLP504 command simulation" />
   </component>
 </project>

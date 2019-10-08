@@ -19,7 +19,7 @@ namespace printer {
 
         void init() override;
 
-        const char *name() override;
+        const char *name_pgmem() override;
 
         uint16_t get_descriptor(void *dst, uint16_t size) override;
 

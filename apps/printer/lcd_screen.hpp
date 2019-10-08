@@ -1,20 +1,8 @@
-#ifndef AVR_WORKSHOP_LCD_SCREEN_H
-#define AVR_WORKSHOP_LCD_SCREEN_H
+#ifndef AVR_WORKSHOP_LCD_SCREEN_HPP
+#define AVR_WORKSHOP_LCD_SCREEN_HPP
 
 #include <avr/pgmspace.h>
 #include <string.h>
-
-extern const char PROGMEM menu_greeting[];
-extern const char PROGMEM text_current_printer[];
-extern const char PROGMEM text_change_printer[];
-extern const char PROGMEM text_change_serial[];
-extern const char PROGMEM text_calibrate[];
-extern const char PROGMEM text_press_select[];
-extern const char PROGMEM text_press_left[];
-extern const char PROGMEM text_press_down[];
-extern const char PROGMEM text_press_up[];
-extern const char PROGMEM text_press_right[];
-extern const char PROGMEM text_complete[];
 
 template<class LCD>
 class lcd_screen {

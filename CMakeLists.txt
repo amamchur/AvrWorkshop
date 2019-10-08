@@ -78,9 +78,9 @@ add_mcu_executable(printer atmega32u4
         apps/printer/printer/base.cpp
         apps/printer/printer/adpt1.cpp
         apps/printer/printer/xlp504.cpp
-        apps/printer/lcd_screen.cpp
         apps/printer/pcb_cfg.cpp
         apps/printer/menu.cpp
+        apps/printer/localization.cpp
         apps/printer/main.cpp
         )
 target_compile_definitions(printer.elf PRIVATE
@@ -89,4 +89,3 @@ target_compile_definitions(printer.elf PRIVATE
         USE_LUFA_CONFIG_HEADER=1
         )
 target_include_directories(printer.elf PRIVATE libs apps/printer/Config)
-

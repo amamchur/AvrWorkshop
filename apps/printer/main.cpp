@@ -1,7 +1,8 @@
-#include <avr/power.h>
+#include "localization.hpp"
+#include "menu.hpp"
+#include "pcb_cfg.hpp"
 
-#include "pcb_cfg.h"
-#include "menu.h"
+#include <avr/power.h>
 
 void initialize_hardware() {
     clock_prescale_set(clock_div_1);
@@ -19,14 +20,10 @@ void initialize_hardware() {
 
     mcu::enable<usart, timer, adc>::on();
 
+    shield::gpio_cfg();
+    shield::init();
+
     zoal::utils::interrupts::on();
-}
-
-int main_debug() {
-    initialize_hardware();
-
-    while (true);
-    return 0;
 }
 
 int main() {
@@ -36,8 +33,8 @@ int main() {
     read_eeprom_data();
 
     initialize_hardware();
-    shield::gpio_cfg();
-    shield::init();
+    create_custom_lcd_char<lcd>();
+
     shield::adc::enable_interrupt();
 
     uint16_t value = adc::read();
@@ -48,9 +45,12 @@ int main() {
         start_main_menu();
     }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmissing-noreturn"
     while (true) {
         scheduler.handle();
     }
+#pragma clang diagnostic pop
 }
 
 ISR(ADC_vect) {
@@ -68,4 +68,3 @@ ISR(USART1_RX_vect) {
 ISR(USART1_UDRE_vect) {
     usart::tx_handler_v2<tx_buffer>();
 }
-
