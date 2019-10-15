@@ -30,7 +30,6 @@ namespace printer {
         printer_interface.Config.DataOUTEndpoint.Banks = 1;
         printer_interface.Config.IEEE1284String = IEEE1284String;
 
-        parser.init();
         parser.context(this);
         parser.callback(command_callback);
     }
@@ -106,12 +105,13 @@ namespace printer {
         return fill_descriptor_string(dst, size, name, sizeof(name) - sizeof(name[0]));
     }
 
-    void adpt1::command_callback(base_parser *p, int e) {
-        auto me = reinterpret_cast<adpt1 *>(p->context());
-        me->process_command(p, (mpcl_parse_event) e);
+    void adpt1::command_callback(void *p, int e) {
+        auto parser = reinterpret_cast<parser_type *>(p);
+        auto me = reinterpret_cast<adpt1 *>(parser->context());
+        me->process_command(parser, (mpcl_parse_event) e);
     }
 
-    void adpt1::process_command(base_parser *p, mpcl_parse_event event) {
+    void adpt1::process_command(parser_type *p, mpcl_parse_event event) {
         const char *response = nullptr;
         switch (event) {
             case mpcl_parse_event::command_enq:
@@ -147,9 +147,9 @@ namespace printer {
         }
     }
 
-    void adpt1::process_byte(uint8_t b) {
-        rx_bytes_++;
-        parser.push(static_cast<char>(b));
+    void adpt1::process_data(const void *d, size_t size) {
+        rx_bytes_ += size;
+        parser.push(d, size);
     }
 
     const char *adpt1::name_pgmem() {

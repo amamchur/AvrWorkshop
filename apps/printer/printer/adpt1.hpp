@@ -7,6 +7,8 @@
 namespace printer {
     class adpt1 : public base {
     public:
+        using parser_type = mpcl_parser<128>;
+
         typedef struct {
             USB_Descriptor_Configuration_Header_t Config;
             USB_Descriptor_Interface_t Printer_Interface;
@@ -27,14 +29,13 @@ namespace printer {
 
         uint16_t get_product_string(void *dst, uint16_t size) override;
 
-        void process_byte(uint8_t b) override;
-
+        void process_data(const void *d, size_t size) override;
     private:
-        static void command_callback(base_parser *p, int e);
+        static void command_callback(void *p, int e);
 
-        mpcl_parser<128> parser;
+        parser_type parser;
 
-        void process_command(base_parser *p, mpcl_parse_event event);
+        void process_command(parser_type *p, mpcl_parse_event event);
     };
 }
 

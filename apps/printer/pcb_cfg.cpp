@@ -75,18 +75,22 @@ uint8_t usb_buffer[usb_buffer_size];
 void handle_usb() {
     scheduler.schedule(0, handle_usb);
 
-    uint8_t received = PRNT_Device_BytesReceived(current_printer->interface());
-    if (received > 0) {
-        scheduler.schedule(0, update_rx_tx_display);
-    }
-
-    for (; received > 0; received--) {
-        int16_t byte = PRNT_Device_ReceiveByte(current_printer->interface());
-        current_printer->process_byte(static_cast<uint8_t>(byte));
-    }
-
     PRNT_Device_USBTask(current_printer->interface());
     USB_USBTask();
+
+    uint8_t received = PRNT_Device_BytesReceived(current_printer->interface());
+    if (received == 0) {
+        return;
+    }
+
+    auto p = usb_buffer;
+    for (int i = 0; i < received; i++) {
+        int16_t byte = PRNT_Device_ReceiveByte(current_printer->interface());
+        *p++ = static_cast<uint8_t>(byte);
+    }
+
+    current_printer->process_data(usb_buffer, received);
+    scheduler.schedule(0, update_rx_tx_display);
 }
 
 extern "C" void EVENT_USB_Device_ConfigurationChanged() {
@@ -97,7 +101,8 @@ extern "C" void EVENT_USB_Device_ControlRequest() {
     PRNT_Device_ProcessControlRequest(current_printer->interface());
 }
 
-extern "C" uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue, const uint16_t wIndex, const void **const DescriptorAddress) {
+extern "C" uint16_t
+CALLBACK_USB_GetDescriptor(const uint16_t wValue, const uint16_t wIndex, const void **const DescriptorAddress) {
     uint8_t DescriptorType = (wValue >> 8u);
     uint8_t DescriptorNumber = (wValue & 0xFFu);
 

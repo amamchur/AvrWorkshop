@@ -63,7 +63,7 @@ parser_type clp;
 animator_type anim(scheduler);
 executer_type exect(anim);
 
-void callback(base_parser *p, mpcl_parse_event evnt) {
+void callback(ragel_scanner *p, mpcl_parse_event evnt) {
     exect.handle(p, evnt);
 }
 

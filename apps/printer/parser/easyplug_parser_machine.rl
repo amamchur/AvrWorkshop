@@ -1,7 +1,7 @@
 #include "easyplug_parser.hpp"
 
 %%{
-	machine fsm_name;
+	machine easyplug_scanner;
 
 	main := |*
 	    '^#!A1' => {
@@ -27,11 +27,11 @@ namespace {
 %% write data;
 }
 
-void easyplug_parse_machine::init() {
+void easyplug_parse_machine::init_machine() {
     %% write init;
 }
 
-const char* easyplug_parse_machine::do_parse(const char *p, const char *pe) {
+const char* easyplug_parse_machine::run_machine(const char *p, const char *pe) {
     %% write exec;
     return p;
 }

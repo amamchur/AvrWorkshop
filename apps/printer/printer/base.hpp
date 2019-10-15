@@ -23,7 +23,7 @@ namespace printer {
 
         virtual const char *name_pgmem() = 0;
 
-        virtual void process_byte(uint8_t b) = 0;
+        virtual void process_data(const void *d, size_t size) = 0;
 
         static uint16_t fill_descriptor_string(void *dst, uint16_t dst_size, const void *src, uint16_t src_size);
 

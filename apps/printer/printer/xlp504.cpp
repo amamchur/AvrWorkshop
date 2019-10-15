@@ -257,7 +257,6 @@ namespace printer {
         printer_interface.Config.DataOUTEndpoint.Banks = 1;
         printer_interface.Config.IEEE1284String = IEEE1284String;
 
-        parser.init();
         parser.context(this);
         parser.callback(command_callback);
     }
@@ -333,12 +332,13 @@ namespace printer {
         return fill_descriptor_string(dst, size, name, sizeof(name) - sizeof(name[0]));
     }
 
-    void xlp504::command_callback(base_parser *p, int e) {
-        auto me = reinterpret_cast<xlp504 *>(p->context());
-        me->process_command(p, (easyplug_parse_event) e);
+    void xlp504::command_callback(void *p, int e) {
+        auto parser = reinterpret_cast<parser_type *>(p);
+        auto me = reinterpret_cast<xlp504 *>(parser->context());
+        me->process_command(parser, (easyplug_parse_event) e);
     }
 
-    void xlp504::process_command(base_parser *p, easyplug_parse_event event) {
+    void xlp504::process_command(parser_type *p, easyplug_parse_event event) {
         const char *response = nullptr;
         switch (event) {
             case easyplug_parse_event::command_x0:
@@ -362,9 +362,9 @@ namespace printer {
         }
     }
 
-    void xlp504::process_byte(uint8_t b) {
-        rx_bytes_++;
-        parser.push(static_cast<char>(b));
+    void xlp504::process_data(const void *d, size_t size) {
+        rx_bytes_ += size;
+        parser.push(d, size);
     }
 
     const char *xlp504::name_pgmem() {

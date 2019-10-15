@@ -10,7 +10,7 @@ enum class menu_option {
     count
 };
 
-void start_hartware_configuration();
+void start_hardware_configuration();
 
 void start_main_menu();
 

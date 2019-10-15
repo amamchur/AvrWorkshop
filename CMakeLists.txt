@@ -74,7 +74,6 @@ add_mcu_executable(printer atmega32u4
         libs/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.c
         ${MPCL_STATE_MACHINE_SRC}
         ${EASYPLUG_STATE_MACHINE_SRC}
-        apps/printer/parser/base_parser.cpp
         apps/printer/printer/base.cpp
         apps/printer/printer/adpt1.cpp
         apps/printer/printer/xlp504.cpp
@@ -89,3 +88,5 @@ target_compile_definitions(printer.elf PRIVATE
         USE_LUFA_CONFIG_HEADER=1
         )
 target_include_directories(printer.elf PRIVATE libs apps/printer/Config)
+
+add_host_executable(test apps/_empty.cpp ${EASYPLUG_STATE_MACHINE_SRC})

@@ -1,9 +1,9 @@
 #include "parser.hpp"
 
-void base_parser::empty_callback(base_parser *p, mpcl_parse_event e) {
+void ragel_scanner::empty_callback(ragel_scanner *p, mpcl_parse_event e) {
 }
 
-void base_parser::quoted_param_found_action() {
+void ragel_scanner::quoted_param_found_action() {
     ts++;
     te--;
 
@@ -45,7 +45,7 @@ void base_parser::quoted_param_found_action() {
     }
 }
 
-void base_parser::push(char ch) {
+void ragel_scanner::push(char ch) {
     if (length_ == size_) {
         length_ = 0;
     }
@@ -54,7 +54,7 @@ void base_parser::push(char ch) {
     parse();
 }
 
-void base_parser::parse() {
+void ragel_scanner::parse() {
     init();
     do_parse(buffer_, buffer_ + length_);
     if (ts == nullptr) {

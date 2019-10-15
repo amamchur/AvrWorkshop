@@ -19,7 +19,7 @@ static const int fsm_name_en_main = 21;
 /* #line 44 "./apps/mood_board/mpcl_parser_machine.rl" */
 }
 
-void base_parser::init() {
+void ragel_scanner::init() {
     
 /* #line 25 "./apps/mood_board/parser_machine.cpp" */
 	{
@@ -32,7 +32,7 @@ void base_parser::init() {
 /* #line 48 "./apps/mood_board/mpcl_parser_machine.rl" */
 }
 
-const char* base_parser::do_parse(const char *p, const char *pe) {
+const char* ragel_scanner::do_parse(const char *p, const char *pe) {
     
 /* #line 38 "./apps/mood_board/parser_machine.cpp" */
 	{

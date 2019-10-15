@@ -1,7 +1,7 @@
 #include "mpcl_parser.hpp"
 
 %%{
-	machine fsm_name;
+	machine mpcl_scanner;
 
 	main := |*
 	    '^MM' => {
@@ -36,11 +36,11 @@ namespace {
 %% write data;
 }
 
-void mpcl_parse_machine::init() {
+void mpcl_parse_machine::init_machine() {
     %% write init;
 }
 
-const char* mpcl_parse_machine::do_parse(const char *p, const char *pe) {
+const char* mpcl_parse_machine::run_machine(const char *p, const char *pe) {
     %% write exec;
     return p;
 }

@@ -1,11 +1,7 @@
-//
-// Created by amam on 04.10.19.
-//
-
 #ifndef AVR_WORKSHOP_EASYPLUG_PARSER_HPP
 #define AVR_WORKSHOP_EASYPLUG_PARSER_HPP
 
-#include "base_parser.hpp"
+#include <zoal/parser/ragel_scanner.hpp>
 
 enum class easyplug_parse_event {
     command_a1,
@@ -15,21 +11,15 @@ enum class easyplug_parse_event {
     command_pg30068
 };
 
-class easyplug_parse_machine : public base_parser {
-public:
-    void init() override;
+class easyplug_parse_machine : public zoal::parser::scanner_machine<> {
+protected:
+    void init_machine();
 
-    const char *do_parse(const char *p, const char *pe) override;
+    const char *run_machine(const char *p, const char *pe);
 };
 
 template<size_t BufferSize>
-class easyplug_parser : public easyplug_parse_machine {
-public:
-    easyplug_parser() {
-        size_ = BufferSize;
-    }
-private:
-    char ext_buffer_[BufferSize]{0};
+class easyplug_parser : public zoal::parser::ragel_scanner<easyplug_parse_machine, BufferSize> {
 };
 
 #endif

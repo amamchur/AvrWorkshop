@@ -23,7 +23,7 @@ void config_current_printer(size_t button, zoal::io::button_event event);
 
 void menu_input(size_t button, zoal::io::button_event event);
 
-void empty_callback(size_t button, zoal::io::button_event event);
+static void empty_callback(size_t button, zoal::io::button_event event);
 
 void (*keypad_handler)(size_t button, zoal::io::button_event event) = empty_callback;
 
@@ -41,7 +41,7 @@ void read_adc_async() {
     shield::adc::start();
 }
 
-void empty_callback(size_t button, zoal::io::button_event event) {
+static void empty_callback(size_t button, zoal::io::button_event event) {
 }
 
 void config_serial_number(size_t button, zoal::io::button_event event) {
@@ -258,7 +258,7 @@ void start_keypad_calibration() {
     }
 }
 
-void start_hartware_configuration() {
+void start_hardware_configuration() {
     mcu::mux::adc<adc, shield::analog_pin>::on();
 
     screen::copy_pgm(menu_greeting);

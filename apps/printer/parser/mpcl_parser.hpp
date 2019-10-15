@@ -1,7 +1,7 @@
 #ifndef CMD_LINE_PARSER_HPP
 #define CMD_LINE_PARSER_HPP
 
-#include "base_parser.hpp"
+#include <zoal/parser/ragel_scanner.hpp>
 
 enum class mpcl_parse_event {
     command_enq,
@@ -14,21 +14,15 @@ enum class mpcl_parse_event {
     command_mts
 };
 
-class mpcl_parse_machine : public base_parser {
-public:
-    void init() override;
+class mpcl_parse_machine :  public zoal::parser::scanner_machine<> {
+protected:
+    void init_machine();
 
-    const char *do_parse(const char *p, const char *pe) override;
+    const char *run_machine(const char *p, const char *pe);
 };
 
 template<size_t BufferSize>
-class mpcl_parser : public mpcl_parse_machine {
-public:
-    mpcl_parser() {
-        size_ = BufferSize;
-    }
-private:
-    char ext_buffer_[BufferSize]{0};
+class mpcl_parser : public zoal::parser::ragel_scanner<mpcl_parse_machine, BufferSize> {
 };
 
 #endif
