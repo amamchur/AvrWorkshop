@@ -8,7 +8,7 @@ enum class easyplug_parse_event {
     command_pg30068
 };
 
-class easyplug_parse_machine : public zoal::parser::scanner_machine {
+class easyplug_parse_machine : public zoal::parser::scanner_machine<> {
 public:
     void init_machine();
 
