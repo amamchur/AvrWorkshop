@@ -89,4 +89,4 @@ target_compile_definitions(printer.elf PRIVATE
         )
 target_include_directories(printer.elf PRIVATE libs apps/printer/Config)
 
-add_host_executable(test apps/_empty.cpp ${EASYPLUG_STATE_MACHINE_SRC})
+add_host_executable(test apps/test.cpp ${EASYPLUG_STATE_MACHINE_SRC})

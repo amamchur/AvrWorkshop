@@ -17,8 +17,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c215888d-a6da-4162-8586-9d0bbca7519a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/apps/test.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Keyboard/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Keyboard/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Neotronica/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Neotronica/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/_empty.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/_empty.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/mood_board/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/mood_board/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/printer/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/apps/printer/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +79,7 @@
       <recent name="$PROJECT_DIR$/apps/printer/parser" />
     </key>
   </component>
-  <component name="RunManager" selected="AVRDude.printer USBasp">
+  <component name="RunManager" selected="CMake Application.Build All">
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug Host" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -210,7 +216,9 @@
       <workItem from="1571144178684" duration="1186000" />
       <workItem from="1579787648300" duration="516000" />
       <workItem from="1579853896836" duration="5000" />
-      <workItem from="1581687064465" duration="4216000" />
+      <workItem from="1581687064465" duration="4242000" />
+      <workItem from="1582711217776" duration="48000" />
+      <workItem from="1582713619156" duration="4560000" />
     </task>
     <task id="LOCAL-00001" summary="Updated mood board">
       <created>1560266886597</created>
@@ -261,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570453511435</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixed compile error">
+      <created>1581696659658</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1581696659658</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,9 +304,27 @@
     <MESSAGE value="Update menu for printer device" />
     <MESSAGE value="Added SN &amp; printer setup" />
     <MESSAGE value="Added XLP504 command simulation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added XLP504 command simulation" />
+    <MESSAGE value="Fixed compile error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed compile error" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2507" y="61" width="955" height="807" key="CommitChangelistDialog2" timestamp="1581696659507">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2507" y="61" width="955" height="807" key="CommitChangelistDialog2/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1581696659507" />
+    <state x="375" y="55" width="1482" height="872" key="DiffContextDialog" timestamp="1582714040896">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="2239" y="29" width="1482" height="872" key="DiffContextDialog/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1581696645776" />
+    <state x="375" y="55" key="DiffContextDialog/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1582714040896" />
+    <state x="752" y="185" width="409" height="677" key="RollbackChangesDialog" timestamp="1582714042825">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="752" y="185" width="409" height="677" key="RollbackChangesDialog/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1582714042825" />
+    <state x="2584" y="200" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1581696660654">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2584" y="200" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1581696660654" />
     <state x="788" y="305" width="707" height="536" key="find.popup" timestamp="1581687312117">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
